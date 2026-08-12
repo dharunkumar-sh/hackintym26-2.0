@@ -65,22 +65,14 @@ export const UniverseCanvas = memo(
                 fov={60} 
               />
 
-              <ambientLight intensity={0.2} />
-              <directionalLight position={[10, 10, 5]} intensity={0.5} color="#00C8FF" />
-              <directionalLight position={[-10, 10, 5]} intensity={0.5} color="#FF2A2A" />
+              <ambientLight intensity={0.1} />
+              <directionalLight position={[10, 10, 5]} intensity={0.2} color="#00C8FF" />
+              <directionalLight position={[-10, 10, 5]} intensity={0.2} color="#FF2A2A" />
 
               <ParticleField progressRef={progressRef} scrollRef={scrollRef} trackHoverRef={trackHoverRef} />
               <MultiverseNexus progressRef={progressRef} scrollRef={scrollRef} trackHoverRef={trackHoverRef} />
 
               <EffectComposer multisampling={0}>
-                {config.enableBloom && (
-                  <Bloom 
-                    luminanceThreshold={0.55} 
-                    luminanceSmoothing={0.9} 
-                    intensity={config.bloomIntensity} 
-                    mipmapBlur 
-                  />
-                )}
                 <Vignette eskil={false} offset={0.1} darkness={1.1} />
               </EffectComposer>
             </Canvas>

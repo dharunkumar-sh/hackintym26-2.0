@@ -10,8 +10,6 @@ const NAV_ITEMS = [
   { label: "MISSION", targetId: "mission" },
   { label: "UNIVERSE", targetId: "tracks" },
   { label: "TIMELINE", targetId: "timeline" },
-  { label: "HEROES", targetId: "heroes" },
-  { label: "INTEL", targetId: "intel" },
 ]
 
 export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
@@ -108,12 +106,20 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
 
         {/* Right: Status Indicator & Mobile Toggle */}
         <div className="flex items-center gap-4">
-          <div className="hidden sm:flex flex-col items-end">
-            <div className="flex items-center gap-1.5 text-[10px] font-mono tracking-widest text-intel-blue-light">
-              <span className="w-2 h-2 rounded-full bg-intel-blue animate-pulse"></span>
-              NEXUS ONLINE
-            </div>
-          </div>
+          <motion.a
+            href="#registration"
+            onClick={(e) => {
+              e.preventDefault()
+              const elem = document.getElementById("registration") || document.getElementById("countdown")
+              elem?.scrollIntoView({ behavior: "smooth" })
+            }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded bg-power-red/80 hover:bg-power-red text-white text-[11px] font-mono font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_15px_rgba(255,0,51,0.5)] transition-all cursor-pointer"
+          >
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            REGISTER NOW
+          </motion.a>
 
           {/* Mobile Menu Button */}
           <button

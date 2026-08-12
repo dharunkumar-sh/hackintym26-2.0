@@ -133,17 +133,6 @@ export function MultiverseNexus({ progressRef, scrollRef, trackHoverRef }: Multi
         <meshBasicMaterial color="#010103" />
       </mesh>
       
-      {/* Event Horizon Glow (Additive Sphere) - radius 3.2 to prevent Z-fighting clipping */}
-      <mesh ref={glowRef}>
-        <sphereGeometry args={[3.2, 32, 32]} />
-        <meshBasicMaterial 
-          color="#0066FF" 
-          transparent 
-          opacity={0.35} 
-          blending={THREE.AdditiveBlending} 
-          depthWrite={false}
-        />
-      </mesh>
     </group>
   )
 }

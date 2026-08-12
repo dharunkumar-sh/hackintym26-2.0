@@ -2,7 +2,7 @@ import { forwardRef } from "react"
 import { motion } from "framer-motion"
 
 export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
-  const navItems = ["HQ", "MISSION", "UNIVERSE", "TIMELINE", "HEROES", "INTEL"]
+  const navItems = ["HQ", "MISSION", "UNIVERSE", "TIMELINE"]
 
   return (
     <div 
@@ -36,10 +36,20 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
 
       {/* Top Right: Status */}
       <div className="flex flex-col items-end gap-1">
-        <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-intel-blue-light">
-          <span className="w-2 h-2 rounded-full bg-intel-blue-light animate-pulse"></span>
-          NEXUS ONLINE
-        </div>
+        <motion.a
+          href="#registration"
+          onClick={(e) => {
+            e.preventDefault()
+            const elem = document.getElementById("registration") || document.getElementById("countdown")
+            elem?.scrollIntoView({ behavior: "smooth" })
+          }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="pointer-events-auto px-4 py-1.5 rounded bg-power-red/80 hover:bg-power-red text-white text-[11px] font-mono font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_15px_rgba(255,0,51,0.5)] transition-all flex items-center gap-2 cursor-pointer"
+        >
+          <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+          REGISTER NOW
+        </motion.a>
         <div className="text-[9px] font-mono tracking-widest text-white/30 scanline relative pl-10 h-3 w-32">
           {/* Scanline handled by CSS before element */}
           V 2.0.26

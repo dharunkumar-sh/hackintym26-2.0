@@ -15,7 +15,7 @@ interface HeroSectionProps {
 
 export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
   ({ typographyRef, ctaRef, hudRef, onEnterClick, onExploreClick }, ref) => {
-    const navItems = ["HQ", "COUNTDOWN", "MISSION", "UNIVERSE", "TIMELINE", "HEROES", "INTEL"]
+    const navItems = ["HQ", "COUNTDOWN", "MISSION", "UNIVERSE", "TIMELINE"]
 
     return (
       <section 

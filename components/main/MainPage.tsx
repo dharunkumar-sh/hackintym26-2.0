@@ -11,11 +11,6 @@ import { MultiverseTracks } from "./MultiverseTracks"
 import { MissionTimeline } from "./MissionTimeline"
 import { HackathonArena } from "./HackathonArena"
 import { PrizeSection } from "./PrizeSection"
-import { HallOfHeroes } from "./HallOfHeroes"
-import { ChampionsSection } from "./ChampionsSection"
-import { HeroAlliance } from "./HeroAlliance"
-import { IntelligenceDatabase } from "./IntelligenceDatabase"
-import { TransmissionCenter } from "./TransmissionCenter"
 import { FinalCTA } from "./FinalCTA"
 
 import { LoadingOverlay } from "@/components/cinematic/LoadingOverlay"
@@ -232,10 +227,38 @@ export function MainPage() {
         <MultiverseTracks trackHoverRef={trackHoverRef} />
         
         {/* 7. INTERACTIVE TRACK EXPLORER 3D BREAK */}
-        <section className="relative h-[120vh] flex items-center justify-center pointer-events-none">
-          <div className="absolute top-20 text-center z-10 pointer-events-auto">
-            <h2 className="text-3xl font-black tracking-widest uppercase text-white mb-2">The Multiverse Nexus</h2>
-            <p className="text-intel-blue-light font-mono text-sm tracking-widest uppercase">SELECT A UNIVERSE TO BEGIN YOUR MISSION.</p>
+        <section className="relative py-24 px-6 z-10 my-12">
+          <div className="max-w-4xl mx-auto glass-panel p-12 text-center border border-intel-blue/30 relative overflow-hidden group shadow-[0_0_50px_rgba(0,102,255,0.2)]">
+            <div className="absolute inset-0 bg-gradient-to-r from-intel-blue/10 via-power-red/10 to-intel-blue/10 opacity-50 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+            
+            <div className="relative z-10 flex flex-col items-center gap-4">
+              <span className="px-4 py-1 rounded-full bg-intel-blue/20 border border-intel-blue-light/40 text-intel-blue-light font-mono text-xs tracking-widest uppercase">
+                PORTAL DETECTED
+              </span>
+
+              <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white">
+                The Multiverse Nexus
+              </h2>
+
+              <p className="text-intel-blue-light font-mono text-sm md:text-base tracking-widest uppercase max-w-xl">
+                SELECT A UNIVERSE ABOVE TO BEGIN YOUR MISSION AND ACCESS EXCLUSIVE TRACK INTEL.
+              </p>
+
+              <div className="mt-6 flex flex-wrap justify-center gap-4">
+                <a
+                  href="#tracks"
+                  className="px-6 py-3 rounded bg-intel-blue hover:bg-intel-blue-light text-white font-mono text-xs font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(0,102,255,0.5)] transition-all cursor-pointer"
+                >
+                  VIEW UNIVERSE TRACKS
+                </a>
+                <a
+                  href="#countdown"
+                  className="px-6 py-3 rounded bg-power-red/80 hover:bg-power-red text-white font-mono text-xs font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_20px_rgba(255,0,51,0.4)] transition-all cursor-pointer"
+                >
+                  REGISTER FOR HACKATHON
+                </a>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -248,29 +271,8 @@ export function MainPage() {
         {/* 10. INFINITY REWARDS */}
         <PrizeSection />
 
-        {/* 11 & 12. HALL OF HEROES */}
-        <HallOfHeroes />
-
-        {/* 13. THE CHAMPIONS */}
-        <ChampionsSection />
-
-        {/* 14. HERO ALLIANCE */}
-        <HeroAlliance />
-
-        {/* 15. INTELLIGENCE DATABASE */}
-        <IntelligenceDatabase />
-
         {/* 16. FINAL CTA */}
         <FinalCTA />
-
-        {/* 17. TRANSMISSION CENTER */}
-        <TransmissionCenter />
-
-        {/* UNIVERSE FOOTER */}
-        <footer className="relative py-12 px-6 border-t border-white/10 glass-panel mt-32 text-center text-sm font-mono text-white/40 tracking-widest">
-          <p className="mb-4">© 2026 HACKINTYM '26. ALL SYSTEMS ONLINE.</p>
-          <p>BUILT BY DEVDYNASTY CLUB.</p>
-        </footer>
 
       </div>
     </main>

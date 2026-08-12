@@ -119,8 +119,6 @@ export function MissionCountdown() {
       aria-label="Mission Countdown"
       className="relative py-28 px-4 sm:px-6 z-10 overflow-hidden flex flex-col items-center justify-center min-h-[90vh]"
     >
-      {/* Visual Downward Flow Connection from Hero */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-32 bg-gradient-to-b from-intel-blue/10 via-power-red/5 to-transparent pointer-events-none blur-xl"></div>
       
       <div className="max-w-6xl mx-auto w-full relative z-10 text-center">
         
