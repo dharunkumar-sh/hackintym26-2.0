@@ -23,16 +23,7 @@ export function CommandCenter() {
     <section ref={ref} className="relative py-24 px-6 z-10 min-h-screen flex items-center overflow-hidden">
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col items-center text-center mb-16">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center gap-4 text-intel-blue font-mono text-sm tracking-widest uppercase mb-4"
-          >
-            <span className="w-8 h-px bg-intel-blue"></span>
-            MSIIC // INNOVATION HQ
-            <span className="w-8 h-px bg-intel-blue"></span>
-          </motion.div>
+         
           
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

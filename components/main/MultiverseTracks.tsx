@@ -88,10 +88,10 @@ export function MultiverseTracks({ trackHoverRef }: MultiverseTracksProps) {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-[600px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 min-h-[500px]">
           
           {/* Interactive Universe Nodes */}
-          <div className="lg:col-span-5 flex flex-col justify-center gap-4" onMouseLeave={handleLeave}>
+          <div className="lg:col-span-5 flex flex-col justify-center gap-3" onMouseLeave={handleLeave}>
             {TRACKS.map((track, i) => {
               const isActive = activeTrack.id === track.id
               return (
@@ -105,7 +105,7 @@ export function MultiverseTracks({ trackHoverRef }: MultiverseTracksProps) {
                   className={`cursor-pointer p-4 rounded-lg border transition-all duration-300 ${isActive ? `bg-white/10 ${track.border}` : 'border-transparent hover:bg-white/5'}`}
                 >
                   <div className="flex items-center justify-between">
-                    <h3 className={`text-2xl font-black tracking-widest uppercase ${isActive ? track.color : 'text-white/50'}`}>
+                    <h3 className={`text-xl sm:text-2xl font-black tracking-widest uppercase ${isActive ? track.color : 'text-white/50'}`}>
                       {track.name}
                     </h3>
                     {isActive && (
@@ -118,7 +118,7 @@ export function MultiverseTracks({ trackHoverRef }: MultiverseTracksProps) {
           </div>
 
           {/* Active Track Information Panel */}
-          <div className="lg:col-span-7 relative h-full">
+          <div className="lg:col-span-7 relative min-h-[350px] sm:min-h-[400px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTrack.id}
@@ -126,7 +126,7 @@ export function MultiverseTracks({ trackHoverRef }: MultiverseTracksProps) {
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
                 transition={{ duration: 0.4 }}
-                className={`absolute inset-0 glass-panel rounded-2xl p-10 border-l-4 ${activeTrack.border} flex flex-col justify-between overflow-hidden`}
+                className={`glass-panel rounded-2xl p-6 sm:p-10 border-l-4 ${activeTrack.border} flex flex-col justify-between overflow-hidden h-full`}
               >
                 {/* Background Glow */}
                 <div className={`absolute -right-20 -top-20 w-64 h-64 rounded-full ${activeTrack.bg} opacity-10 blur-[100px]`}></div>

@@ -11,8 +11,8 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
     >
       {/* Top Left: Logo / Brand Mark */}
       <div className="flex flex-col items-start gap-1">
-        <div className="text-xl font-black tracking-widest text-white uppercase flex items-center gap-2">
-          H<span className="text-intel-blue">X</span>26
+        <div className="text-base sm:text-lg font-black tracking-widest text-white uppercase flex items-center gap-1">
+          HACKINTYM <span className="text-intel-blue">'26 2.0</span>
         </div>
         <div className="text-[9px] font-mono tracking-widest text-white/50">
           GLOBAL_HACK_PROTOCOL
@@ -34,8 +34,8 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
         ))}
       </div>
 
-      {/* Top Right: Status */}
-      <div className="flex flex-col items-end gap-1">
+      {/* Top Right: Status / CTA (Desktop only preview) */}
+      <div className="hidden md:flex flex-col items-end gap-1">
         <motion.a
           href="#registration"
           onClick={(e) => {
@@ -56,9 +56,6 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
         </div>
       </div>
       
-      {/* Decorative HUD overlay lines */}
-      <div className="fixed top-20 left-6 w-px h-32 bg-gradient-to-b from-intel-blue/30 to-transparent"></div>
-      <div className="fixed bottom-20 right-6 w-px h-32 bg-gradient-to-t from-power-red/30 to-transparent"></div>
     </div>
   )
 })

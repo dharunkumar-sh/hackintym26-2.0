@@ -18,9 +18,7 @@ export function FinalCTA() {
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <div className="text-power-red font-mono text-sm tracking-widest uppercase mb-8 animate-pulse">
-            WARNING // TEMPORAL ANOMALY DETECTED // TIME IS RUNNING OUT
-          </div>
+        
           
           <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase text-white mb-8 text-glow-red">
             Secure Your Spot In The Multiverse

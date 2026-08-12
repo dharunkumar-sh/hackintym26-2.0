@@ -30,10 +30,10 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
         >
           {/* Main Title */}
           <h1 
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white uppercase"
+            className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white uppercase"
             style={{ textShadow: "0 4px 30px rgba(0, 102, 255, 0.4)" }}
           >
-            HACKINTYM <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue via-intel-blue-light to-power-red">'26</span>
+            HACKINTYM <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue via-intel-blue-light to-power-red">'26 2.0</span>
           </h1>
           
           {/* Mission Subtitle */}
@@ -52,19 +52,12 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
             </div>
           </div>
 
-          {/* HUD Interface Markings */}
-          <div className="absolute -top-6 -left-6 text-[10px] font-mono text-white/30 hidden lg:block">
-            SYS.RDY // 2026
-          </div>
-          <div className="absolute -bottom-6 -right-6 text-[10px] font-mono text-white/30 hidden lg:block">
-            NEXUS_CORE // ACTIVE
-          </div>
         </div>
 
         {/* Bottom CTA Action Bar */}
         <div 
           ref={ctaRef} 
-          className="relative flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 z-20 pb-6 pointer-events-auto opacity-0"
+          className="relative flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 z-20 pb-6 pointer-events-auto"
         >
           <motion.div 
             whileHover={{ scale: 1.05 }} 
@@ -73,7 +66,7 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
           >
             <Button 
               size="lg" 
-              className="w-full sm:w-auto bg-intel-blue hover:bg-intel-blue-light text-white font-bold tracking-widest border border-intel-blue-light/50 shadow-[0_0_25px_rgba(0,102,255,0.5)] h-14 px-8 uppercase transition-colors"
+              className="w-full sm:w-auto bg-intel-blue hover:bg-intel-blue-light text-white font-bold tracking-widest border border-intel-blue-light/50 shadow-[0_0_25px_rgba(0,102,255,0.5)] h-14 px-8 uppercase transition-colors cursor-pointer"
               onClick={onEnterClick || (() => {
                 const countdownElem = document.getElementById("countdown")
                 countdownElem?.scrollIntoView({ behavior: "smooth" })
@@ -92,21 +85,17 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
             <Button 
               variant="outline"
               size="lg" 
-              className="w-full sm:w-auto bg-black/40 border border-power-red/50 hover:bg-power-red/10 text-white hover:text-power-red-light font-bold tracking-widest glass-panel h-14 px-8 uppercase transition-colors"
+              className="w-full sm:w-auto bg-black/40 border border-power-red/50 hover:bg-power-red/10 text-white hover:text-power-red-light font-bold tracking-widest glass-panel h-14 px-8 uppercase transition-colors cursor-pointer"
               onClick={onExploreClick || (() => {
-                const tracksElem = document.getElementById("tracks")
-                tracksElem?.scrollIntoView({ behavior: "smooth" })
+                const devteamElem = document.getElementById("devteam")
+                devteamElem?.scrollIntoView({ behavior: "smooth" })
               })}
             >
-              Explore the Heroes
+              Development Team
               <Compass className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
         </div>
-
-        {/* Atmospheric lines */}
-        <div className="absolute top-20 left-6 w-px h-32 bg-gradient-to-b from-intel-blue/30 to-transparent pointer-events-none"></div>
-        <div className="absolute bottom-20 right-6 w-px h-32 bg-gradient-to-t from-power-red/30 to-transparent pointer-events-none"></div>
       </section>
     )
   }

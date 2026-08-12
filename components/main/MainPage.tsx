@@ -11,6 +11,7 @@ import { MultiverseTracks } from "./MultiverseTracks"
 import { MissionTimeline } from "./MissionTimeline"
 import { HackathonArena } from "./HackathonArena"
 import { PrizeSection } from "./PrizeSection"
+import { DevelopmentTeamSection } from "./DevelopmentTeamSection"
 import { FinalCTA } from "./FinalCTA"
 
 import { LoadingOverlay } from "@/components/cinematic/LoadingOverlay"
@@ -80,10 +81,11 @@ export function MainPage() {
         return
       }
 
-      gsap.set([h1, mission], { opacity: 0, y: 20 })
-      if (words) gsap.set(words, { opacity: 0, y: "100%" })
-      gsap.set(ctaRef.current, { opacity: 0, y: 30 })
-      gsap.set(hudRef.current, { opacity: 0, y: -20 })
+      gsap.set(h1, { opacity: 0, scale: 4, filter: "blur(20px)", z: 500 })
+      gsap.set(mission, { opacity: 0, scaleX: 0, filter: "blur(10px)" })
+      if (words) gsap.set(words, { opacity: 0, scale: 0.5, rotationX: -90, y: "50%" })
+      gsap.set(ctaRef.current, { opacity: 0, scale: 0.8, y: 50 })
+      gsap.set(hudRef.current, { opacity: 0, y: -50 })
 
       const tl = gsap.timeline({
         onComplete: () => {
@@ -115,14 +117,34 @@ export function MainPage() {
         tl.to(cameraRef.current.position, { z: 2.5, duration: 1.8, ease: "power3.out" }, "3.8")
       }
 
-      // 4. Reveal Typography & CTA
-      if (h1) tl.to(h1, { opacity: 1, y: 0, duration: 1.2, ease: "power4.out" }, "4.2")
+      // 4. Reveal Typography & CTA - Massive Scale Down & Slam
+      if (h1) tl.to(h1, { opacity: 1, scale: 1, filter: "blur(0px)", z: 0, duration: 2, ease: "expo.out" }, "4.0")
+      
+      // Camera Shake Effect via proxy object for dramatic impact
+      const shakeProxy = { val: 0 }
+      tl.to(shakeProxy, {
+        val: 100,
+        duration: 0.8,
+        onUpdate: () => {
+          if (cameraRef.current) {
+            cameraRef.current.position.x = (Math.random() - 0.5) * 0.3 * (1 - shakeProxy.val / 100);
+            cameraRef.current.position.y = (Math.random() - 0.5) * 0.3 * (1 - shakeProxy.val / 100);
+          }
+        },
+        onComplete: () => {
+          if (cameraRef.current) {
+            cameraRef.current.position.x = 0;
+            cameraRef.current.position.y = 0;
+          }
+        }
+      }, "4.0")
+
+      if (mission) tl.to(mission, { opacity: 1, scaleX: 1, filter: "blur(0px)", duration: 1.5, ease: "expo.out" }, "4.5")
       if (words && words.length > 0) {
-        tl.to(words, { opacity: 1, y: "0%", duration: 0.7, stagger: 0.15, ease: "back.out(1.5)" }, "4.6")
+        tl.to(words, { opacity: 1, scale: 1, rotationX: 0, y: "0%", duration: 1, stagger: 0.2, ease: "back.out(2)" }, "4.8")
       }
-      if (mission) tl.to(mission, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }, "5.2")
-      if (ctaRef.current) tl.to(ctaRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "5.5")
-      if (hudRef.current) tl.to(hudRef.current, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, "5.5")
+      if (ctaRef.current) tl.to(ctaRef.current, { opacity: 1, scale: 1, y: 0, duration: 1, ease: "power3.out" }, "5.5")
+      if (hudRef.current) tl.to(hudRef.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "5.5")
 
     }, containerRef)
 
@@ -174,7 +196,7 @@ export function MainPage() {
   }, { scope: containerRef })
 
   return (
-    <main ref={containerRef} className="relative bg-background text-foreground selection:bg-intel-blue selection:text-white">
+    <main ref={containerRef} className="relative bg-background text-foreground selection:bg-intel-blue selection:text-white overflow-x-hidden">
       
       {/* PERSISTENT 3D UNIVERSE CANVAS (MEMOIZED & STABLE) */}
       <div className="fixed inset-0 z-0 pointer-events-none">
@@ -270,6 +292,9 @@ export function MainPage() {
 
         {/* 10. INFINITY REWARDS */}
         <PrizeSection />
+
+        {/* 11. DEVELOPMENT TEAM */}
+        <DevelopmentTeamSection />
 
         {/* 16. FINAL CTA */}
         <FinalCTA />

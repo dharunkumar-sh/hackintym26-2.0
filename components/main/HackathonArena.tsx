@@ -37,16 +37,7 @@ export function HackathonArena() {
     <section ref={ref} className="relative py-24 px-6 z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.8 }}
-            className="inline-block border border-power-red px-4 py-1 rounded-full mb-6"
-          >
-            <span className="text-power-red font-mono text-sm tracking-widest uppercase">
-              WARNING // STRICTLY OFFLINE PROTOCOL
-            </span>
-          </motion.div>
+        
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

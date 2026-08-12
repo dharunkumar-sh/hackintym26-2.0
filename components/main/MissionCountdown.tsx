@@ -129,18 +129,13 @@ export function MissionCountdown() {
           transition={{ duration: 0.8 }}
           className="mb-12"
         >
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full glass-panel border-intel-blue/30 text-intel-blue-light font-mono text-xs tracking-[0.25em] uppercase mb-4 shadow-[0_0_15px_rgba(0,102,255,0.2)]">
-            <span className="w-2 h-2 rounded-full bg-intel-blue animate-pulse"></span>
-            NEXUS // FINAL APPROACH
-          </div>
+         
 
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white mb-3" style={{ textShadow: "0 0 25px rgba(0,200,255,0.3)" }}>
             Mission Countdown
           </h2>
 
-          <p className="text-sm sm:text-base text-white/60 font-mono tracking-widest uppercase">
-            THE NEXT CHAPTER BEGINS SEPTEMBER 2, 2026
-          </p>
+       
         </motion.div>
 
         {/* Futuristic Energy Reactor / Timer Container */}
@@ -208,44 +203,6 @@ export function MissionCountdown() {
             </div>
           )}
 
-          {/* Mathematical Progress Bar representing timeline from Aug 14 to Sept 2 */}
-          <div className="mt-8 pt-6 border-t border-white/10 flex flex-col gap-2">
-            <div className="flex justify-between items-center text-[10px] sm:text-xs font-mono text-white/50 tracking-widest uppercase">
-              <span>MULTIVERSE CONVERGENCE PROGRESS</span>
-              <span className="text-intel-blue-light font-bold">{mounted ? `${timeState.progressPercent.toFixed(1)}%` : "0.0%"}</span>
-            </div>
-            <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden p-0.5 border border-white/10">
-              <motion.div 
-                className="h-full bg-gradient-to-r from-intel-blue via-intel-blue-light to-power-red rounded-full"
-                initial={{ width: "0%" }}
-                animate={{ width: `${mounted ? timeState.progressPercent : 0}%` }}
-                transition={{ duration: 1, ease: "easeOut" }}
-              />
-            </div>
-          </div>
-
-          {/* Technical Metadata Row */}
-          <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-left">
-            <div className="hud-meta-item flex flex-col">
-              <span className="text-[9px] font-mono text-white/40 tracking-widest uppercase">MISSION START</span>
-              <span className="text-xs font-mono text-white/80 font-bold">14.08.2026 // 00:00 IST</span>
-            </div>
-            <div className="hud-meta-item flex flex-col">
-              <span className="text-[9px] font-mono text-white/40 tracking-widest uppercase">MISSION END</span>
-              <span className="text-xs font-mono text-white/80 font-bold">02.09.2026 // 23:59 IST</span>
-            </div>
-            <div className="hud-meta-item flex flex-col">
-              <span className="text-[9px] font-mono text-white/40 tracking-widest uppercase">STATUS</span>
-              <span className="text-xs font-mono text-intel-blue-light font-bold flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-intel-blue animate-ping"></span>
-                COUNTDOWN ACTIVE
-              </span>
-            </div>
-            <div className="hud-meta-item flex flex-col">
-              <span className="text-[9px] font-mono text-white/40 tracking-widest uppercase">SECTOR</span>
-              <span className="text-xs font-mono text-power-red-light font-bold">HACKINTYM ’26</span>
-            </div>
-          </div>
 
         </div>
       </div>

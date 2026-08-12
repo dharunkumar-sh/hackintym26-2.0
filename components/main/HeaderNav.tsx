@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: "MISSION", targetId: "mission" },
   { label: "UNIVERSE", targetId: "tracks" },
   { label: "TIMELINE", targetId: "timeline" },
+  { label: "DEV TEAM", targetId: "devteam" },
 ]
 
 export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
@@ -62,7 +63,7 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 flex items-center justify-between">
         
         {/* Left: Logo */}
         <a 
@@ -70,8 +71,8 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
           onClick={(e) => handleNavClick(e, "hero")}
           className="flex flex-col items-start group"
         >
-          <div className="text-xl font-black tracking-widest text-white uppercase flex items-center gap-1.5">
-            H<span className="text-intel-blue text-glow-blue transition-transform group-hover:scale-125">X</span>26
+          <div className="text-base sm:text-lg font-black tracking-widest text-white uppercase flex items-center gap-1">
+            HACKINTYM <span className="text-intel-blue text-glow-blue transition-transform group-hover:scale-110">'26 2.0</span>
           </div>
           <div className="text-[9px] font-mono tracking-widest text-white/40">
             GLOBAL_HACK_PROTOCOL
@@ -104,8 +105,8 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
           })}
         </nav>
 
-        {/* Right: Status Indicator & Mobile Toggle */}
-        <div className="flex items-center gap-4">
+        {/* Right: Register Button & Mobile Toggle */}
+        <div className="flex items-center gap-3">
           <motion.a
             href="#registration"
             onClick={(e) => {
@@ -115,9 +116,9 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded bg-power-red/80 hover:bg-power-red text-white text-[11px] font-mono font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_15px_rgba(255,0,51,0.5)] transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 rounded bg-power-red/90 hover:bg-power-red text-white text-[10px] sm:text-[11px] font-mono font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_15px_rgba(255,0,51,0.5)] transition-all cursor-pointer"
           >
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white animate-pulse"></span>
             REGISTER NOW
           </motion.a>
 
@@ -125,7 +126,7 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle Navigation Menu"
-            className="md:hidden p-2 text-white/80 hover:text-white glass-panel rounded-lg border border-white/10"
+            className="md:hidden p-2 text-white hover:text-white glass-panel rounded-lg border border-white/20 bg-black/60 active:scale-95 transition-transform"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>

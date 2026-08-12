@@ -181,4 +181,17 @@ body {
   html {
     @apply font-sans;
   }
+  
+  /* Enforce cursor pointer across all interactive elements in the application */
+  a, 
+  button, 
+  [role="button"], 
+  input[type="button"], 
+  input[type="submit"], 
+  input[type="reset"], 
+  summary, 
+  select,
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
 }

@@ -129,7 +129,7 @@ export function ParticleField({ progressRef, scrollRef, trackHoverRef }: Particl
       colorAttr.needsUpdate = true
     }
 
-    // Positions animation during intro
+    // Ambient particle animation
     if (progress < 1 || !isPositionsFinalized.current) {
       const posAttr = pointsRef.current.geometry.attributes.position
       const currentPositions = posAttr.array as Float32Array
@@ -140,12 +140,13 @@ export function ParticleField({ progressRef, scrollRef, trackHoverRef }: Particl
         const initY = initialPositions[i3 + 1]
         const initZ = initialPositions[i3 + 2]
         
-        const effectiveProgress = Math.min(1, progress * (1 + speeds[i] * 10))
+        const effectiveProgress = Math.min(1, progress * (1 + speeds[i] * 5))
         const smoothProgress = effectiveProgress * effectiveProgress * (3 - 2 * effectiveProgress)
         
-        currentPositions[i3] = THREE.MathUtils.lerp(initX, 0, smoothProgress)
-        currentPositions[i3 + 1] = THREE.MathUtils.lerp(initY, 0, smoothProgress)
-        currentPositions[i3 + 2] = THREE.MathUtils.lerp(initZ, 0, smoothProgress)
+        // Spread particles ambiently around space instead of shrinking to center point (0,0,0)
+        currentPositions[i3] = THREE.MathUtils.lerp(initX, initX * 0.6, smoothProgress)
+        currentPositions[i3 + 1] = THREE.MathUtils.lerp(initY, initY * 0.6, smoothProgress)
+        currentPositions[i3 + 2] = THREE.MathUtils.lerp(initZ, initZ * 0.6, smoothProgress)
       }
       posAttr.needsUpdate = true
 

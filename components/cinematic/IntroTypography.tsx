@@ -8,8 +8,8 @@ export const IntroTypography = forwardRef<HTMLDivElement>((_, ref) => {
     >
       <div className="relative text-center">
         {/* Main Title */}
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white uppercase" style={{ textShadow: "0 4px 30px rgba(0, 102, 255, 0.4)" }}>
-          Hackintym <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue to-power-red">'26</span>
+        <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter uppercase text-white drop-shadow-[0_10px_30px_rgba(0,102,255,0.5)]">
+          Hackintym <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue to-power-red">'26 2.0</span>
         </h1>
         
         {/* Mission Status / HUD element */}
@@ -28,13 +28,6 @@ export const IntroTypography = forwardRef<HTMLDivElement>((_, ref) => {
           </div>
         </div>
 
-        {/* Small Interface markings */}
-        <div className="absolute -top-12 -left-12 text-[10px] font-mono text-white/30 hidden md:block">
-          SYS.RDY // {new Date().getFullYear()}
-        </div>
-        <div className="absolute -bottom-12 -right-12 text-[10px] font-mono text-white/30 hidden md:block">
-          NEXUS_CORE // ACTIVE
-        </div>
       </div>
     </div>
   )
