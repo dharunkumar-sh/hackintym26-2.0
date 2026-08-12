@@ -81,8 +81,8 @@ export function MainPage() {
         return
       }
 
-      gsap.set(h1, { opacity: 0, scale: 4, filter: "blur(20px)", z: 500 })
-      gsap.set(mission, { opacity: 0, scaleX: 0, filter: "blur(10px)" })
+      if (h1) gsap.set(h1, { opacity: 0, scale: 4, filter: "blur(20px)", z: 500 })
+      if (mission) gsap.set(mission, { opacity: 0, scaleX: 0, filter: "blur(10px)" })
       if (words) gsap.set(words, { opacity: 0, scale: 0.5, rotationX: -90, y: "50%" })
       gsap.set(ctaRef.current, { opacity: 0, scale: 0.8, y: 50 })
       gsap.set(hudRef.current, { opacity: 0, y: -50 })
