@@ -66,8 +66,8 @@ export function CommandCenter() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                   transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
-                  onHoverStart={() => setActiveCapability(cap.id)}
-                  onHoverEnd={() => setActiveCapability(null)}
+                  onClick={() => setActiveCapability(isActive ? null : cap.id)}
+                  className="cursor-pointer"
                 >
                   <Card className={`relative overflow-hidden p-6 transition-all duration-300 border-white/10 ${isActive ? 'bg-intel-blue/10 border-intel-blue/50 scale-105 z-10' : 'bg-black/40 hover:bg-white/5'}`}>
                     <div className="flex items-center gap-4 mb-3">

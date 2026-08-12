@@ -64,17 +64,20 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
             whileTap={{ scale: 0.95 }}
             className="w-full sm:w-auto"
           >
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto bg-intel-blue hover:bg-intel-blue-light text-white font-bold tracking-widest border border-intel-blue-light/50 shadow-[0_0_25px_rgba(0,102,255,0.5)] h-14 px-8 uppercase transition-colors cursor-pointer"
-              onClick={onEnterClick || (() => {
-                const countdownElem = document.getElementById("countdown")
-                countdownElem?.scrollIntoView({ behavior: "smooth" })
-              })}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSf4OfwQxpT3z2nohQUOCyHcIqw7cMZbrgscbBH0VDugvojcBw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full sm:w-auto"
             >
-              Enter the Universe
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+              <Button 
+                size="lg" 
+                className="w-full sm:w-auto bg-intel-blue hover:bg-intel-blue-light text-white font-bold tracking-widest border border-intel-blue-light/50 shadow-[0_0_25px_rgba(0,102,255,0.5)] h-14 px-8 uppercase transition-colors cursor-pointer"
+              >
+                Enter the Universe
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
           </motion.div>
 
           <motion.div 

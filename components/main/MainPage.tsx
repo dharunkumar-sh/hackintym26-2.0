@@ -13,6 +13,7 @@ import { HackathonArena } from "./HackathonArena"
 import { PrizeSection } from "./PrizeSection"
 import { DevelopmentTeamSection } from "./DevelopmentTeamSection"
 import { FinalCTA } from "./FinalCTA"
+import { Footer } from "./Footer"
 
 import { LoadingOverlay } from "@/components/cinematic/LoadingOverlay"
 import { UniverseCanvas } from "@/components/cinematic/UniverseCanvas"
@@ -34,12 +35,17 @@ export function MainPage() {
     setIsLoaded(true)
   }, [])
 
-  // Manage scroll lock during loading state
+  // Manage scroll state during loading
   useEffect(() => {
     if (!isLoaded) {
       document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = ""
+      document.documentElement.style.overflow = ""
+    }
+    return () => {
+      document.body.style.overflow = ""
+      document.documentElement.style.overflow = ""
     }
   }, [isLoaded])
 
@@ -117,8 +123,9 @@ export function MainPage() {
         tl.to(cameraRef.current.position, { z: 2.5, duration: 1.8, ease: "power3.out" }, "3.8")
       }
 
-      // 4. Reveal Typography & CTA - Massive Scale Down & Slam
-      if (h1) tl.to(h1, { opacity: 1, scale: 1, filter: "blur(0px)", z: 0, duration: 2, ease: "expo.out" }, "4.0")
+      // 4. Reveal Typography, Header & CTA in Sync
+      if (hudRef.current) tl.to(hudRef.current, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, "4.0")
+      if (h1) tl.to(h1, { opacity: 1, scale: 1, filter: "blur(0px)", z: 0, duration: 1.6, ease: "expo.out" }, "4.0")
       
       // Camera Shake Effect via proxy object for dramatic impact
       const shakeProxy = { val: 0 }
@@ -139,12 +146,11 @@ export function MainPage() {
         }
       }, "4.0")
 
-      if (mission) tl.to(mission, { opacity: 1, scaleX: 1, filter: "blur(0px)", duration: 1.5, ease: "expo.out" }, "4.5")
+      if (mission) tl.to(mission, { opacity: 1, scaleX: 1, filter: "blur(0px)", duration: 1.2, ease: "expo.out" }, "4.2")
       if (words && words.length > 0) {
-        tl.to(words, { opacity: 1, scale: 1, rotationX: 0, y: "0%", duration: 1, stagger: 0.2, ease: "back.out(2)" }, "4.8")
+        tl.to(words, { opacity: 1, scale: 1, rotationX: 0, y: "0%", duration: 0.8, stagger: 0.15, ease: "back.out(2)" }, "4.4")
       }
-      if (ctaRef.current) tl.to(ctaRef.current, { opacity: 1, scale: 1, y: 0, duration: 1, ease: "power3.out" }, "5.5")
-      if (hudRef.current) tl.to(hudRef.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "5.5")
+      if (ctaRef.current) tl.to(ctaRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.9, ease: "power3.out" }, "4.6")
 
     }, containerRef)
 
@@ -198,15 +204,30 @@ export function MainPage() {
   return (
     <main ref={containerRef} className="relative bg-background text-foreground selection:bg-intel-blue selection:text-white overflow-x-hidden">
       
-      {/* PERSISTENT 3D UNIVERSE CANVAS (MEMOIZED & STABLE) */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <UniverseCanvas 
-          ref={cameraRef} 
-          progressRef={progressRef}
-          bloomIntensityRef={bloomIntensityRef}
-          scrollRef={scrollRef}
-          trackHoverRef={trackHoverRef}
-        />
+      {/* 3D UNIVERSE CANVAS (ACTIVE ONLY DURING INTRO/LOADING ANIMATION) */}
+      {introOverlayActive && (
+        <div className="fixed inset-0 z-0 pointer-events-none">
+          <UniverseCanvas 
+            ref={cameraRef} 
+            progressRef={progressRef}
+            bloomIntensityRef={bloomIntensityRef}
+            scrollRef={scrollRef}
+            trackHoverRef={trackHoverRef}
+          />
+        </div>
+      )}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden opacity-90">
+        {/* Top Radial Blue Cosmic Light */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[700px] rounded-full bg-[radial-gradient(ellipse_at_top,rgba(0,102,255,0.25)_0%,rgba(0,200,255,0.1)_40%,transparent_75%)] blur-[90px]"></div>
+        
+        {/* Power Red Side Energy Glow */}
+        <div className="absolute top-[30%] -right-48 w-[750px] h-[750px] rounded-full bg-[radial-gradient(circle,rgba(225,6,0,0.2)_0%,rgba(255,42,42,0.08)_45%,transparent_75%)] blur-[100px]"></div>
+        
+        {/* Arc Reactor Cyan Mid Portal Glow */}
+        <div className="absolute top-[58%] -left-48 w-[700px] h-[700px] rounded-full bg-[radial-gradient(circle,rgba(0,200,255,0.18)_0%,rgba(0,102,255,0.06)_45%,transparent_75%)] blur-[95px]"></div>
+        
+        {/* Infinity Power Purple/Red Bottom Aura */}
+        <div className="absolute -bottom-40 right-10 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.18)_0%,rgba(225,6,0,0.14)_45%,transparent_75%)] blur-[110px]"></div>
       </div>
 
       {/* ISOLATED LOADING OVERLAY (Timer state updates stay local to this overlay) */}
@@ -248,41 +269,7 @@ export function MainPage() {
         {/* 6. MULTIVERSE TRACKS */}
         <MultiverseTracks trackHoverRef={trackHoverRef} />
         
-        {/* 7. INTERACTIVE TRACK EXPLORER 3D BREAK */}
-        <section className="relative py-24 px-6 z-10 my-12">
-          <div className="max-w-4xl mx-auto glass-panel p-12 text-center border border-intel-blue/30 relative overflow-hidden group shadow-[0_0_50px_rgba(0,102,255,0.2)]">
-            <div className="absolute inset-0 bg-gradient-to-r from-intel-blue/10 via-power-red/10 to-intel-blue/10 opacity-50 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-            
-            <div className="relative z-10 flex flex-col items-center gap-4">
-              <span className="px-4 py-1 rounded-full bg-intel-blue/20 border border-intel-blue-light/40 text-intel-blue-light font-mono text-xs tracking-widest uppercase">
-                PORTAL DETECTED
-              </span>
 
-              <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase text-white">
-                The Multiverse Nexus
-              </h2>
-
-              <p className="text-intel-blue-light font-mono text-sm md:text-base tracking-widest uppercase max-w-xl">
-                SELECT A UNIVERSE ABOVE TO BEGIN YOUR MISSION AND ACCESS EXCLUSIVE TRACK INTEL.
-              </p>
-
-              <div className="mt-6 flex flex-wrap justify-center gap-4">
-                <a
-                  href="#tracks"
-                  className="px-6 py-3 rounded bg-intel-blue hover:bg-intel-blue-light text-white font-mono text-xs font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(0,102,255,0.5)] transition-all cursor-pointer"
-                >
-                  VIEW UNIVERSE TRACKS
-                </a>
-                <a
-                  href="#countdown"
-                  className="px-6 py-3 rounded bg-power-red/80 hover:bg-power-red text-white font-mono text-xs font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_20px_rgba(255,0,51,0.4)] transition-all cursor-pointer"
-                >
-                  REGISTER FOR HACKATHON
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* 8. MISSION TIMELINE */}
         <MissionTimeline />
@@ -296,8 +283,11 @@ export function MainPage() {
         {/* 11. DEVELOPMENT TEAM */}
         <DevelopmentTeamSection />
 
-        {/* 16. FINAL CTA */}
+        {/* 16. FINAL CTA & CONTACT */}
         <FinalCTA />
+
+        {/* 17. HIGH CLASS MARVEL FOOTER */}
+        <Footer />
 
       </div>
     </main>

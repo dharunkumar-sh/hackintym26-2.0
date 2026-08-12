@@ -11,6 +11,13 @@ export function DevelopmentTeamSection() {
 
   const clubIcons = [Code2, Zap, Cpu]
 
+  const ROLE_ORDER: Record<string, number> = {
+    "President": 1,
+    "Vice President": 2,
+    "Secretary": 3,
+    "Treasurer": 4,
+  }
+
   return (
     <section ref={ref} id="devteam" className="relative py-28 px-4 sm:px-6 z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -70,11 +77,13 @@ export function DevelopmentTeamSection() {
 
                 {/* 4 Executive Members Grid (President, VP, Secretary, Treasurer) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {club.members.map((member, i) => (
+                  {[...club.members]
+                    .sort((a, b) => (ROLE_ORDER[a.role] || 99) - (ROLE_ORDER[b.role] || 99))
+                    .map((member, i) => (
                     <motion.div
                       key={member.name}
                       whileHover={{ y: -6, scale: 1.02 }}
-                      className={`glass-panel p-6 border-white/10 bg-black/40 transition-all rounded-xl flex flex-col justify-between items-center text-center group relative overflow-hidden ${club.borderGlow}`}
+                      className={`glass-panel p-4 sm:p-6 border-white/10 bg-black/40 transition-all rounded-xl flex flex-col justify-between items-center text-center group relative overflow-hidden ${club.borderGlow}`}
                     >
                       {/* Executive Role Pill */}
                       <span className="text-[10px] font-mono tracking-widest text-intel-blue-light uppercase bg-intel-blue/20 px-3 py-1 rounded-full border border-intel-blue/30 mb-5">
@@ -82,13 +91,13 @@ export function DevelopmentTeamSection() {
                       </span>
 
                       {/* Photo Avatar */}
-                      <div className="w-24 h-24 rounded-[32px] bg-gradient-to-tr from-intel-blue/40 via-power-red/30 to-black p-[2px] relative mb-4 group-hover:scale-105 transition-transform shadow-xl">
-                        <div className="w-full h-full rounded-[30px] bg-black/90 overflow-hidden flex items-center justify-center relative">
+                      <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-[36px] bg-gradient-to-tr from-intel-blue/40 via-power-red/30 to-black p-[2px] relative mb-4 group-hover:scale-105 transition-transform shadow-xl">
+                        <div className="w-full h-full rounded-[34px] bg-black/90 overflow-hidden flex items-center justify-center relative">
                           {member.photo ? (
                             <img 
                               src={member.photo} 
                               alt={member.name} 
-                              className="w-full h-full object-cover" 
+                              className="w-full h-full object-cover object-top" 
                             />
                           ) : (
                             <div className="flex flex-col items-center justify-center text-white/70">
@@ -102,13 +111,10 @@ export function DevelopmentTeamSection() {
                       </div>
 
                       {/* Member Info */}
-                      <div className="mb-4">
-                        <h4 className="text-lg font-bold tracking-wider text-white uppercase group-hover:text-intel-blue-light transition-colors line-clamp-1 mb-1">
+                      <div className="mb-4 flex items-center justify-center min-h-[3rem]">
+                        <h4 className="text-sm sm:text-base font-bold tracking-wider text-white uppercase group-hover:text-intel-blue-light transition-colors text-center leading-snug break-words">
                           {member.name}
                         </h4>
-                        <p className="text-xs font-mono text-white/40 tracking-widest uppercase">
-                          {club.name.split(' ')[0]} Executive
-                        </p>
                       </div>
 
                       {/* LinkedIn Action Button */}

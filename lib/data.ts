@@ -71,39 +71,104 @@ export const DEVELOPMENT_CLUBS: DevelopmentClub[] = [
     name: "Dev Dynasty Club",
     tagline: "FULL-STACK & SYSTEM INNOVATORS",
     badgeColor: "text-intel-blue-light bg-intel-blue/20 border-intel-blue/40",
-    borderGlow: "hover:border-intel-blue hover:shadow-[0_0_30px_rgba(0,102,255,0.3)]",
+    borderGlow:
+      "hover:border-intel-blue hover:shadow-[0_0_30px_rgba(0,102,255,0.3)]",
     members: [
-      { name: "Ajay Singh I", role: "President", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Aswin VK", role: "Vice President", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Shreya Sonpavane", role: "Secretary", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Dharun Kumar SK", role: "Treasurer", photo: "", linkedin: "https://linkedin.com/in/" },
-    ]
+      {
+        name: "Ajay Singh I",
+        role: "President",
+        photo: "/photos/ajay.jpeg",
+        linkedin: "https://www.linkedin.com/in/ajay-singh-9969a82a1",
+      },
+      {
+        name: "Aswin VK",
+        role: "Vice President",
+        photo: "/photos/aswin.png",
+        linkedin: "https://www.linkedin.com/in/vk-aswin-0922462a2",
+      },
+      {
+        name: "Shreya Sonpavane VK",
+        role: "Secretary",
+        photo: "/photos/shreya.jpeg",
+        linkedin: "https://www.linkedin.com/in/shreya-sonpavane-2b2b152a1",
+      },
+      {
+        name: "Dharun Kumar SH",
+        role: "Treasurer",
+        photo: "/photos/dharun.webp",
+        linkedin: "https://www.linkedin.com/in/dharunkumar-sh",
+      },
+    ],
   },
   {
     name: "Adyant Coding Club",
     tagline: "ALGORITHMIC & ARCHITECTURE LEADERS",
     badgeColor: "text-power-red-light bg-power-red/20 border-power-red/40",
-    borderGlow: "hover:border-power-red hover:shadow-[0_0_30px_rgba(225,6,0,0.3)]",
+    borderGlow:
+      "hover:border-power-red hover:shadow-[0_0_30px_rgba(225,6,0,0.3)]",
     members: [
-      { name: "Ilakiya Emily Joseph Ignatius", role: "President", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Lakshwin Krishna Reddy", role: "Vice President", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Nishanth N", role: "Secretary", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Dhiviyashree S", role: "Treasurer", photo: "", linkedin: "https://linkedin.com/in/" },
-    ]
+      {
+        name: "Ilakiya Emily Joseph Ignatius",
+        role: "President",
+        photo: "/photos/emily.jpeg",
+        linkedin:
+          "https://www.linkedin.com/in/ilakiya-emily-joseph-ignatius-46ab21291",
+      },
+      {
+        name: "Lakshwin Krishna Reddy",
+        role: "Vice President",
+        photo: "/photos/lakshwin.png",
+        linkedin: "https://www.linkedin.com/in/lakshwinkrishna",
+      },
+      {
+        name: "Nishanth N",
+        role: "Secretary",
+        photo: "/photos/nish.jpeg",
+        linkedin: "https://www.linkedin.com/in/nishanth-n-35946a276",
+      },
+      {
+        name: "Dhiviyashree S",
+        role: "Treasurer",
+        photo: "/photos/dhivya.jpeg",
+        linkedin:
+          "https://www.linkedin.com/in/dhiviyashree-saravanan-117b202a1",
+      },
+    ],
   },
   {
     name: "AI Epoch Club",
     tagline: "NEURAL & INTELLIGENCE ARCHITECTS",
     badgeColor: "text-green-400 bg-green-500/20 border-green-500/40",
-    borderGlow: "hover:border-green-400 hover:shadow-[0_0_30px_rgba(74,222,128,0.3)]",
+    borderGlow:
+      "hover:border-green-400 hover:shadow-[0_0_30px_rgba(74,222,128,0.3)]",
     members: [
-      { name: "Saidharan Y", role: "President", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Dakshineshwar A", role: "Vice President", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Varshikha P", role: "Secretary", photo: "", linkedin: "https://linkedin.com/in/" },
-      { name: "Nithya Sri S", role: "Treasurer", photo: "", linkedin: "https://linkedin.com/in/" },
-    ]
-  }
-]
+      {
+        name: "Saidharan Y",
+        role: "President",
+        photo: "/photos/Sai.jpeg",
+        linkedin: "https://www.linkedin.com/in/saidharany",
+      },
+      {
+        name: "Dakshineshwar A",
+        role: "Vice President",
+        photo: "/photos/dakshin.jpeg",
+        linkedin: "https://www.linkedin.com/in/dakshin-a-616b112a1",
+      },
+      {
+        name: "Varshikha P",
+        role: "Secretary",
+        photo: "/photos/varshika.png",
+        linkedin: "https://www.linkedin.com/in/varshikha-ponnambalam-b256662a2",
+      },
+      {
+        name: "Nithya Sri S",
+        role: "Treasurer",
+        photo: "/photos/nithiya.jpeg",
+        linkedin: "https://www.linkedin.com/in/nithyasri11",
+      },
+    ],
+  },
+];
 
 export const ORGANIZERS = DEVELOPMENT_CLUBS
 

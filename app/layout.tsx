@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hackintym '26 2.0",
-  description: "Official Website for Hackintym '26 2.0 - 30-Hour Innovation Mission",
+  title: "Hackintym '26 2.0 - 30-Hour Innovation Mission",
+  description:
+    "Official Website for Hackintym '26 2.0 - 30-Hour Innovation Mission",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

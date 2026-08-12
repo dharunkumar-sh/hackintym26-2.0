@@ -137,10 +137,21 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-body {
+html, body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: auto !important;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera and WebKit browsers */
+*::-webkit-scrollbar,
+::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
 }
 
 .glass-panel {

@@ -115,8 +115,6 @@ export function TheMission() {
                   initial={{ opacity: 0, x: 30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
                   transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
-                  onMouseEnter={() => setActivePillar(pillar)}
-                  onMouseLeave={() => setActivePillar(null)}
                   onClick={() => setActivePillar(isSelected ? null : pillar)}
                   className={`flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-lg border transition-all duration-300 cursor-pointer ${
                     isSelected 

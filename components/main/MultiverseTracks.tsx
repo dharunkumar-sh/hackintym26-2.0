@@ -91,7 +91,7 @@ export function MultiverseTracks({ trackHoverRef }: MultiverseTracksProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 min-h-[500px]">
           
           {/* Interactive Universe Nodes */}
-          <div className="lg:col-span-5 flex flex-col justify-center gap-3" onMouseLeave={handleLeave}>
+          <div className="lg:col-span-5 flex flex-col justify-center gap-3">
             {TRACKS.map((track, i) => {
               const isActive = activeTrack.id === track.id
               return (
@@ -100,8 +100,10 @@ export function MultiverseTracks({ trackHoverRef }: MultiverseTracksProps) {
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  onHoverStart={() => handleHover(track)}
-                  onClick={() => handleHover(track)}
+                  onClick={() => {
+                    setActiveTrack(track)
+                    if (trackHoverRef) trackHoverRef.current = track.id
+                  }}
                   className={`cursor-pointer p-4 rounded-lg border transition-all duration-300 ${isActive ? `bg-white/10 ${track.border}` : 'border-transparent hover:bg-white/5'}`}
                 >
                   <div className="flex items-center justify-between">
