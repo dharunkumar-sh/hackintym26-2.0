@@ -139,8 +139,8 @@
 
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
-  /* Prevent scrolling during the cinematic intro */
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .glass-panel {

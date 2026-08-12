@@ -72,8 +72,9 @@ export function ParticleField({ progressRef, scrollRef, trackHoverRef }: Particl
   const currentColor = useRef<THREE.Color>(new THREE.Color())
   const targetColor = useRef<THREE.Color>(new THREE.Color())
   const mixFactor = useRef(0)
+  const isPositionsFinalized = useRef(false)
 
-  // Explicit Three.js Resource Disposal
+  // Explicit GPU Resource Disposal
   useEffect(() => {
     return () => {
       if (pointsRef.current) {
@@ -90,25 +91,13 @@ export function ParticleField({ progressRef, scrollRef, trackHoverRef }: Particl
   useFrame((state) => {
     if (!pointsRef.current) return
     
-    // Tab Visibility API: Pause frame loop if user switched tabs
+    // Tab Visibility API
     if (typeof document !== "undefined" && document.hidden) return
 
-    const scroll = scrollRef?.current || 0
     const progress = progressRef.current
-
-    // PERFORMANCE OPTIMIZATION: Only animate when in Hero section (scroll <= 0.05)
-    if (scroll > 0.05 && progress >= 0.99) {
-      return
-    }
-
-    const time = state.clock.elapsedTime
-    const posAttr = pointsRef.current.geometry.attributes.position
-    const colorAttr = pointsRef.current.geometry.attributes.color
-    const currentPositions = posAttr.array as Float32Array
-    const currentColors = colorAttr.array as Float32Array
-    
     const activeTrack = trackHoverRef?.current
-    
+    const colorAttr = pointsRef.current.geometry.attributes.color
+
     // Handle Hover Color Transition
     let colorNeedsUpdate = false
     if (activeTrack && trackColors[activeTrack]) {
@@ -124,32 +113,9 @@ export function ParticleField({ progressRef, scrollRef, trackHoverRef }: Particl
 
     if (colorNeedsUpdate) {
       currentColor.current.lerpColors(new THREE.Color(0,0,0), targetColor.current, mixFactor.current)
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-      const i3 = i * 3
-      
-      const initX = initialPositions[i3]
-      const initY = initialPositions[i3 + 1]
-      const initZ = initialPositions[i3 + 2]
-      
-      const turbulence = 0.5
-      const noiseX = Math.sin(time * 2 + initY) * turbulence
-      const noiseY = Math.cos(time * 1.5 + initX) * turbulence
-      const noiseZ = Math.sin(time * 1.8 + initZ) * turbulence
-      
-      const effectiveProgress = Math.min(1, progress * (1 + speeds[i] * 10))
-      const smoothProgress = effectiveProgress * effectiveProgress * (3 - 2 * effectiveProgress)
-      
-      const currentX = THREE.MathUtils.lerp(initX, 0, smoothProgress) + noiseX * (1 - smoothProgress)
-      const currentY = THREE.MathUtils.lerp(initY, 0, smoothProgress) + noiseY * (1 - smoothProgress)
-      const currentZ = THREE.MathUtils.lerp(initZ, 0, smoothProgress) + noiseZ * (1 - smoothProgress)
-      
-      currentPositions[i3] = currentX
-      currentPositions[i3 + 1] = currentY
-      currentPositions[i3 + 2] = currentZ
-
-      if (colorNeedsUpdate) {
+      const currentColors = colorAttr.array as Float32Array
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3
         if (mixFactor.current > 0.001) {
           currentColors[i3] = THREE.MathUtils.lerp(baseColors[i3], currentColor.current.r, mixFactor.current)
           currentColors[i3 + 1] = THREE.MathUtils.lerp(baseColors[i3 + 1], currentColor.current.g, mixFactor.current)
@@ -160,14 +126,37 @@ export function ParticleField({ progressRef, scrollRef, trackHoverRef }: Particl
           currentColors[i3 + 2] = baseColors[i3 + 2]
         }
       }
-    }
-    
-    posAttr.needsUpdate = true
-    if (colorNeedsUpdate) {
       colorAttr.needsUpdate = true
     }
-    
-    pointsRef.current.rotation.y = time * 0.05
+
+    // Positions animation during intro
+    if (progress < 1 || !isPositionsFinalized.current) {
+      const posAttr = pointsRef.current.geometry.attributes.position
+      const currentPositions = posAttr.array as Float32Array
+
+      for (let i = 0; i < particleCount; i++) {
+        const i3 = i * 3
+        const initX = initialPositions[i3]
+        const initY = initialPositions[i3 + 1]
+        const initZ = initialPositions[i3 + 2]
+        
+        const effectiveProgress = Math.min(1, progress * (1 + speeds[i] * 10))
+        const smoothProgress = effectiveProgress * effectiveProgress * (3 - 2 * effectiveProgress)
+        
+        currentPositions[i3] = THREE.MathUtils.lerp(initX, 0, smoothProgress)
+        currentPositions[i3 + 1] = THREE.MathUtils.lerp(initY, 0, smoothProgress)
+        currentPositions[i3 + 2] = THREE.MathUtils.lerp(initZ, 0, smoothProgress)
+      }
+      posAttr.needsUpdate = true
+
+      if (progress >= 0.99) {
+        isPositionsFinalized.current = true
+      }
+    }
+
+    // Slow ambient rotation
+    const time = state.clock.elapsedTime
+    pointsRef.current.rotation.y = time * 0.03
   })
 
   return (
@@ -183,10 +172,10 @@ export function ParticleField({ progressRef, scrollRef, trackHoverRef }: Particl
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.08}
+        size={0.07}
         vertexColors
         transparent
-        opacity={0.8}
+        opacity={0.75}
         blending={THREE.AdditiveBlending}
         depthWrite={false}
       />

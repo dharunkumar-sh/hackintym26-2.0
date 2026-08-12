@@ -38,6 +38,15 @@ export function MainPage() {
     setIsLoaded(true)
   }, [])
 
+  // Manage scroll lock during loading state
+  useEffect(() => {
+    if (!isLoaded) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "auto"
+    }
+  }, [isLoaded])
+
   // Three.js Shared Refs
   const cameraRef = useRef<THREE.PerspectiveCamera>(null)
   const progressRef = useRef(0)

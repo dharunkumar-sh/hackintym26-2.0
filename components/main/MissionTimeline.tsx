@@ -45,7 +45,7 @@ export function MissionTimeline() {
   }, { scope: containerRef })
 
   return (
-    <section ref={containerRef} className="relative py-32 px-6 z-10">
+    <section ref={containerRef} id="timeline" className="relative py-32 px-6 z-10">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase text-white mb-4">

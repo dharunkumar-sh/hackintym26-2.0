@@ -75,8 +75,8 @@ export const UniverseCanvas = memo(
               <EffectComposer multisampling={0}>
                 {config.enableBloom && (
                   <Bloom 
-                    luminanceThreshold={0.25} 
-                    luminanceSmoothing={0.8} 
+                    luminanceThreshold={0.55} 
+                    luminanceSmoothing={0.9} 
                     intensity={config.bloomIntensity} 
                     mipmapBlur 
                   />

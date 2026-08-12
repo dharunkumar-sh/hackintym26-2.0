@@ -30,7 +30,7 @@ export function MultiverseNexus({ progressRef, scrollRef, trackHoverRef }: Multi
   const defaultGlowColor = useMemo(() => new THREE.Color("#0066FF"), [])
   const targetGlowColor = useRef<THREE.Color>(new THREE.Color("#0066FF"))
 
-  // Resource Disposal on unmount
+  // Explicit GPU Resource Disposal
   useEffect(() => {
     return () => {
       [outerRingRef, innerRingRef, coreRef, glowRef].forEach((ref) => {
@@ -54,32 +54,26 @@ export function MultiverseNexus({ progressRef, scrollRef, trackHoverRef }: Multi
 
     const scroll = scrollRef?.current || 0
     const progress = progressRef.current
-
-    // PERFORMANCE OPTIMIZATION: Only animate 3D Nexus when in Hero section (scroll <= 0.05)
-    if (scroll > 0.05 && progress >= 0.99) {
-      return
-    }
-
     const time = state.clock.elapsedTime
     const activeTrack = trackHoverRef?.current
     
-    const rotationSpeed = THREE.MathUtils.lerp(0.5, 3.0, progress)
+    const rotationSpeed = THREE.MathUtils.lerp(0.3, 1.5, progress)
     
     if (outerRingRef.current) {
-      outerRingRef.current.rotation.x = time * rotationSpeed * 0.2
-      outerRingRef.current.rotation.y = time * rotationSpeed * 0.3
+      outerRingRef.current.rotation.x = time * rotationSpeed * 0.15
+      outerRingRef.current.rotation.y = time * rotationSpeed * 0.25
       outerRingRef.current.rotation.z = time * rotationSpeed * 0.1
     }
     
     if (innerRingRef.current) {
-      innerRingRef.current.rotation.x = time * rotationSpeed * -0.4
-      innerRingRef.current.rotation.y = time * rotationSpeed * -0.2
-      innerRingRef.current.rotation.z = time * rotationSpeed * 0.5
+      innerRingRef.current.rotation.x = time * rotationSpeed * -0.3
+      innerRingRef.current.rotation.y = time * rotationSpeed * -0.15
+      innerRingRef.current.rotation.z = time * rotationSpeed * 0.35
     }
     
-    // Core pulsing and scale based on progress
+    // Core pulsing with non-overlapping bounds (prevents depth buffer Z-fighting)
     if (coreRef.current) {
-      const pulse = Math.sin(time * 5) * 0.05
+      const pulse = Math.sin(time * 3) * 0.03
       const targetScale = THREE.MathUtils.lerp(0.1, 1.0, progress)
       coreRef.current.scale.setScalar(targetScale + pulse)
     }
@@ -94,55 +88,58 @@ export function MultiverseNexus({ progressRef, scrollRef, trackHoverRef }: Multi
       
       const mat = glowRef.current.material as THREE.MeshBasicMaterial
       mat.color.lerp(targetGlowColor.current, 0.05)
-      mat.opacity = THREE.MathUtils.lerp(0.3, 0.8, activeTrack ? 1 : 0)
+      mat.opacity = THREE.MathUtils.lerp(0.3, 0.7, activeTrack ? 1 : 0)
     }
     
     // Group scale based on progress
     const groupScale = THREE.MathUtils.lerp(0.01, 1, Math.min(1, progress * 1.5))
     groupRef.current.scale.setScalar(groupScale)
     
-    groupRef.current.position.y = scroll * 5
+    // Smooth, damped scroll offset
+    groupRef.current.position.y = scroll * 3
   })
 
   return (
     <group ref={groupRef}>
-      {/* Outer Energy Ring (Blue) */}
+      {/* Outer Energy Ring (Blue) - depthWrite false prevents transparency depth sorting flicker */}
       <mesh ref={outerRingRef}>
-        <torusGeometry args={[4, 0.05, 16, 100]} />
+        <torusGeometry args={[4, 0.05, 16, 80]} />
         <meshBasicMaterial 
           color="#00C8FF" 
           transparent 
           opacity={0.6} 
           blending={THREE.AdditiveBlending} 
           side={THREE.DoubleSide} 
+          depthWrite={false}
         />
       </mesh>
       
-      {/* Inner Energy Ring (Red) */}
+      {/* Inner Energy Ring (Red) - depthWrite false prevents transparency depth sorting flicker */}
       <mesh ref={innerRingRef}>
-        <torusGeometry args={[3, 0.08, 16, 100]} />
+        <torusGeometry args={[3, 0.08, 16, 80]} />
         <meshBasicMaterial 
           color="#FF2A2A" 
           transparent 
           opacity={0.8} 
           blending={THREE.AdditiveBlending} 
           side={THREE.DoubleSide} 
+          depthWrite={false}
         />
       </mesh>
       
-      {/* Central Dark Sphere (The Portal/Singularity) */}
+      {/* Central Dark Sphere (The Singularity) - radius 2.0 to avoid overlapping glow */}
       <mesh ref={coreRef}>
-        <sphereGeometry args={[2.5, 64, 64]} />
+        <sphereGeometry args={[2.0, 32, 32]} />
         <meshBasicMaterial color="#010103" />
       </mesh>
       
-      {/* Event Horizon Glow (Additive Sphere) */}
+      {/* Event Horizon Glow (Additive Sphere) - radius 3.2 to prevent Z-fighting clipping */}
       <mesh ref={glowRef}>
-        <sphereGeometry args={[2.6, 32, 32]} />
+        <sphereGeometry args={[3.2, 32, 32]} />
         <meshBasicMaterial 
           color="#0066FF" 
           transparent 
-          opacity={0.3} 
+          opacity={0.35} 
           blending={THREE.AdditiveBlending} 
           depthWrite={false}
         />
