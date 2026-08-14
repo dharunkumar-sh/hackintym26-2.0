@@ -36,23 +36,23 @@ export function CommandCenter() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Holographic interface representation (DOM fallback/overlay for 3D) */}
+          {/* MSIIC Logo Display - Enriched Size & High Responsiveness */}
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="relative aspect-square max-w-md mx-auto w-full glass-panel rounded-full flex items-center justify-center border-intel-blue/30 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col items-center justify-center text-center p-2 sm:p-4 w-full"
           >
-            <div className="absolute inset-0 rounded-full border border-power-red/20 animate-[spin_10s_linear_infinite]"></div>
-            <div className="absolute inset-4 rounded-full border border-dashed border-intel-blue/40 animate-[spin_15s_linear_infinite_reverse]"></div>
-            
-            <div className="text-center z-10">
-              <div className="text-3xl font-black tracking-widest text-white text-glow-blue">MSIIC</div>
-              <div className="text-xs font-mono text-intel-blue-light mt-2 tracking-widest">CORE ONLINE</div>
+            <div className="w-full max-w-lg lg:max-w-xl flex items-center justify-center p-2 sm:p-4 relative">
+              <img 
+                src="/msiic.png" 
+                alt="MSIIC Logo" 
+                className="w-full h-auto max-h-[380px] sm:max-h-[460px] md:max-h-[520px] object-contain filter drop-shadow-[0_0_35px_rgba(0,102,255,0.7)] transition-transform duration-500 hover:scale-[1.02]" 
+              />
             </div>
-
-            {/* Scanning line */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-intel-blue-light/50 blur-[2px] animate-[ping_3s_linear_infinite]"></div>
+            <div className="text-xs sm:text-sm font-mono text-intel-blue-light font-bold tracking-[0.25em] uppercase mt-2 sm:mt-4">
+              MSIIC INNOVATION & INCUBATION CENTER
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

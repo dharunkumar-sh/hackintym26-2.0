@@ -56,9 +56,20 @@ export function DevelopmentTeamSection() {
               >
                 {/* Club Header Badge */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
-                  <div className="flex items-center gap-3">
-                    <div className="p-3 rounded-xl bg-black/60 border border-white/10 text-white">
-                      <ClubIcon className="w-6 h-6 text-intel-blue-light" />
+                  <div className="flex items-center gap-4">
+                    {/* Proper Round Logo Frame */}
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full p-[2px] bg-gradient-to-tr from-intel-blue via-intel-blue-light to-power-red shadow-[0_0_20px_rgba(0,102,255,0.4)] flex items-center justify-center overflow-hidden shrink-0">
+                      <div className="w-full h-full rounded-full bg-black/90 p-1.5 flex items-center justify-center overflow-hidden">
+                        {club.logo ? (
+                          <img 
+                            src={club.logo} 
+                            alt={club.name} 
+                            className="w-full h-full object-contain rounded-full" 
+                          />
+                        ) : (
+                          <ClubIcon className="w-6 h-6 text-intel-blue-light" />
+                        )}
+                      </div>
                     </div>
                     <div>
                       <h3 className="text-2xl sm:text-4xl font-black tracking-wider uppercase text-white">

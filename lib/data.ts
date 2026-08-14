@@ -61,6 +61,7 @@ export interface ClubMember {
 export interface DevelopmentClub {
   name: string
   tagline: string
+  logo?: string
   badgeColor: string
   borderGlow: string
   members: ClubMember[]
@@ -70,6 +71,7 @@ export const DEVELOPMENT_CLUBS: DevelopmentClub[] = [
   {
     name: "Dev Dynasty Club",
     tagline: "FULL-STACK & SYSTEM INNOVATORS",
+    logo: "/logos/club1.png",
     badgeColor: "text-intel-blue-light bg-intel-blue/20 border-intel-blue/40",
     borderGlow:
       "hover:border-intel-blue hover:shadow-[0_0_30px_rgba(0,102,255,0.3)]",
@@ -89,7 +91,7 @@ export const DEVELOPMENT_CLUBS: DevelopmentClub[] = [
       {
         name: "Shreya Sonpavane VK",
         role: "Secretary",
-        photo: "/photos/shreya.jpeg",
+        photo: "/photos/shreya.png",
         linkedin: "https://www.linkedin.com/in/shreya-sonpavane-2b2b152a1",
       },
       {
@@ -103,6 +105,7 @@ export const DEVELOPMENT_CLUBS: DevelopmentClub[] = [
   {
     name: "Adyant Coding Club",
     tagline: "ALGORITHMIC & ARCHITECTURE LEADERS",
+    logo: "/logos/club3.png",
     badgeColor: "text-power-red-light bg-power-red/20 border-power-red/40",
     borderGlow:
       "hover:border-power-red hover:shadow-[0_0_30px_rgba(225,6,0,0.3)]",
@@ -138,6 +141,7 @@ export const DEVELOPMENT_CLUBS: DevelopmentClub[] = [
   {
     name: "AI Epoch Club",
     tagline: "NEURAL & INTELLIGENCE ARCHITECTS",
+    logo: "/logos/club2.png",
     badgeColor: "text-green-400 bg-green-500/20 border-green-500/40",
     borderGlow:
       "hover:border-green-400 hover:shadow-[0_0_30px_rgba(74,222,128,0.3)]",

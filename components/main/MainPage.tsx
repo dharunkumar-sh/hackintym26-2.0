@@ -3,8 +3,8 @@
 import { useRef, useState, useEffect, useCallback } from "react"
 import { HeaderNav } from "./HeaderNav"
 import { HeroSection } from "./HeroSection"
+import { EventPosterSection } from "./EventPosterSection"
 import { MissionCountdown } from "./MissionCountdown"
-import { MissionStatus } from "./MissionStatus"
 import { TheMission } from "./TheMission"
 import { CommandCenter } from "./CommandCenter"
 import { MultiverseTracks } from "./MultiverseTracks"
@@ -254,11 +254,11 @@ export function MainPage() {
           hudRef={hudRef}
         />
 
+        {/* 1.5. OFFICIAL MISSION POSTER */}
+        <EventPosterSection />
+
         {/* 2. MARVEL-INSPIRED MISSION COUNTDOWN */}
         <MissionCountdown />
-
-        {/* 3. MISSION STATUS DASHBOARD */}
-        <MissionStatus />
 
         {/* 4. THE MISSION */}
         <TheMission />

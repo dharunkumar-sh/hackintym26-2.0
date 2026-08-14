@@ -21,12 +21,12 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
       <section 
         ref={ref} 
         id="hero" 
-        className="relative w-full min-h-[100svh] flex flex-col justify-between p-6 md:p-10 z-10 select-none overflow-hidden pt-24"
+        className="relative w-full min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-center items-center p-6 md:p-10 z-10 select-none overflow-hidden pt-28 pb-12"
       >
         {/* Center Hero Typography */}
         <div 
           ref={typographyRef} 
-          className="relative flex flex-col items-center justify-center text-center my-auto z-10 py-12 opacity-0"
+          className="relative flex flex-col items-center justify-center text-center z-10 opacity-0 mb-6 sm:mb-8"
         >
           {/* Main Title */}
           <h1 
@@ -37,14 +37,14 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
           </h1>
           
           {/* Mission Subtitle */}
-          <div className="mt-4 flex items-center justify-center gap-4 text-xs sm:text-sm tracking-[0.2em] font-mono text-intel-blue-light uppercase opacity-90">
-            <span className="w-8 sm:w-12 h-px bg-intel-blue-light/50"></span>
+          <div className="mt-3 sm:mt-4 flex items-center justify-center gap-3 sm:gap-4 text-xs sm:text-sm tracking-[0.2em] font-mono text-intel-blue-light uppercase opacity-90">
+            <span className="w-6 sm:w-10 h-px bg-intel-blue-light/50"></span>
             <span>30-Hour Innovation Mission</span>
-            <span className="w-8 sm:w-12 h-px bg-intel-blue-light/50"></span>
+            <span className="w-6 sm:w-10 h-px bg-intel-blue-light/50"></span>
           </div>
 
           {/* Hero Tagline */}
-          <div className="mt-6 text-lg sm:text-2xl font-bold tracking-widest text-white/90 overflow-hidden">
+          <div className="mt-4 sm:mt-5 text-base sm:text-xl md:text-2xl font-bold tracking-widest text-white/90 overflow-hidden">
             <div className="tagline-words flex flex-wrap gap-2 sm:gap-4 justify-center">
               <span className="tagline-word inline-block opacity-0 translate-y-full">ASSEMBLE.</span>
               <span className="tagline-word inline-block opacity-0 translate-y-full">INNOVATE.</span>
@@ -57,7 +57,7 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
         {/* Bottom CTA Action Bar */}
         <div 
           ref={ctaRef} 
-          className="relative flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 z-20 pb-6 pointer-events-auto"
+          className="relative flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 z-20 pointer-events-auto mt-2"
         >
           <motion.div 
             whileHover={{ scale: 1.05 }} 
