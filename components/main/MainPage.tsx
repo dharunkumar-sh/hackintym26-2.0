@@ -35,10 +35,11 @@ export function MainPage() {
     setIsLoaded(true)
   }, [])
 
-  // Manage scroll state during loading
+  // Manage scroll state during loading & intro animation
   useEffect(() => {
-    if (!isLoaded) {
+    if (!isLoaded || introOverlayActive) {
       document.body.style.overflow = "hidden"
+      document.documentElement.style.overflow = "hidden"
     } else {
       document.body.style.overflow = ""
       document.documentElement.style.overflow = ""
@@ -47,7 +48,7 @@ export function MainPage() {
       document.body.style.overflow = ""
       document.documentElement.style.overflow = ""
     }
-  }, [isLoaded])
+  }, [isLoaded, introOverlayActive])
 
   // Three.js Shared Refs
   const cameraRef = useRef<THREE.PerspectiveCamera>(null)
@@ -74,12 +75,22 @@ export function MainPage() {
 
     const ctx = gsap.context(() => {
       const h1 = typographyRef.current?.querySelector("h1")
-      const mission = typographyRef.current?.querySelector(".mt-4")
+      const mission = typographyRef.current?.querySelector("[data-hero-mission]")
       const words = typographyRef.current?.querySelectorAll(".tagline-word")
-      // Ensure hero containers are visible, but individual elements are hidden initially for timeline reveal
-      gsap.set([typographyRef.current, ctaRef.current, hudRef.current], { opacity: 1 })
+
+      // Safety fallback: if animation fails to complete within 7s, force-reveal everything
+      const safetyTimer = setTimeout(() => {
+        if (h1) gsap.set(h1, { opacity: 1, scale: 1, filter: "blur(0px)", z: 0 })
+        if (mission) gsap.set(mission, { opacity: 1, scaleX: 1, filter: "blur(0px)" })
+        if (words) gsap.set(words, { opacity: 1, scale: 1, rotationX: 0, y: "0%" })
+        if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 1, scale: 1, y: 0 })
+        if (hudRef.current) gsap.set(hudRef.current, { opacity: 1, y: 0 })
+        setIntroOverlayActive(false)
+        progressRef.current = 1
+      }, 7000)
 
       if (prefersReducedMotion) {
+        clearTimeout(safetyTimer)
         gsap.set([h1, mission, words, ctaRef.current, hudRef.current], { opacity: 1, y: 0 })
         progressRef.current = 1
         if (cameraRef.current) cameraRef.current.position.z = 2.5
@@ -90,11 +101,12 @@ export function MainPage() {
       if (h1) gsap.set(h1, { opacity: 0, scale: 4, filter: "blur(20px)", z: 500 })
       if (mission) gsap.set(mission, { opacity: 0, scaleX: 0, filter: "blur(10px)" })
       if (words) gsap.set(words, { opacity: 0, scale: 0.5, rotationX: -90, y: "50%" })
-      gsap.set(ctaRef.current, { opacity: 0, scale: 0.8, y: 50 })
-      gsap.set(hudRef.current, { opacity: 0, y: -50 })
+      if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 0, scale: 0.8, y: 50 })
+      if (hudRef.current) gsap.set(hudRef.current, { opacity: 0, y: -50 })
 
       const tl = gsap.timeline({
         onComplete: () => {
+          clearTimeout(safetyTimer)
           setIntroOverlayActive(false)
           if (h1) gsap.set(h1, { opacity: 1, y: 0 })
           if (mission) gsap.set(mission, { opacity: 1, y: 0 })
@@ -240,8 +252,8 @@ export function MainPage() {
         style={{ mixBlendMode: "overlay" }}
       ></div>
 
-      {/* DOM CONTENT (ALWAYS MOUNTED & PERSISTENT) */}
-      <div className="relative z-10 w-full">
+      {/* DOM CONTENT (HIDDEN DURING INITIAL LOADING, FADES IN ON LOAD) */}
+      <div className={`relative z-10 w-full transition-opacity duration-500 ${!isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
         
         {/* STICKY HEADER NAVIGATION */}
         <HeaderNav ref={hudRef} />
@@ -254,40 +266,41 @@ export function MainPage() {
           hudRef={hudRef}
         />
 
-        {/* 1.5. OFFICIAL MISSION POSTER */}
-        <EventPosterSection />
+        {/* SECTIONS BELOW HERO (REVEALED ONLY AFTER INTRO ANIMATION COMPLETES) */}
+        <div className={`transition-opacity duration-700 ${introOverlayActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+          {/* 1.5. OFFICIAL MISSION POSTER */}
+          <EventPosterSection />
 
-        {/* 2. MARVEL-INSPIRED MISSION COUNTDOWN */}
-        <MissionCountdown />
+          {/* 2. MARVEL-INSPIRED MISSION COUNTDOWN */}
+          <MissionCountdown />
 
-        {/* 4. THE MISSION */}
-        <TheMission />
+          {/* 4. THE MISSION */}
+          <TheMission />
 
-        {/* 5. MSIIC COMMAND CENTER */}
-        <CommandCenter />
+          {/* 5. MSIIC COMMAND CENTER */}
+          <CommandCenter />
 
-        {/* 6. MULTIVERSE TRACKS */}
-        <MultiverseTracks trackHoverRef={trackHoverRef} />
-        
+          {/* 6. MULTIVERSE TRACKS */}
+          <MultiverseTracks trackHoverRef={trackHoverRef} />
 
+          {/* 8. MISSION TIMELINE */}
+          <MissionTimeline />
 
-        {/* 8. MISSION TIMELINE */}
-        <MissionTimeline />
+          {/* 9. HACKATHON ARENA */}
+          <HackathonArena />
 
-        {/* 9. HACKATHON ARENA */}
-        <HackathonArena />
+          {/* 10. INFINITY REWARDS */}
+          <PrizeSection />
 
-        {/* 10. INFINITY REWARDS */}
-        <PrizeSection />
+          {/* 11. DEVELOPMENT TEAM */}
+          <DevelopmentTeamSection />
 
-        {/* 11. DEVELOPMENT TEAM */}
-        <DevelopmentTeamSection />
+          {/* 16. FINAL CTA & CONTACT */}
+          <FinalCTA />
 
-        {/* 16. FINAL CTA & CONTACT */}
-        <FinalCTA />
-
-        {/* 17. HIGH CLASS MARVEL FOOTER */}
-        <Footer />
+          {/* 17. HIGH CLASS MARVEL FOOTER */}
+          <Footer />
+        </div>
 
       </div>
     </main>
