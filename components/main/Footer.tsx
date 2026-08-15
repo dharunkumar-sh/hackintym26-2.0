@@ -1,6 +1,7 @@
 "use client"
 
 import { MapPin, Mail, Heart, Terminal } from "lucide-react"
+import Image from "next/image"
 
 export function Footer() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -27,14 +28,15 @@ export function Footer() {
               <a 
                 href="#hero" 
                 onClick={(e) => handleNavClick(e, "hero")}
-                className="inline-flex items-center gap-2 group cursor-pointer mb-4"
+                className="inline-flex items-center group cursor-pointer mb-4"
               >
-                <div className="p-2 rounded bg-intel-blue/20 border border-intel-blue/40 text-intel-blue-light group-hover:scale-105 transition-transform">
-                  <Terminal className="w-5 h-5" />
-                </div>
-                <span className="text-2xl font-black tracking-tight text-white uppercase">
-                  HACKINTYM<span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue via-intel-blue-light to-power-red ml-1.5 font-black">'26 2.0</span>
-                </span>
+                <Image 
+                  src="/logo.png" 
+                  alt="HACKINTYM '26 2.0" 
+                  className="h-14 sm:h-16 md:h-20 w-auto max-w-65 sm:max-w-[320px] object-contain transition-transform group-hover:scale-105 select-none"
+                  width={100}
+                  height={80}
+                />
               </a>
 
               <p className="text-xs sm:text-sm font-mono text-intel-blue-light/80 tracking-wide uppercase leading-relaxed max-w-sm mb-6">

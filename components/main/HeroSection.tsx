@@ -28,12 +28,14 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
           ref={typographyRef} 
           className="relative flex flex-col items-center justify-center text-center z-10 mb-6 sm:mb-8"
         >
-          {/* Main Title */}
-          <h1 
-            className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white uppercase opacity-0"
-            style={{ textShadow: "0 4px 30px rgba(0, 102, 255, 0.4)" }}
-          >
-            HACKINTYM <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue via-intel-blue-light to-power-red">'26 2.0</span>
+          {/* Main Title / Logo */}
+          <h1 className="opacity-0 flex items-center justify-center px-2">
+            <img 
+              src="/logo.png" 
+              alt="HACKINTYM '26 2.0" 
+              className="w-full max-w-[280px] xs:max-w-[340px] sm:max-w-[480px] md:max-w-[620px] lg:max-w-[720px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.45)] select-none pointer-events-none"
+            />
+            <span className="sr-only">HACKINTYM '26 2.0</span>
           </h1>
           
           {/* Mission Subtitle */}

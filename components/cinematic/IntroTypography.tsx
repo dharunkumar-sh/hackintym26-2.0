@@ -7,9 +7,14 @@ export const IntroTypography = forwardRef<HTMLDivElement>((_, ref) => {
       className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none opacity-0"
     >
       <div className="relative text-center">
-        {/* Main Title */}
-        <h1 className="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter uppercase text-white drop-shadow-[0_10px_30px_rgba(0,102,255,0.5)]">
-          Hackintym <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue to-power-red">'26 2.0</span>
+        {/* Main Title / Logo */}
+        <h1 className="flex items-center justify-center px-4">
+          <img 
+            src="/logo.png" 
+            alt="Hackintym '26 2.0" 
+            className="w-full max-w-[320px] sm:max-w-[500px] md:max-w-[680px] lg:max-w-[800px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.5)] select-none pointer-events-none"
+          />
+          <span className="sr-only">Hackintym '26 2.0</span>
         </h1>
         
         {/* Mission Status / HUD element */}

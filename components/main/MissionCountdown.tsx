@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 
 import { useState, useEffect, useRef } from "react"
@@ -12,7 +13,7 @@ if (typeof window !== "undefined") {
 
 // Fixed IST timestamps (UTC+05:30)
 const START_TIMESTAMP = Date.parse("2026-08-14T00:00:00+05:30")
-const TARGET_TIMESTAMP = Date.parse("2026-09-02T23:59:59+05:30")
+const TARGET_TIMESTAMP = Date.parse("2026-09-03T23:59:59+05:30")
 
 interface TimeRemaining {
   days: number
@@ -36,7 +37,7 @@ function calculateTimeRemaining(): TimeRemaining {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-  // Progress from Aug 14 to Sept 2
+  // Progress from Aug 14 to Sept 3
   const totalDuration = TARGET_TIMESTAMP - START_TIMESTAMP
   const elapsed = Math.max(0, now - START_TIMESTAMP)
   const progressPercent = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100))
@@ -144,8 +145,8 @@ export function MissionCountdown() {
           className="relative max-w-5xl mx-auto glass-panel rounded-3xl p-6 sm:p-12 border border-white/10 shadow-[0_0_50px_rgba(0,102,255,0.15)] bg-black/60 backdrop-blur-xl"
         >
           {/* Reactor Energy Arc / Orbital Progress Indicator */}
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-intel-blue via-power-red to-intel-blue rounded-full shadow-[0_0_15px_#0066FF]"></div>
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-power-red via-intel-blue to-power-red rounded-full shadow-[0_0_15px_#FF2A2A]"></div>
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-48 h-1 bg-linear-to-r from-intel-blue via-power-red to-intel-blue rounded-full shadow-[0_0_15px_#0066FF]"></div>
+          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 h-1 bg-linear-to-r from-power-red via-intel-blue to-power-red rounded-full shadow-[0_0_15px_#FF2A2A]"></div>
 
           {/* Corner Brackets */}
           <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-intel-blue"></div>
@@ -161,7 +162,7 @@ export function MissionCountdown() {
           {/* Countdown Display Grid or Finished State */}
           {mounted && timeState.isComplete ? (
             <div className="py-12 text-center">
-              <div className="text-5xl sm:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-intel-blue via-white to-power-red tracking-widest uppercase text-glow-blue animate-pulse">
+              <div className="text-5xl sm:text-7xl font-black text-transparent bg-clip-text bg-linear-to-r from-intel-blue via-white to-power-red tracking-widest uppercase text-glow-blue animate-pulse">
                 THE NEXUS IS OPEN
               </div>
               <div className="mt-4 text-intel-blue-light font-mono text-sm tracking-[0.3em] uppercase">
@@ -182,7 +183,7 @@ export function MissionCountdown() {
                   className={`countdown-card relative glass-panel p-6 sm:p-8 rounded-2xl border ${card.border} ${card.glow} bg-black/40 flex flex-col items-center justify-center overflow-hidden group transition-all duration-300`}
                 >
                   {/* Subtle hover pulse backdrop */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/0 to-intel-blue/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 bg-linear-to-b from-white/0 to-intel-blue/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   
                   {/* Floating Number */}
                   <div className={`text-5xl sm:text-7xl font-black tracking-tighter ${card.color} font-mono mb-2`}>

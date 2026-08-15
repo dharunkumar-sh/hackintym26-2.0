@@ -26,11 +26,12 @@ interface UniverseCanvasProps {
   bloomIntensityRef: React.MutableRefObject<number>
   scrollRef?: React.MutableRefObject<number>
   trackHoverRef?: React.MutableRefObject<string | null>
+  active?: boolean
 }
 
 export const UniverseCanvas = memo(
   forwardRef<THREE.PerspectiveCamera, UniverseCanvasProps>(
-    ({ progressRef, bloomIntensityRef, scrollRef, trackHoverRef }, cameraRef) => {
+    ({ progressRef, bloomIntensityRef, scrollRef, trackHoverRef, active = true }, cameraRef) => {
       const [config, setConfig] = useState<PerformanceConfig>({
         tier: "BALANCED",
         particleCount: 2000,
@@ -45,9 +46,10 @@ export const UniverseCanvas = memo(
       }, [])
 
       return (
-        <div className="absolute inset-0 z-0 bg-background pointer-events-none">
+        <div className={`absolute inset-0 z-0 bg-background pointer-events-none transition-opacity duration-700 ${active ? "opacity-100" : "opacity-0"}`}>
           <CanvasErrorBoundary>
             <Canvas
+              frameloop={active ? "always" : "demand"}
               gl={{ 
                 antialias: false, 
                 powerPreference: "high-performance",

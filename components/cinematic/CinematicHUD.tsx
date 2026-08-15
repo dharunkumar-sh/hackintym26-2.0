@@ -11,9 +11,11 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
     >
       {/* Top Left: Logo / Brand Mark */}
       <div className="flex flex-col items-start gap-1">
-        <div className="text-base sm:text-lg font-black tracking-widest text-white uppercase flex items-center gap-1">
-          HACKINTYM <span className="text-intel-blue">'26 2.0</span>
-        </div>
+        <img 
+          src="/logo.png" 
+          alt="HACKINTYM '26 2.0" 
+          className="h-8 sm:h-9 w-auto max-w-[160px] object-contain select-none"
+        />
         <div className="text-[9px] font-mono tracking-widest text-white/50">
           GLOBAL_HACK_PROTOCOL
         </div>
