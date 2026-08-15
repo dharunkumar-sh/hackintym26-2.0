@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState, memo, Suspense } from "react"
+import { useRef, useCallback, memo, Suspense, useState, useEffect } from "react"
 import { Canvas } from "@react-three/fiber"
 import { PerspectiveCamera } from "@react-three/drei"
 import * as THREE from "three"
@@ -11,21 +11,35 @@ import { CanvasErrorBoundary } from "./CanvasErrorBoundary"
 interface SpidermanIntroCanvasProps {
   onWebShootComplete: () => void
   active: boolean
+  isLanding: boolean
+  onTriggerLanding: () => void
 }
 
 export const SpidermanIntroCanvas = memo(function SpidermanIntroCanvas({
   onWebShootComplete,
   active,
+  isLanding,
+  onTriggerLanding,
 }: SpidermanIntroCanvasProps) {
   const cameraRef = useRef<THREE.PerspectiveCamera>(null)
-  const [isShooting, setIsShooting] = useState(false)
-  const webImpactProgress = useRef(0)
+  const landingProgress = useRef(0)
   const hasTriggeredRef = useRef(false)
+  const [isHoveringModel, setIsHoveringModel] = useState(false)
 
-  // Cinematic slow, smooth web-shooting sequence
+  // Ensure cursor resets cleanly
   useEffect(() => {
+    return () => {
+      document.body.style.cursor = "default"
+    }
+  }, [])
+
+  // Execute Landing and Camera zoom strictly when model is clicked
+  const handleModelClick = useCallback(() => {
     if (hasTriggeredRef.current) return
     hasTriggeredRef.current = true
+    setIsHoveringModel(false)
+    document.body.style.cursor = "default"
+    onTriggerLanding()
 
     const tl = gsap.timeline({
       onComplete: () => {
@@ -33,63 +47,55 @@ export const SpidermanIntroCanvas = memo(function SpidermanIntroCanvas({
       },
     })
 
-    // Phase 1: Hero Showcase & Camera subtle drift (0.0s - 1.2s)
-    if (cameraRef.current) {
-      tl.to(
-        cameraRef.current.position,
-        {
-          z: 6.8,
-          duration: 1.2,
-          ease: "power1.out",
-        },
-        "0.0"
-      )
-    }
-
-    // Phase 2: Spider-Man aims and charges web-shooter (0.8s)
-    tl.to({}, { duration: 0.6, onComplete: () => setIsShooting(true) }, "0.8")
-
-    // Phase 3: Web projectile travels through 3D space toward camera (1.2s -> 2.2s)
+    // Step 1: Turn & Superhero ground landing
     tl.to(
-      webImpactProgress,
-      {
-        current: 0.5,
-        duration: 1.0,
-        ease: "power2.inOut",
-      },
-      "1.2"
-    )
-
-    // Phase 4: Web lattice impacts & blossoms across screen (2.2s -> 3.2s)
-    tl.to(
-      webImpactProgress,
+      landingProgress,
       {
         current: 1.0,
-        duration: 1.0,
-        ease: "power3.out",
+        duration: 0.85,
+        ease: "power3.inOut",
       },
-      "2.2"
+      "0.0"
     )
 
-    // Phase 5: Clear delay hold where web is fully adhered, glowing & vibrating on screen (3.2s -> 4.4s)
-    tl.to({}, { duration: 1.2 }, "3.2")
-
-    // Phase 6: Camera glides smoothly through the web into the light to reveal page (4.4s -> 5.6s)
+    // Step 2: Camera punch-in
     if (cameraRef.current) {
       tl.to(
         cameraRef.current.position,
         {
-          z: 0.1,
-          duration: 1.2,
-          ease: "power3.inOut",
+          z: 5.4,
+          y: -0.3,
+          duration: 0.8,
+          ease: "power2.out",
         },
-        "4.4"
+        "0.3"
       )
     }
-  }, [onWebShootComplete])
+
+    // Step 3: Hold pose for 0.5s
+    tl.to({}, { duration: 0.5 }, "0.85")
+
+    // Step 4: Camera dives into light to reveal main page
+    if (cameraRef.current) {
+      tl.to(
+        cameraRef.current.position,
+        {
+          z: 0.2,
+          y: -0.8,
+          duration: 0.6,
+          ease: "expo.in",
+        },
+        "1.35"
+      )
+    }
+  }, [onWebShootComplete, onTriggerLanding])
 
   return (
-    <div className="absolute inset-0 z-0 bg-[#020205] pointer-events-none">
+    <div
+      className={`absolute inset-0 z-0 bg-[#020205] select-none ${
+        isHoveringModel ? "cursor-pointer" : "cursor-default"
+      }`}
+    >
       <CanvasErrorBoundary>
         <Canvas
           frameloop={active ? "always" : "demand"}
@@ -101,51 +107,58 @@ export const SpidermanIntroCanvas = memo(function SpidermanIntroCanvas({
           dpr={typeof window !== "undefined" ? Math.min(window.devicePixelRatio, 1.5) : 1}
         >
           <color attach="background" args={["#020206"]} />
-          <fog attach="fog" args={["#020206", 6, 22]} />
+          <fog attach="fog" args={["#020206", 6, 24]} />
 
           <PerspectiveCamera
             ref={cameraRef}
             makeDefault
-            position={[0, 0, 7.8]}
+            position={[0, 0, 7.5]}
             fov={45}
           />
 
-          {/* REALISTIC PBR LIGHTING & MARVEL STUDIO AESTHETICS */}
+          {/* REALISTIC PBR STUDIO LIGHTING */}
           <ambientLight intensity={1.4} />
           
-          {/* Main Front Key Light - Sharp White/Silver */}
           <directionalLight
-            position={[0, 2, 6]}
-            intensity={3.2}
+            position={[0, 3, 6]}
+            intensity={3.4}
             color="#ffffff"
           />
 
-          {/* Key Light - Cool Stark Arc Cyan */}
           <directionalLight
             position={[5, 6, 4]}
             intensity={2.6}
             color="#a8ecff"
           />
 
-          {/* Rim Light - Hot Comic Red */}
           <directionalLight
             position={[-5, -2, -3]}
             intensity={3.8}
             color="#ff2233"
           />
 
-          {/* Top Blue Accent */}
           <directionalLight
-            position={[0, 7, -2]}
-            intensity={2.0}
+            position={[0, -5, 2]}
+            intensity={1.5}
             color="#0066ff"
           />
 
-          {/* REAL 3D SPIDER-MAN MODEL */}
+          {/* 3D SPIDER-MAN CHARACTER: POINTER CURSOR ONLY ON MODEL */}
           <Suspense fallback={null}>
             <SpidermanModel
-              isShooting={isShooting}
-              webImpactProgress={webImpactProgress}
+              isLanding={isLanding}
+              landingProgress={landingProgress}
+              onPointerOver={() => {
+                if (!hasTriggeredRef.current) {
+                  setIsHoveringModel(true)
+                  document.body.style.cursor = "pointer"
+                }
+              }}
+              onPointerOut={() => {
+                setIsHoveringModel(false)
+                document.body.style.cursor = "default"
+              }}
+              onClick={handleModelClick}
             />
           </Suspense>
         </Canvas>
