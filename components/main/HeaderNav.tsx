@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { label: "MISSION", targetId: "mission" },
   { label: "UNIVERSE", targetId: "tracks" },
   { label: "TIMELINE", targetId: "timeline" },
-  { label: "DEV TEAM", targetId: "devteam" },
+  { label: "ORG TEAM", targetId: "devteam" },
 ]
 
 export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {

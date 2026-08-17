@@ -37,7 +37,7 @@ export function DevelopmentTeamSection() {
               Organizing Team
             </h2>
             <p className="text-intel-blue-light font-mono text-xs sm:text-sm tracking-widest uppercase max-w-2xl mx-auto">
-              3 LEADERSHIP CLUBS // PRESIDENT • VICE PRESIDENT • SECRETARY • TREASURER
+              PRESIDENT • VICE PRESIDENT • SECRETARY • TREASURER
             </p>
           </motion.div>
         </div>

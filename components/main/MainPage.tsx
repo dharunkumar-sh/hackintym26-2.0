@@ -18,10 +18,11 @@ import { Footer } from "./Footer"
 import { LoadingOverlay } from "@/components/cinematic/LoadingOverlay"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 import { useGSAP } from "@gsap/react"
 
 if (typeof window !== "undefined") {
-  gsap.registerPlugin(useGSAP, ScrollTrigger)
+  gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin)
 }
 
 export function MainPage() {
@@ -133,6 +134,31 @@ export function MainPage() {
       }
     })
   }, { scope: containerRef })
+
+  // Smooth travel to current timeline on load
+  useEffect(() => {
+    if (!isLoaded || introOverlayActive) return
+
+    const timer = setTimeout(() => {
+      const targetElement = document.getElementById("active-timeline-node") || document.getElementById("timeline")
+      if (targetElement) {
+        const yOffset = -90
+        const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+        try {
+          gsap.to(window, {
+            duration: 2.0,
+            scrollTo: { y, autoKill: true },
+            ease: "power3.inOut"
+          })
+        } catch {
+          window.scrollTo({ top: y, behavior: "smooth" })
+        }
+      }
+    }, 700)
+
+    return () => clearTimeout(timer)
+  }, [isLoaded, introOverlayActive])
 
   return (
     <main ref={containerRef} className="relative bg-background text-foreground selection:bg-intel-blue selection:text-white overflow-x-hidden">

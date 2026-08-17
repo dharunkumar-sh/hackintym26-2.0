@@ -177,16 +177,72 @@ export const DEVELOPMENT_CLUBS: DevelopmentClub[] = [
 export const ORGANIZERS = DEVELOPMENT_CLUBS
 
 export const TIMELINE = [
-  { date: "March 14, 2026", event: "Registration Opens" },
-  { date: "April 1, 2026", event: "Idea Submission Deadline" },
-  { date: "April 9, 2026", event: "Team Shortlisting" },
-  { date: "April 18, 2026", time: "10:00 AM", event: "Hackathon Starts" },
-  { date: "April 18, 2026", time: "6:00 PM", event: "First Review" },
-  { date: "April 19, 2026", time: "12:00 AM", event: "Second Review" },
-  { date: "April 19, 2026", time: "4:00 AM", event: "Final Review" },
-  { date: "April 19, 2026", time: "8:00 AM", event: "Team Filtering" },
-  { date: "April 19, 2026", time: "10:00 AM", event: "Winners Announced" }
-]
+  {
+    date: "August 17, 2026",
+    time: "08:30 AM",
+    event: "Registration Opens",
+    description: "Start forming your teams and registering for the hackathon.",
+    isoDate: "2026-08-17T08:30:00+05:30",
+  },
+  {
+    date: "September 3, 2026",
+    time: "11:59 PM",
+    event: "Idea Submission Deadline",
+    description: "Submit your team's project idea for shortlisting.",
+    isoDate: "2026-09-03T23:59:59+05:30",
+  },
+  {
+    date: "September 5, 2026",
+    time: "06:00 PM",
+    event: "Team Shortlisting",
+    description: "Announcement of selected teams invited to the hackathon.",
+    isoDate: "2026-09-05T18:00:00+05:30",
+  },
+  {
+    date: "September 12, 2026",
+    time: "08:30 AM",
+    event: "Hackathon Starts",
+    description: "Opening ceremony and coding begins! 30 hours on the clock.",
+    isoDate: "2026-09-12T08:30:00+05:30",
+  },
+  {
+    date: "September 12, 2026",
+    time: "06:00 PM",
+    event: "First Review",
+    description: "Problem understanding & idea validation",
+    isoDate: "2026-09-12T18:00:00+05:30",
+  },
+  {
+    date: "September 13, 2026",
+    time: "12:00 AM",
+    event: "Second Review",
+    description: "Prototype & technical progress",
+    isoDate: "2026-09-13T00:00:00+05:30",
+  },
+  {
+    date: "September 13, 2026",
+    time: "04:00 AM",
+    event: "Final Review",
+    description: "Final Product & impact.",
+    isoDate: "2026-09-13T04:00:00+05:30",
+  },
+  {
+    date: "September 13, 2026",
+    time: "08:00 AM",
+    event: "Filteration of teams",
+    description:
+      "Selection of top 10 teams qualifying for the grand stage presentations.",
+    isoDate: "2026-09-13T08:00:00+05:30",
+  },
+  {
+    date: "September 13, 2026",
+    time: "10:00 AM",
+    event: "Winners Announced",
+    description:
+      "Grand closing ceremony, jury announcements, prize distribution, and celebration.",
+    isoDate: "2026-09-13T10:00:00+05:30",
+  },
+];
 
 export const FAQS = [
   { 
@@ -195,7 +251,7 @@ export const FAQS = [
   },
   { 
     question: "What is the team size?", 
-    answer: "Teams must consist of 3 to 4 members. We encourage diverse skill sets including design, development, and domain expertise." 
+    answer: "Teams must consist of 4 members. We encourage diverse skill sets including design, development, and domain expertise." 
   },
   { 
     question: "Is it online or offline?", 
@@ -207,7 +263,7 @@ export const FAQS = [
   },
   { 
     question: "What should we bring?", 
-    answer: "Bring your laptops, chargers, any necessary hardware components, valid student IDs, and infinite curiosity." 
+    answer: "Bring your laptops, chargers, any necessary hardware components, valid student IDs." 
   },
   { 
     question: "Do I need to have a project idea right now?", 
