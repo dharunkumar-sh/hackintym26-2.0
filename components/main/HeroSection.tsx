@@ -96,7 +96,7 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
                 devteamElem?.scrollIntoView({ behavior: "smooth" })
               })}
             >
-              Development Team
+              Organizing Team
               <Compass className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>

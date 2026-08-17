@@ -34,7 +34,7 @@ export function DevelopmentTeamSection() {
               COMMAND & ARCHITECTURE ALLIANCE
             </div>
             <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white mb-4">
-              Development Team
+              Organizing Team
             </h2>
             <p className="text-intel-blue-light font-mono text-xs sm:text-sm tracking-widest uppercase max-w-2xl mx-auto">
               3 LEADERSHIP CLUBS // PRESIDENT • VICE PRESIDENT • SECRETARY • TREASURER

@@ -194,7 +194,7 @@ export function MainPage() {
           {/* 10. INFINITY REWARDS */}
           <PrizeSection />
 
-          {/* 11. DEVELOPMENT TEAM */}
+          {/* 11. ORGANIZING TEAM */}
           <DevelopmentTeamSection />
 
           {/* 16. FINAL CTA & CONTACT */}

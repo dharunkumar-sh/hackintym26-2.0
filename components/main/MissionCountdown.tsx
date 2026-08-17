@@ -128,15 +128,26 @@ export function MissionCountdown() {
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.8 }}
-          className="mb-12"
+          className="mb-10"
         >
-         
+          {/* Marvel S.H.I.E.L.D. Protocol Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-power-red/15 border border-power-red/60 shadow-[0_0_25px_rgba(225,6,0,0.35)] text-power-red-light font-mono text-xs sm:text-sm tracking-[0.25em] uppercase mb-4 backdrop-blur-md">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-power-red opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-power-red shadow-[0_0_8px_#E10600]"></span>
+            </span>
+            <span className="font-extrabold text-glow-red">MISSION PROTOCOL: REGISTRATION CLOSES SOON</span>
+          </div>
 
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white mb-3" style={{ textShadow: "0 0 25px rgba(0,200,255,0.3)" }}>
             Mission Countdown
           </h2>
 
-       
+          <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm tracking-[0.2em] font-mono text-intel-blue-light uppercase">
+            <span className="w-6 sm:w-12 h-px bg-linear-to-r from-transparent to-intel-blue-light"></span>
+            <span className="text-white/90">TIME REMAINING UNTIL REGISTRATION PORTAL CLOSES</span>
+            <span className="w-6 sm:w-12 h-px bg-linear-to-l from-transparent to-intel-blue-light"></span>
+          </div>
         </motion.div>
 
         {/* Futuristic Energy Reactor / Timer Container */}
@@ -144,6 +155,14 @@ export function MissionCountdown() {
           ref={hudContainerRef} 
           className="relative max-w-5xl mx-auto glass-panel rounded-3xl p-6 sm:p-12 border border-white/10 shadow-[0_0_50px_rgba(0,102,255,0.15)] bg-black/60 backdrop-blur-xl"
         >
+          {/* Stark HUD / Marvel Directive Top Bar */}
+          <div className="flex items-center justify-center border-b border-white/10 pb-5 mb-8 text-center">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 text-power-red text-glow-red font-black text-xl sm:text-3xl md:text-4xl tracking-wider sm:tracking-widest uppercase animate-pulse">
+              <span className="inline-block w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-xs bg-power-red rotate-45 shadow-[0_0_12px_#E10600]"></span>
+              <span>REGISTRATION CLOSES IN:</span>
+              <span className="inline-block w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-xs bg-power-red rotate-45 shadow-[0_0_12px_#E10600]"></span>
+            </div>
+          </div>
           {/* Reactor Energy Arc / Orbital Progress Indicator */}
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-48 h-1 bg-linear-to-r from-intel-blue via-power-red to-intel-blue rounded-full shadow-[0_0_15px_#0066FF]"></div>
           <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-48 h-1 bg-linear-to-r from-power-red via-intel-blue to-power-red rounded-full shadow-[0_0_15px_#FF2A2A]"></div>

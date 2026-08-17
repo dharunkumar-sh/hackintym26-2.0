@@ -16,6 +16,17 @@ export const metadata: Metadata = {
   title: "Hackintym '26 2.0 - 30-Hour Innovation Mission",
   description:
     "Official Website for Hackintym '26 2.0 - 30-Hour Innovation Mission",
+  icons: {
+    icon: [
+      { url: "/hacker.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+      { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+      { url: "/favicon-128x128.png", sizes: "128x128", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon-128x128.png", sizes: "128x128", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
