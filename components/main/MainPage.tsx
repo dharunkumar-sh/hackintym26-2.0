@@ -87,12 +87,12 @@ export function MainPage() {
         return
       }
 
-      // Fast hardware-accelerated initial states (no costly filter: blur)
-      if (h1) gsap.set(h1, { opacity: 0, scale: 1.2, y: 20, willChange: "transform, opacity" })
-      if (mission) gsap.set(mission, { opacity: 0, scaleX: 0.9, y: 10, willChange: "transform, opacity" })
-      if (words) gsap.set(words, { opacity: 0, scale: 0.85, y: 15, willChange: "transform, opacity" })
-      if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 0, scale: 0.95, y: 25, willChange: "transform, opacity" })
-      if (hudRef.current) gsap.set(hudRef.current, { opacity: 0, y: -25, willChange: "transform, opacity" })
+      // Fast hardware-accelerated initial states
+      if (h1) gsap.set(h1, { opacity: 0, y: 15, willChange: "transform, opacity" })
+      if (mission) gsap.set(mission, { opacity: 0, y: 10, willChange: "transform, opacity" })
+      if (words) gsap.set(words, { opacity: 0, y: 12, willChange: "transform, opacity" })
+      if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 0, y: 15, willChange: "transform, opacity" })
+      if (hudRef.current) gsap.set(hudRef.current, { opacity: 0, y: -15, willChange: "transform, opacity" })
 
       const tl = gsap.timeline({
         onComplete: () => {
@@ -106,14 +106,14 @@ export function MainPage() {
         }
       })
 
-      // 1. Reveal Typography, Header & CTA in Smooth Sync (pure GPU transform & opacity)
-      if (hudRef.current) tl.to(hudRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }, "0.05")
-      if (h1) tl.to(h1, { opacity: 1, scale: 1, y: 0, duration: 0.75, ease: "power3.out" }, "0.05")
-      if (mission) tl.to(mission, { opacity: 1, scaleX: 1, y: 0, duration: 0.65, ease: "power2.out" }, "0.15")
+      // 1. Reveal Typography, Header & CTA in Smooth Sync (pure GPU y-translate & opacity)
+      if (hudRef.current) tl.to(hudRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "0.05")
+      if (h1) tl.to(h1, { opacity: 1, y: 0, duration: 0.65, ease: "power2.out" }, "0.05")
+      if (mission) tl.to(mission, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, "0.15")
       if (words && words.length > 0) {
-        tl.to(words, { opacity: 1, scale: 1, y: 0, duration: 0.5, stagger: 0.08, ease: "power2.out" }, "0.25")
+        tl.to(words, { opacity: 1, y: 0, duration: 0.45, stagger: 0.06, ease: "power2.out" }, "0.2")
       }
-      if (ctaRef.current) tl.to(ctaRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: "power2.out" }, "0.35")
+      if (ctaRef.current) tl.to(ctaRef.current, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, "0.3")
 
     }, containerRef)
 

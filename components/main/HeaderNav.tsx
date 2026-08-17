@@ -3,7 +3,6 @@
 import { forwardRef, useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { HangingSpiderman } from "@/components/cinematic/HangingSpiderman"
 
 const NAV_ITEMS = [
   { label: "HQ", targetId: "hero" },
@@ -123,9 +122,6 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
               <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
               <span>REGISTER NOW</span>
             </motion.a>
-
-            {/* HANGING SPIDER-MAN CLINGING UNDER REGISTER BUTTON */}
-            <HangingSpiderman />
           </div>
 
           {/* Mobile Menu Toggle Button */}
