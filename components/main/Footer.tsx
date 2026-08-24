@@ -1,6 +1,6 @@
 "use client"
 
-import { MapPin, Mail, Heart, Terminal } from "lucide-react"
+import { MapPin, Mail, Phone, Heart, Terminal } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
@@ -132,6 +132,24 @@ export function Footer() {
                 >
                   msec.devdynastyclub@gmail.com
                 </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-intel-blue-light shrink-0" />
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <a 
+                    href="tel:+916383113382" 
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    +91 63831 13382
+                  </a>
+                  <span className="text-white/40">/</span>
+                  <a 
+                    href="tel:+916381846882" 
+                    className="hover:text-white transition-colors cursor-pointer"
+                  >
+                    +91 63818 46882
+                  </a>
+                </div>
               </li>
             </ul>
           </div>

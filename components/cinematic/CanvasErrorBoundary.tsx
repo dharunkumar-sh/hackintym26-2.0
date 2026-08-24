@@ -2,6 +2,17 @@
 
 import { Component, ReactNode, ErrorInfo } from "react"
 
+// Filter out internal THREE.Clock deprecation warnings logged by R3F store in Three.js r185+
+if (typeof window !== "undefined") {
+  const originalWarn = console.warn
+  console.warn = (...args: any[]) => {
+    if (typeof args[0] === "string" && (args[0].includes("THREE.Clock") || args[0].includes("THREE.Timer"))) {
+      return
+    }
+    originalWarn(...args)
+  }
+}
+
 interface Props {
   children: ReactNode
 }

@@ -40,7 +40,7 @@ export function EventPosterSection() {
           {/* Static Image Container */}
           <div className="relative rounded-2xl overflow-hidden bg-black/80 flex items-center justify-center">
             <img
-              src="/poster.png"
+              src="/poster.jpg"
               alt="Hackintym '26 2.0 Official Poster"
               className="w-full h-auto max-h-[85vh] object-contain rounded-2xl"
               loading="lazy"

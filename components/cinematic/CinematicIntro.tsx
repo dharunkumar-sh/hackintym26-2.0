@@ -63,18 +63,21 @@ export function CinematicIntro({ onComplete, cameraRef, progressRef }: Cinematic
     const mission = typographyRef.current?.querySelector(".mt-4")
     const words = typographyRef.current?.querySelectorAll(".tagline-word")
     
-    gsap.set([typographyRef.current, ctaRef.current, hudRef.current], { opacity: 1 })
+    const initialTargets = [typographyRef.current, ctaRef.current, hudRef.current].filter(Boolean) as HTMLElement[]
+    if (initialTargets.length > 0) gsap.set(initialTargets, { opacity: 1 })
     
     if (prefersReducedMotion) {
-      gsap.set([h1, mission, words, ctaRef.current, hudRef.current], { opacity: 1, y: 0 })
+      const reducedTargets = [h1, mission, ...(words ? Array.from(words) : []), ctaRef.current, hudRef.current].filter(Boolean) as (HTMLElement | SVGElement)[]
+      if (reducedTargets.length > 0) gsap.set(reducedTargets, { opacity: 1, y: 0 })
       if (progressRef) gsap.set(progressRef, { current: 1 })
       if (cameraRef?.current) cameraRef.current.position.z = 2
       return
     }
 
-    gsap.set([h1, mission], { opacity: 0, y: 20 })
-    gsap.set(ctaRef.current, { opacity: 0, y: 30 })
-    gsap.set(hudRef.current, { opacity: 0, y: -20 })
+    const initialHidden = [h1, mission].filter(Boolean) as HTMLElement[]
+    if (initialHidden.length > 0) gsap.set(initialHidden, { opacity: 0, y: 20 })
+    if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 0, y: 30 })
+    if (hudRef.current) gsap.set(hudRef.current, { opacity: 0, y: -20 })
 
     if (progressRef) {
       tl.to(progressRef, { current: 1, duration: 5, ease: "power2.inOut" }, "0")

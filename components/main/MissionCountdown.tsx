@@ -80,7 +80,6 @@ export function MissionCountdown() {
     if (prefersReducedMotion) return
 
     const cards = gsap.utils.toArray<HTMLElement>(".countdown-card")
-    const metadata = gsap.utils.toArray<HTMLElement>(".hud-meta-item")
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -94,16 +93,14 @@ export function MissionCountdown() {
       { opacity: 0, scale: 0.92 },
       { opacity: 1, scale: 1, duration: 1, ease: "power3.out" }
     )
-    .fromTo(cards,
-      { opacity: 0, y: 40, rotateX: 15 },
-      { opacity: 1, y: 0, rotateX: 0, duration: 0.7, stagger: 0.15, ease: "back.out(1.4)" },
-      "-=0.5"
-    )
-    .fromTo(metadata,
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power2.out" },
-      "-=0.3"
-    )
+
+    if (cards.length > 0) {
+      tl.fromTo(cards,
+        { opacity: 0, y: 40, rotateX: 15 },
+        { opacity: 1, y: 0, rotateX: 0, duration: 0.7, stagger: 0.15, ease: "back.out(1.4)" },
+        "-=0.5"
+      )
+    }
   }, { scope: sectionRef })
 
   const formatNumber = (num: number) => String(num).padStart(2, "0")

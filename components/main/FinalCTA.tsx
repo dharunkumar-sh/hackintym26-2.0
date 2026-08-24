@@ -92,13 +92,22 @@ export function FinalCTA() {
                 </div>
               </div>
 
-              <a
-                href="tel:+916381846882"
-                className="w-full sm:w-auto py-2 px-4 rounded-lg bg-power-red/20 hover:bg-power-red text-power-red-light hover:text-white border border-power-red/40 text-xs font-mono font-bold tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0"
-              >
-                <span>+91 6383113382</span>
-                <ExternalLink className="w-3.5 h-3.5 opacity-70" />
-              </a>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full sm:w-auto shrink-0">
+                <a
+                  href="tel:+916383113382"
+                  className="w-full sm:w-auto py-2 px-3.5 rounded-lg bg-power-red/20 hover:bg-power-red text-power-red-light hover:text-white border border-power-red/40 text-xs font-mono font-bold tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0"
+                >
+                  <span>+91 6383113382</span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+                </a>
+                <a
+                  href="tel:+916381846882"
+                  className="w-full sm:w-auto py-2 px-3.5 rounded-lg bg-power-red/20 hover:bg-power-red text-power-red-light hover:text-white border border-power-red/40 text-xs font-mono font-bold tracking-wider flex items-center justify-center gap-2 transition-all cursor-pointer shrink-0"
+                >
+                  <span>+91 6381846882</span>
+                  <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+                </a>
+              </div>
             </motion.div>
 
             {/* Row 3: Venue Strip */}
