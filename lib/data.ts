@@ -51,6 +51,21 @@ export const CHAMPIONS = [
   { name: "THE GRIX", prize: "Second Runner Up", amount: "₹2,500", track: "AI & DS" },
 ]
 
+export interface ClubLogoItem {
+  id: string
+  src: string
+  alt: string
+}
+
+export const CLUB_LOGOS: ClubLogoItem[] = [
+  { id: "club1", src: "/logos/club1.png", alt: "Club 1" },
+  { id: "club2", src: "/logos/club2.png", alt: "Club 2" },
+  { id: "club3", src: "/logos/club3.png", alt: "Club 3" },
+  { id: "club4", src: "/logos/club4.png", alt: "Club 4" },
+  { id: "club5", src: "/logos/club5.png", alt: "Club 5" },
+  { id: "club6", src: "/logos/club6.png", alt: "Club 6" },
+]
+
 export interface ClubMember {
   name: string
   role: "President" | "Vice President" | "Secretary" | "Treasurer"

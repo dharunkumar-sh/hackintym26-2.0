@@ -70,12 +70,14 @@ export function MainPage() {
       const h1 = typographyRef.current?.querySelector("h1")
       const mission = typographyRef.current?.querySelector("[data-hero-mission]")
       const words = typographyRef.current?.querySelectorAll(".tagline-word")
+      const logos = typographyRef.current?.querySelector("[data-hero-logos]")
 
       // Safety fallback: if animation fails to complete within 8s, force-reveal everything
       const safetyTimer = setTimeout(() => {
         if (h1) gsap.set(h1, { opacity: 1, scale: 1, y: 0, clearProps: "willChange" })
         if (mission) gsap.set(mission, { opacity: 1, scaleX: 1, y: 0, clearProps: "willChange" })
         if (words) gsap.set(words, { opacity: 1, scale: 1, rotationX: 0, y: "0%", clearProps: "willChange" })
+        if (logos) gsap.set(logos, { opacity: 1, scale: 1, y: 0, clearProps: "willChange" })
         if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 1, scale: 1, y: 0, clearProps: "willChange" })
         if (hudRef.current) gsap.set(hudRef.current, { opacity: 1, y: 0, clearProps: "willChange" })
         setIntroOverlayActive(false)
@@ -83,7 +85,7 @@ export function MainPage() {
 
       if (prefersReducedMotion) {
         clearTimeout(safetyTimer)
-        const targets = [h1, mission, ...(words ? Array.from(words) : []), ctaRef.current, hudRef.current].filter(Boolean) as (HTMLElement | SVGElement)[]
+        const targets = [h1, mission, ...(words ? Array.from(words) : []), logos, ctaRef.current, hudRef.current].filter(Boolean) as (HTMLElement | SVGElement)[]
         if (targets.length > 0) gsap.set(targets, { opacity: 1, y: 0, scale: 1 })
         setIntroOverlayActive(false)
         return
@@ -93,6 +95,7 @@ export function MainPage() {
       if (h1) gsap.set(h1, { opacity: 0, y: 15, willChange: "transform, opacity" })
       if (mission) gsap.set(mission, { opacity: 0, y: 10, willChange: "transform, opacity" })
       if (words) gsap.set(words, { opacity: 0, y: 12, willChange: "transform, opacity" })
+      if (logos) gsap.set(logos, { opacity: 0, y: 15, willChange: "transform, opacity" })
       if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 0, y: 15, willChange: "transform, opacity" })
       if (hudRef.current) gsap.set(hudRef.current, { opacity: 0, y: -15, willChange: "transform, opacity" })
 
@@ -103,18 +106,20 @@ export function MainPage() {
           if (h1) gsap.set(h1, { opacity: 1, scale: 1, y: 0, clearProps: "willChange" })
           if (mission) gsap.set(mission, { opacity: 1, scaleX: 1, y: 0, clearProps: "willChange" })
           if (words) gsap.set(words, { opacity: 1, scale: 1, y: 0, clearProps: "willChange" })
+          if (logos) gsap.set(logos, { opacity: 1, scale: 1, y: 0, clearProps: "willChange" })
           if (ctaRef.current) gsap.set(ctaRef.current, { opacity: 1, scale: 1, y: 0, clearProps: "willChange" })
           if (hudRef.current) gsap.set(hudRef.current, { opacity: 1, y: 0, clearProps: "willChange" })
         }
       })
 
-      // 1. Reveal Typography, Header & CTA in Smooth Sync (pure GPU y-translate & opacity)
+      // 1. Reveal Typography, Header, Logos & CTA in Smooth Sync (pure GPU y-translate & opacity)
       if (hudRef.current) tl.to(hudRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "0.05")
       if (h1) tl.to(h1, { opacity: 1, y: 0, duration: 0.65, ease: "power2.out" }, "0.05")
       if (mission) tl.to(mission, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, "0.15")
       if (words && words.length > 0) {
         tl.to(words, { opacity: 1, y: 0, duration: 0.45, stagger: 0.06, ease: "power2.out" }, "0.2")
       }
+      if (logos) tl.to(logos, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, "0.25")
       if (ctaRef.current) tl.to(ctaRef.current, { opacity: 1, y: 0, duration: 0.55, ease: "power2.out" }, "0.3")
 
     }, containerRef)

@@ -96,7 +96,7 @@ export function LoadingOverlay({ onLoaded }: LoadingOverlayProps) {
           duration: 0.65,
           ease: [0.4, 0, 0.2, 1],
         }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140px] h-[140px] xs:w-[170px] xs:h-[170px] sm:w-[210px] sm:h-[210px] md:w-[240px] md:h-[240px] pointer-events-none z-10 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(0,200,255,0.4)] will-change-[transform,opacity]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px] xs:w-[185px] xs:h-[185px] sm:w-[225px] sm:h-[225px] md:w-[255px] md:h-[255px] pointer-events-none z-10 rounded-full flex items-center justify-center shadow-[0_0_35px_rgba(0,200,255,0.5)] will-change-[transform,opacity]"
       >
         <MarvelComicFlipbook onComplete={triggerAssemble} />
       </motion.div>

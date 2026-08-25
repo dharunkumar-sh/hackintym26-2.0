@@ -4,6 +4,7 @@ import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Compass } from "lucide-react"
+import { CLUB_LOGOS } from "@/lib/data"
 
 interface HeroSectionProps {
   typographyRef?: React.RefObject<HTMLDivElement | null>
@@ -21,19 +22,19 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
       <section 
         ref={ref} 
         id="hero" 
-        className="relative w-full min-h-[75vh] sm:min-h-[80vh] flex flex-col justify-center items-center p-6 md:p-10 z-10 select-none overflow-hidden pt-28 pb-12"
+        className="relative w-full min-h-[85vh] sm:min-h-[90vh] flex flex-col justify-center items-center p-4 sm:p-6 md:p-10 z-10 select-none overflow-hidden pt-36 sm:pt-44 md:pt-48 pb-16"
       >
         {/* Center Hero Typography */}
         <div 
           ref={typographyRef} 
-          className="relative flex flex-col items-center justify-center text-center z-10 mb-6 sm:mb-8"
+          className="relative flex flex-col items-center justify-center text-center z-10 mt-2 sm:mt-4 mb-6 sm:mb-8"
         >
           {/* Main Title / Logo */}
-          <h1 className="opacity-0 flex items-center justify-center px-2">
+          <h1 className="opacity-0 flex items-center justify-center px-4 pt-2">
             <img 
               src="/logo.png" 
               alt="HACKINTYM '26 2.0" 
-              className="w-full max-w-[280px] xs:max-w-[340px] sm:max-w-[480px] md:max-w-[620px] lg:max-w-[720px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.45)] select-none pointer-events-none"
+              className="w-full max-w-[260px] xs:max-w-[320px] sm:max-w-[440px] md:max-w-[560px] lg:max-w-[650px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.45)] select-none pointer-events-none"
             />
             <span className="sr-only">HACKINTYM '26 2.0</span>
           </h1>
@@ -52,6 +53,29 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
               <span className="tagline-word inline-block opacity-0">INNOVATE.</span>
               <span className="tagline-word inline-block text-power-red text-glow-red opacity-0">CONQUER.</span>
             </div>
+          </div>
+
+          {/* Club Logos in Round Frames */}
+          <div 
+            data-hero-logos
+            className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3.5 sm:gap-5 md:gap-6 opacity-0"
+          >
+            {CLUB_LOGOS.map((logo) => (
+              <motion.div 
+                key={logo.id}
+                whileHover={{ scale: 1.15, y: -4 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 md:w-22 md:h-22 rounded-full p-[2.5px] bg-gradient-to-tr from-intel-blue via-intel-blue-light to-power-red shadow-[0_0_20px_rgba(0,102,255,0.4)] hover:shadow-[0_0_30px_rgba(0,200,255,0.7)] flex items-center justify-center overflow-hidden shrink-0 transition-all duration-300 group cursor-pointer"
+              >
+                <div className="w-full h-full rounded-full bg-black/90 p-2 sm:p-3 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={logo.src} 
+                    alt={logo.alt} 
+                    className="w-full h-full object-contain rounded-full transition-transform duration-300 group-hover:scale-105" 
+                  />
+                </div>
+              </motion.div>
+            ))}
           </div>
 
         </div>
