@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { forwardRef } from "react"
 
 export const IntroTypography = forwardRef<HTMLDivElement>((_, ref) => {
@@ -9,12 +10,14 @@ export const IntroTypography = forwardRef<HTMLDivElement>((_, ref) => {
       <div className="relative text-center">
         {/* Main Title / Logo */}
         <h1 className="flex items-center justify-center px-4">
-          <img 
+          <Image 
             src="/logo.png" 
             alt="Hackintym '26 2.0" 
             className="w-full max-w-[320px] sm:max-w-[500px] md:max-w-[680px] lg:max-w-[800px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.5)] select-none pointer-events-none"
+            height={200}
+            width={200}
           />
-          <span className="sr-only">Hackintym '26 2.0</span>
+          <span className="sr-only">Hackintym&apos;26 2.0</span>
         </h1>
         
         {/* Mission Status / HUD element */}

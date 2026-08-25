@@ -1,20 +1,23 @@
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
+import Image from "next/image";
 
 export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
   const navItems = ["HQ", "MISSION", "UNIVERSE", "TIMELINE"]
 
   return (
-    <div 
-      ref={ref} 
-      className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start z-20 pointer-events-none opacity-0"
+    <div
+      ref={ref}
+      className="absolute top-0 left-0 right-0 p-4 flex justify-between items-start z-20 pointer-events-none opacity-0"
     >
       {/* Top Left: Logo / Brand Mark */}
       <div className="flex flex-col items-start gap-1">
-        <img 
-          src="/logo.png" 
-          alt="HACKINTYM '26 2.0" 
-          className="h-8 sm:h-9 w-auto max-w-[160px] object-contain select-none"
+        <Image
+          src="/logo.png"
+          alt="HACKINTYM '26 2.0"
+          className="h-8 sm:h-9 w-auto max-w-40 object-contain select-none"
+          width={200}
+          height={200}
         />
         <div className="text-[9px] font-mono tracking-widest text-white/50">
           GLOBAL_HACK_PROTOCOL
@@ -41,9 +44,11 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
         <motion.a
           href="#registration"
           onClick={(e) => {
-            e.preventDefault()
-            const elem = document.getElementById("registration") || document.getElementById("countdown")
-            elem?.scrollIntoView({ behavior: "smooth" })
+            e.preventDefault();
+            const elem =
+              document.getElementById("registration") ||
+              document.getElementById("countdown");
+            elem?.scrollIntoView({ behavior: "smooth" });
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -53,13 +58,11 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
           REGISTER NOW
         </motion.a>
         <div className="text-[9px] font-mono tracking-widest text-white/30 scanline relative pl-10 h-3 w-32">
-          {/* Scanline handled by CSS before element */}
-          V 2.0.26
+          {/* Scanline handled by CSS before element */}V 2.0.26
         </div>
       </div>
-      
     </div>
-  )
+  );
 })
 
 CinematicHUD.displayName = "CinematicHUD"

@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Compass } from "lucide-react"
 import { CLUB_LOGOS } from "@/lib/data"
+import Image from "next/image"
 
 interface HeroSectionProps {
   typographyRef?: React.RefObject<HTMLDivElement | null>
@@ -27,14 +28,16 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
         {/* Center Hero Typography */}
         <div 
           ref={typographyRef} 
-          className="relative flex flex-col items-center justify-center text-center z-10 mt-2 sm:mt-4 mb-6 sm:mb-8"
+          className="relative flex flex-col items-center justify-center text-center z-10  mb-6 sm:mb-6"
         >
           {/* Main Title / Logo */}
-          <h1 className="opacity-0 flex items-center justify-center px-4 pt-2">
-            <img 
+          <h1 className="opacity-0 flex items-center justify-center px-4 -mt-7">
+            <Image 
               src="/logo.png" 
               alt="HACKINTYM '26 2.0" 
               className="w-full max-w-[260px] xs:max-w-[320px] sm:max-w-[440px] md:max-w-[560px] lg:max-w-[650px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.45)] select-none pointer-events-none"
+              height={800}
+              width={800}
             />
             <span className="sr-only">HACKINTYM '26 2.0</span>
           </h1>
