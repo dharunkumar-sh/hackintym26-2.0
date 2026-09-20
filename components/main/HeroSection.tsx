@@ -35,6 +35,7 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
             <Image 
               src="/logo.png" 
               alt="HACKINTYM '26 2.0" 
+              loading="eager"
               className="w-full max-w-[260px] xs:max-w-[320px] sm:max-w-[440px] md:max-w-[560px] lg:max-w-[650px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.45)] select-none pointer-events-none"
               height={800}
               width={800}

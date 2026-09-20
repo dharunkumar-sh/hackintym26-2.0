@@ -77,7 +77,8 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
         >
           <img 
             src="/logo.png" 
-            alt="HACKINTYM '26 2.0" 
+            alt="HACKINTYM '26 2.0"
+            loading="eager"
             className="h-7 xs:h-8 sm:h-9 md:h-10 w-auto max-w-[130px] xs:max-w-[160px] sm:max-w-[200px] object-contain transition-transform group-hover:scale-105 select-none"
           />
         </a>

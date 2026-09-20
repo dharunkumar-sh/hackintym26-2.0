@@ -13,7 +13,7 @@ if (typeof window !== "undefined") {
 
 // Fixed IST timestamps (UTC+05:30)
 const START_TIMESTAMP = Date.parse("2026-08-14T00:00:00+05:30")
-const TARGET_TIMESTAMP = Date.parse("2026-09-03T23:59:59+05:30")
+const TARGET_TIMESTAMP = Date.parse("2026-09-25T23:59:59+05:30")
 
 interface TimeRemaining {
   days: number
@@ -37,7 +37,7 @@ function calculateTimeRemaining(): TimeRemaining {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-  // Progress from Aug 14 to Sept 3
+  // Progress from Aug 14 to Sept 25
   const totalDuration = TARGET_TIMESTAMP - START_TIMESTAMP
   const elapsed = Math.max(0, now - START_TIMESTAMP)
   const progressPercent = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100))

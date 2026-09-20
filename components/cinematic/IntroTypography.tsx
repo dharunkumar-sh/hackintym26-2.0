@@ -13,6 +13,7 @@ export const IntroTypography = forwardRef<HTMLDivElement>((_, ref) => {
           <Image 
             src="/logo.png" 
             alt="Hackintym '26 2.0" 
+            loading="eager"
             className="w-full max-w-[320px] sm:max-w-[500px] md:max-w-[680px] lg:max-w-[800px] h-auto object-contain drop-shadow-[0_10px_35px_rgba(0,102,255,0.5)] select-none pointer-events-none"
             height={200}
             width={200}

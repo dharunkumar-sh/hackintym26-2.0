@@ -32,7 +32,8 @@ export function Footer() {
               >
                 <Image 
                   src="/logo.png" 
-                  alt="HACKINTYM '26 2.0" 
+                  alt="HACKINTYM '26 2.0"
+                  loading="eager"
                   className="h-14 sm:h-16 md:h-20 w-auto max-w-65 sm:max-w-[320px] object-contain transition-transform group-hover:scale-105 select-none"
                   width={100}
                   height={80}

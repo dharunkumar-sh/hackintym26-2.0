@@ -18,6 +18,7 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
           className="h-8 sm:h-9 w-auto max-w-40 object-contain select-none"
           width={200}
           height={200}
+          loading="eager"
         />
         <div className="text-[9px] font-mono tracking-widest text-white/50">
           GLOBAL_HACK_PROTOCOL
