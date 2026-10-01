@@ -109,21 +109,11 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
           })}
         </nav>
 
-        {/* Right: Register Button & Mobile Toggle */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
-          <div className="relative">
-            <motion.a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSf4OfwQxpT3z2nohQUOCyHcIqw7cMZbrgscbBH0VDugvojcBw/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-xl bg-power-red hover:bg-power-red-light text-white text-[12px] sm:text-[14px] font-mono font-black tracking-wider uppercase border border-power-red/60 shadow-[0_0_20px_rgba(255,0,51,0.6)] transition-all cursor-pointer shrink-0"
-            >
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-              <span>REGISTER NOW</span>
-            </motion.a>
-          </div>
+        {/* Right: Mobile Toggle */}
+        <div className="flex items-center">
+          <span className="hidden md:block text-[12px] font-mono font-bold tracking-wider text-power-red uppercase">
+            Registrations Closed
+          </span>
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -167,17 +157,8 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
                 )
               })}
 
-              {/* Full Width Mobile Register Button */}
-              <div className="pt-2 mt-1 border-t border-white/10">
-                <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSf4OfwQxpT3z2nohQUOCyHcIqw7cMZbrgscbBH0VDugvojcBw/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-power-red hover:bg-power-red-light text-white text-[14px] font-mono font-bold tracking-wider uppercase border border-power-red/50 shadow-[0_0_20px_rgba(255,0,51,0.6)] transition-all cursor-pointer"
-                >
-                  <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                  REGISTER NOW
-                </a>
+              <div className="pt-2 mt-1 border-t border-white/10 text-center text-[12px] font-mono font-bold tracking-wider text-power-red uppercase">
+                Registrations Closed
               </div>
             </div>
           </motion.div>

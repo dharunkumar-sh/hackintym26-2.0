@@ -56,7 +56,7 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
           className="pointer-events-auto px-4 py-1.5 rounded bg-power-red/80 hover:bg-power-red text-white text-[11px] font-mono font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_15px_rgba(255,0,51,0.5)] transition-all flex items-center gap-2 cursor-pointer"
         >
           <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-          REGISTER NOW
+          REGISTRATIONS CLOSED
         </motion.a>
         <div className="text-[9px] font-mono tracking-widest text-white/30 scanline relative pl-10 h-3 w-32">
           {/* Scanline handled by CSS before element */}V 2.0.26
