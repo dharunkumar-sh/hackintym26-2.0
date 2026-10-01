@@ -207,11 +207,11 @@ export const TIMELINE = [
     isoDate: "2026-09-21T23:59:59+05:30",
   },
   {
-    date: "September 28, 2026",
-    time: "06:00 PM",
+    date: "October 2, 2026",
+    time: "10:00 AM",
     event: "Team Shortlisting",
     description: "Announcement of selected teams invited to the hackathon.",
-    isoDate: "2026-09-28T18:00:00+05:30",
+    isoDate: "2026-10-02T10:00:00+05:30",
   },
   {
     date: "October 10, 2026",

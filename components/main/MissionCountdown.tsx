@@ -12,8 +12,8 @@ if (typeof window !== "undefined") {
 }
 
 // Fixed IST timestamps (UTC+05:30)
-const START_TIMESTAMP = Date.parse("2026-08-14T00:00:00+05:30")
-const TARGET_TIMESTAMP = Date.parse("2026-09-25T23:59:59+05:30")
+const START_TIMESTAMP = Date.parse("2026-10-01T00:00:00+05:30")
+const TARGET_TIMESTAMP = Date.parse("2026-10-10T09:00:00+05:30")
 
 interface TimeRemaining {
   days: number
@@ -37,7 +37,7 @@ function calculateTimeRemaining(): TimeRemaining {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
   const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-  // Progress from Aug 14 to Sept 25
+  // Progress from October 1 to the event start
   const totalDuration = TARGET_TIMESTAMP - START_TIMESTAMP
   const elapsed = Math.max(0, now - START_TIMESTAMP)
   const progressPercent = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100))
@@ -133,7 +133,7 @@ export function MissionCountdown() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-power-red opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-power-red shadow-[0_0_8px_#E10600]"></span>
             </span>
-            <span className="font-extrabold text-glow-red">MISSION PROTOCOL: REGISTRATION CLOSES SOON</span>
+            <span className="font-extrabold text-glow-red">MISSION PROTOCOL: EVENT BEGINS SOON</span>
           </div>
 
           <h2 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tighter uppercase text-white mb-3" style={{ textShadow: "0 0 25px rgba(0,200,255,0.3)" }}>
@@ -142,7 +142,7 @@ export function MissionCountdown() {
 
           <div className="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm tracking-[0.2em] font-mono text-intel-blue-light uppercase">
             <span className="w-6 sm:w-12 h-px bg-linear-to-r from-transparent to-intel-blue-light"></span>
-            <span className="text-white/90">TIME REMAINING UNTIL REGISTRATION PORTAL CLOSES</span>
+            <span className="text-white/90">TIME REMAINING UNTIL THE EVENT BEGINS</span>
             <span className="w-6 sm:w-12 h-px bg-linear-to-l from-transparent to-intel-blue-light"></span>
           </div>
         </motion.div>
@@ -156,7 +156,7 @@ export function MissionCountdown() {
           <div className="flex items-center justify-center border-b border-white/10 pb-5 mb-8 text-center">
             <div className="flex items-center justify-center gap-3 sm:gap-4 text-power-red text-glow-red font-black text-xl sm:text-3xl md:text-4xl tracking-wider sm:tracking-widest uppercase animate-pulse">
               <span className="inline-block w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-xs bg-power-red rotate-45 shadow-[0_0_12px_#E10600]"></span>
-              <span>REGISTRATION CLOSES IN:</span>
+              <span>EVENT BEGINS IN:</span>
               <span className="inline-block w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 rounded-xs bg-power-red rotate-45 shadow-[0_0_12px_#E10600]"></span>
             </div>
           </div>
