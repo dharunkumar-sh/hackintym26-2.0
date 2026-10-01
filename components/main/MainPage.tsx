@@ -4,6 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react"
 import { HeaderNav } from "./HeaderNav"
 import { HeroSection } from "./HeroSection"
 import { EventPosterSection } from "./EventPosterSection"
+import { ShortlistedTeamsBanner } from "./ShortlistedTeamsBanner"
 import { MissionCountdown } from "./MissionCountdown"
 import { TheMission } from "./TheMission"
 import { CommandCenter } from "./CommandCenter"
@@ -177,6 +178,9 @@ export function MainPage() {
 
         {/* SECTIONS BELOW HERO (REVEALED ONLY AFTER INTRO ANIMATION COMPLETES) */}
         <div className={`transition-opacity duration-700 ${introOverlayActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
+          {/* SHORTLISTED TEAMS ANNOUNCEMENT */}
+          <ShortlistedTeamsBanner />
+
           {/* 1.5. OFFICIAL MISSION POSTER */}
           <EventPosterSection />
 
