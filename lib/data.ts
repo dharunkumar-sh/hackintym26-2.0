@@ -1,46 +1,27 @@
 export interface HeroTeam {
   name: string
-  track: string
+  track?: string
   photo?: string
   role?: string
   leader?: string
 }
 
-export const HERO_TEAMS: HeroTeam[] = [
-  { name: "Datadazzlers", track: "Artificial Intelligence", photo: "", leader: "Commander Alpha" },
-  { name: "The Grix", track: "Cybersecurity", photo: "", leader: "Shadow Prime" },
-  { name: "Team Hopeless", track: "Open Innovation", photo: "", leader: "Apex Nova" },
-  { name: "Hyper Nova", track: "Healthcare Tech", photo: "", leader: "Quantum Spark" },
-  { name: "Connect", track: "Social Impact", photo: "", leader: "Nexus Link" },
-  { name: "Sparkles", track: "Artificial Intelligence", photo: "", leader: "Vortex Ray" },
-  { name: "Elite", track: "Cybersecurity", photo: "", leader: "Aegis Core" },
-  { name: "Nova Four", track: "Open Innovation", photo: "", leader: "Cosmic Sentinel" },
-  { name: "SheEnergy", track: "Social Impact", photo: "", leader: "Valkyrie Lead" },
-  { name: "INNOVISION", track: "Healthcare Tech", photo: "", leader: "Cyber Visionary" },
-  { name: "PlaySync", track: "Open Innovation", photo: "", leader: "Synapse Zero" },
-  { name: "MS VISIONARY", track: "Artificial Intelligence", photo: "", leader: "Neural Titan" },
-  { name: "Cybersquard", track: "Cybersecurity", photo: "", leader: "Firewall Guard" },
-  { name: "Veldora", track: "Social Impact", photo: "", leader: "Storm Bringer" },
-  { name: "GridGuardians", track: "Cybersecurity", photo: "", leader: "Shield Defender" },
-  { name: "Low batery legends", track: "Open Innovation", photo: "", leader: "Overclock Spec" },
-  { name: "Tech Talkies", track: "Social Impact", photo: "", leader: "Echo Transmitter" },
-  { name: "Petrova", track: "Healthcare Tech", photo: "", leader: "Bio Genesis" },
-  { name: "Codewaves", track: "Artificial Intelligence", photo: "", leader: "Byte Surge" },
-  { name: "Astra", track: "Cybersecurity", photo: "", leader: "Astral Vanguard" },
-  { name: "Scammers", track: "Open Innovation", photo: "", leader: "Glitch Master" },
-  { name: "Ctrl Alt Elite", track: "Artificial Intelligence", photo: "", leader: "Command Exec" },
-  { name: "Quantum Coders", track: "Healthcare Tech", photo: "", leader: "Subatomic Dev" },
-  { name: "ZENITH", track: "Cybersecurity", photo: "", leader: "Apex Guardian" },
-  { name: "SIGMA FUSION", track: "Social Impact", photo: "", leader: "Fusion Prime" }
-]
+import selectedTeamsJson from "@/data/selected_teams.json"
+import waitingListTeamsJson from "@/data/waiting_list_teams.json"
 
-export const STANDBY_HEROES: HeroTeam[] = [
-  { name: "SheNnovators", track: "Social Impact", photo: "", leader: "Nova Spark" },
-  { name: "GridX Innovators", track: "Open Innovation", photo: "", leader: "Grid Spec" },
-  { name: "SparkX", track: "Artificial Intelligence", photo: "", leader: "Ignite Lead" },
-  { name: "Avenix", track: "Cybersecurity", photo: "", leader: "Avenger Zero" },
-  { name: "Ctrl Freaks", track: "Healthcare Tech", photo: "", leader: "Override Lead" }
-]
+export const HERO_TEAMS: HeroTeam[] = selectedTeamsJson.map((t) => ({
+  name: t.teamName,
+  track: "",
+  photo: "",
+  leader: t.teamLead,
+}))
+
+export const STANDBY_HEROES: HeroTeam[] = waitingListTeamsJson.map((t) => ({
+  name: t.teamName,
+  track: "",
+  photo: "",
+  leader: t.teamLead,
+}))
 
 export const VERIFIED_TEAMS = HERO_TEAMS.map((t) => t.name)
 export const STANDBY_TEAMS = STANDBY_HEROES.map((t) => t.name)

@@ -43,20 +43,18 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
       {/* Top Right: Status / CTA (Desktop only preview) */}
       <div className="hidden md:flex flex-col items-end gap-1">
         <motion.a
-          href="#registration"
+          href="#selected-teams"
           onClick={(e) => {
             e.preventDefault();
-            const elem =
-              document.getElementById("registration") ||
-              document.getElementById("countdown");
+            const elem = document.getElementById("selected-teams");
             elem?.scrollIntoView({ behavior: "smooth" });
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="pointer-events-auto px-4 py-1.5 rounded bg-power-red/80 hover:bg-power-red text-white text-[11px] font-mono font-bold tracking-widest uppercase border border-power-red/50 shadow-[0_0_15px_rgba(255,0,51,0.5)] transition-all flex items-center gap-2 cursor-pointer"
+          className="pointer-events-auto px-4 py-1.5 rounded bg-intel-blue hover:bg-intel-blue-light text-white text-[11px] font-mono font-bold tracking-widest uppercase border border-intel-blue-light/50 shadow-[0_0_15px_rgba(0,102,255,0.5)] transition-all flex items-center gap-2 cursor-pointer"
         >
           <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-          REGISTRATIONS CLOSED
+          VIEW SELECTED TEAMS
         </motion.a>
         <div className="text-[9px] font-mono tracking-widest text-white/30 scanline relative pl-10 h-3 w-32">
           {/* Scanline handled by CSS before element */}V 2.0.26

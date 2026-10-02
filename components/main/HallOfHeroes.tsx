@@ -76,7 +76,7 @@ export function HallOfHeroes() {
               {/* Top Card Badge */}
               <div className="flex justify-between items-start mb-4">
                 <span className="text-[10px] font-mono tracking-widest text-intel-blue-light uppercase bg-intel-blue/20 px-2 py-0.5 rounded border border-intel-blue/30">
-                  {hero.track.split(' ')[0]}
+                  {hero.track?.split(' ')[0] || "INNOVATION"}
                 </span>
                 <span className="text-[10px] font-mono text-white/30 group-hover:text-intel-blue transition-colors">
                   #{String(i + 1).padStart(2, '0')}

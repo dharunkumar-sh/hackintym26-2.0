@@ -109,11 +109,15 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
           })}
         </nav>
 
-        {/* Right: Mobile Toggle */}
-        <div className="flex items-center">
-          <span className="hidden md:block text-[12px] font-mono font-bold tracking-wider text-power-red uppercase">
-            Registrations Closed
-          </span>
+        {/* Right: View Selected Teams Button & Mobile Toggle */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#selected-teams"
+            onClick={(e) => handleNavClick(e, "selected-teams")}
+            className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-intel-blue hover:bg-intel-blue-light text-white text-[12px] font-mono font-bold tracking-wider uppercase border border-intel-blue-light/50 shadow-[0_0_15px_rgba(0,102,255,0.4)] transition-all cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <span>View Selected Teams</span>
+          </a>
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -157,9 +161,13 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
                 )
               })}
 
-              <div className="pt-2 mt-1 border-t border-white/10 text-center text-[12px] font-mono font-bold tracking-wider text-power-red uppercase">
-                Registrations Closed
-              </div>
+              <a
+                href="#selected-teams"
+                onClick={(e) => handleNavClick(e, "selected-teams")}
+                className="mt-2 py-2.5 rounded-lg bg-intel-blue text-white text-center text-[12px] font-mono font-bold tracking-wider uppercase shadow-[0_0_15px_rgba(0,102,255,0.4)] cursor-pointer block"
+              >
+                View Selected Teams
+              </a>
             </div>
           </motion.div>
         )}

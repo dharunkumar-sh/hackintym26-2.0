@@ -20,11 +20,11 @@ export const IntroCTA = forwardRef<HTMLDivElement>((_, ref) => {
           size="lg" 
           className="bg-intel-blue hover:bg-intel-blue-light text-white font-bold tracking-widest border border-intel-blue-light/50 shadow-[0_0_20px_rgba(0,102,255,0.4)] h-14 px-8 uppercase transition-colors"
           onClick={() => {
-            // Handled later to enter the main site
-            console.log("Entering Universe...")
+            const teamsElem = document.getElementById("selected-teams")
+            teamsElem?.scrollIntoView({ behavior: "smooth" })
           }}
         >
-          Enter the Universe
+          View Selected Teams
           <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
       </motion.div>

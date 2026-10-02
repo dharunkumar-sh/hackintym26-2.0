@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react"
 import { HeaderNav } from "./HeaderNav"
 import { HeroSection } from "./HeroSection"
 import { EventPosterSection } from "./EventPosterSection"
-import { ShortlistedTeamsBanner } from "./ShortlistedTeamsBanner"
+import { SelectedTeamsSection } from "./SelectedTeamsSection"
 import { MissionCountdown } from "./MissionCountdown"
 import { TheMission } from "./TheMission"
 import { CommandCenter } from "./CommandCenter"
@@ -15,6 +15,7 @@ import { PrizeSection } from "./PrizeSection"
 import { DevelopmentTeamSection } from "./DevelopmentTeamSection"
 import { FinalCTA } from "./FinalCTA"
 import { Footer } from "./Footer"
+import { TeamsAnnouncementModal } from "./TeamsAnnouncementModal"
 
 import { LoadingOverlay } from "@/components/cinematic/LoadingOverlay"
 import gsap from "gsap"
@@ -29,11 +30,22 @@ if (typeof window !== "undefined") {
 export function MainPage() {
   const [introOverlayActive, setIntroOverlayActive] = useState(true)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [announcementModalOpen, setAnnouncementModalOpen] = useState(false)
 
   // Stable callback for loading completion
   const handleLoaded = useCallback(() => {
     setIsLoaded(true)
   }, [])
+
+  // Show announcement modal after load and intro complete
+  useEffect(() => {
+    if (isLoaded && !introOverlayActive) {
+      const timer = setTimeout(() => {
+        setAnnouncementModalOpen(true)
+      }, 700)
+      return () => clearTimeout(timer)
+    }
+  }, [isLoaded, introOverlayActive])
 
   // Manage scroll state during loading & intro animation
   useEffect(() => {
@@ -178,8 +190,8 @@ export function MainPage() {
 
         {/* SECTIONS BELOW HERO (REVEALED ONLY AFTER INTRO ANIMATION COMPLETES) */}
         <div className={`transition-opacity duration-700 ${introOverlayActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-          {/* SHORTLISTED TEAMS ANNOUNCEMENT */}
-          <ShortlistedTeamsBanner />
+          {/* SELECTED & WAITING LIST TEAMS (30 CARDS) */}
+          <SelectedTeamsSection />
 
           {/* 1.5. OFFICIAL MISSION POSTER */}
           <EventPosterSection />
@@ -216,6 +228,12 @@ export function MainPage() {
         </div>
 
       </div>
+
+      {/* ANNOUNCEMENT POPUP MODAL (OUTSIDE BLURRED CONTENT) */}
+      <TeamsAnnouncementModal 
+        isOpen={announcementModalOpen} 
+        onClose={() => setAnnouncementModalOpen(false)} 
+      />
     </main>
   )
 }

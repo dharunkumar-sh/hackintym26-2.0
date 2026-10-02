@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "waitlistNumber": 1,
+    "teamName": "TECH-sQUAD",
+    "teamLead": "Dharshana S",
+    "status": "Waiting List"
+  },
+  {
+    "id": 2,
+    "waitlistNumber": 2,
+    "teamName": "4 big guys",
+    "teamLead": "Karthick Raaja",
+    "status": "Waiting List"
+  },
+  {
+    "id": 3,
+    "waitlistNumber": 3,
+    "teamName": "SYNAPSE",
+    "teamLead": "Gokulakrishnan G",
+    "status": "Waiting List"
+  },
+  {
+    "id": 4,
+    "waitlistNumber": 4,
+    "teamName": "CODE RED",
+    "teamLead": "Rithika V ",
+    "status": "Waiting List"
+  },
+  {
+    "id": 5,
+    "waitlistNumber": 5,
+    "teamName": "Commit & Pray",
+    "teamLead": "Valarmathi Chezhiyan M P I",
+    "status": "Waiting List"
+  }
+]
