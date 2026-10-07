@@ -12,6 +12,7 @@ import { MultiverseTracks } from "./MultiverseTracks"
 import { MissionTimeline } from "./MissionTimeline"
 import { HackathonArena } from "./HackathonArena"
 import { PrizeSection } from "./PrizeSection"
+import { IndustryPartnerSection } from "./IndustryPartnerSection"
 import { DevelopmentTeamSection } from "./DevelopmentTeamSection"
 import { FinalCTA } from "./FinalCTA"
 import { Footer } from "./Footer"
@@ -216,6 +217,9 @@ export function MainPage() {
 
           {/* 10. INFINITY REWARDS */}
           <PrizeSection />
+
+          {/* 10.5. STRATEGIC ALLIANCE - INDUSTRY PARTNER */}
+          <IndustryPartnerSection />
 
           {/* 11. ORGANIZING TEAM */}
           <DevelopmentTeamSection />

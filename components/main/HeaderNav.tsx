@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { label: "MISSION", targetId: "mission" },
   { label: "UNIVERSE", targetId: "tracks" },
   { label: "TIMELINE", targetId: "timeline" },
+  { label: "PARTNER", targetId: "partner" },
   { label: "ORG TEAM", targetId: "devteam" },
 ]
 
