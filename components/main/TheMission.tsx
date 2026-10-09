@@ -80,7 +80,7 @@ export function TheMission() {
                     className="p-4 sm:p-6 rounded-lg bg-intel-blue/10 border border-intel-blue/40 my-4"
                   >
                     <div className="text-xs font-mono tracking-widest text-intel-blue-light uppercase mb-1">
-                      PILLAR {activePillar.id} // {activePillar.subtitle}
+                      PILLAR {activePillar.id} - {activePillar.subtitle}
                     </div>
                     <p className="text-base sm:text-lg text-white font-medium">
                       {activePillar.desc}

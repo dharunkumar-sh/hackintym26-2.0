@@ -5,13 +5,11 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
 const NAV_ITEMS = [
-  { label: "HQ", targetId: "hero" },
-  { label: "COUNTDOWN", targetId: "countdown" },
+  { label: "HOME", targetId: "hero" },
   { label: "MISSION", targetId: "mission" },
   { label: "UNIVERSE", targetId: "tracks" },
   { label: "TIMELINE", targetId: "timeline" },
-  { label: "PARTNER", targetId: "partner" },
-  { label: "ORG TEAM", targetId: "devteam" },
+  { label: "ABOUT US", targetId: "devteam" },
 ]
 
 export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {

@@ -10,13 +10,11 @@ import { TheMission } from "./TheMission"
 import { CommandCenter } from "./CommandCenter"
 import { MultiverseTracks } from "./MultiverseTracks"
 import { MissionTimeline } from "./MissionTimeline"
-import { HackathonArena } from "./HackathonArena"
 import { PrizeSection } from "./PrizeSection"
 import { IndustryPartnerSection } from "./IndustryPartnerSection"
 import { DevelopmentTeamSection } from "./DevelopmentTeamSection"
 import { FinalCTA } from "./FinalCTA"
 import { Footer } from "./Footer"
-import { TeamsAnnouncementModal } from "./TeamsAnnouncementModal"
 
 import { LoadingOverlay } from "@/components/cinematic/LoadingOverlay"
 import gsap from "gsap"
@@ -31,22 +29,11 @@ if (typeof window !== "undefined") {
 export function MainPage() {
   const [introOverlayActive, setIntroOverlayActive] = useState(true)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [announcementModalOpen, setAnnouncementModalOpen] = useState(false)
 
   // Stable callback for loading completion
   const handleLoaded = useCallback(() => {
     setIsLoaded(true)
   }, [])
-
-  // Show announcement modal after load and intro complete
-  useEffect(() => {
-    if (isLoaded && !introOverlayActive) {
-      const timer = setTimeout(() => {
-        setAnnouncementModalOpen(true)
-      }, 700)
-      return () => clearTimeout(timer)
-    }
-  }, [isLoaded, introOverlayActive])
 
   // Manage scroll state during loading & intro animation
   useEffect(() => {
@@ -72,7 +59,6 @@ export function MainPage() {
   const heroRef = useRef<HTMLDivElement>(null)
 
   const containerRef = useRef<HTMLDivElement>(null)
-  const mousePos = useRef({ x: 0, y: 0 })
 
   // GSAP Intro Timeline (Runs ONCE when loaded)
   useGSAP(() => {
@@ -163,7 +149,7 @@ export function MainPage() {
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-[radial-gradient(ellipse_at_top,rgba(0,102,255,0.2)_0%,rgba(0,200,255,0.06)_50%,transparent_75%)] blur-[60px] transform-gpu"></div>
         
         {/* Power Red Side Energy Glow */}
-        <div className="absolute top-[30%] -right-48 w-[650px] h-[650px] rounded-full bg-[radial-gradient(circle,rgba(225,6,0,0.15)_0%,rgba(255,42,42,0.05)_50%,transparent_75%)] blur-[70px] transform-gpu"></div>
+        <div className="absolute top-[30%] -right-48 w-162.5 h-162.5 rounded-full bg-[radial-gradient(circle,rgba(225,6,0,0.15)_0%,rgba(255,42,42,0.05)_50%,transparent_75%)] blur-[70px] transform-gpu"></div>
         
         {/* Arc Reactor Cyan Mid Portal Glow */}
         <div className="absolute top-[58%] -left-48 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,rgba(0,200,255,0.14)_0%,rgba(0,102,255,0.04)_50%,transparent_75%)] blur-[65px] transform-gpu"></div>
@@ -186,7 +172,6 @@ export function MainPage() {
           ref={heroRef}
           typographyRef={typographyRef}
           ctaRef={ctaRef}
-          hudRef={hudRef}
         />
 
         {/* SECTIONS BELOW HERO (REVEALED ONLY AFTER INTRO ANIMATION COMPLETES) */}
@@ -212,9 +197,6 @@ export function MainPage() {
           {/* 8. MISSION TIMELINE */}
           <MissionTimeline />
 
-          {/* 9. HACKATHON ARENA */}
-          <HackathonArena />
-
           {/* 10. INFINITY REWARDS */}
           <PrizeSection />
 
@@ -233,11 +215,6 @@ export function MainPage() {
 
       </div>
 
-      {/* ANNOUNCEMENT POPUP MODAL (OUTSIDE BLURRED CONTENT) */}
-      <TeamsAnnouncementModal 
-        isOpen={announcementModalOpen} 
-        onClose={() => setAnnouncementModalOpen(false)} 
-      />
     </main>
   )
 }

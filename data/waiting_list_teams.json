@@ -1,12 +1,5 @@
 [
   {
-    "id": 1,
-    "waitlistNumber": 1,
-    "teamName": "TECH-sQUAD",
-    "teamLead": "Dharshana S",
-    "status": "Waiting List"
-  },
-  {
     "id": 2,
     "waitlistNumber": 2,
     "teamName": "4 big guys",
@@ -25,13 +18,6 @@
     "waitlistNumber": 4,
     "teamName": "CODE RED",
     "teamLead": "Rithika V ",
-    "status": "Waiting List"
-  },
-  {
-    "id": 5,
-    "waitlistNumber": 5,
-    "teamName": "Commit & Pray",
-    "teamLead": "Valarmathi Chezhiyan M P I",
     "status": "Waiting List"
   }
 ]

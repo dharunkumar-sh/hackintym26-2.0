@@ -25,8 +25,8 @@
   },
   {
     "id": 5,
-    "teamName": "SHE_ENERGY",
-    "teamLead": "Priyadarshini S",
+    "teamName": "TECH-sQUAD",
+    "teamLead": "Dharshana S",
     "status": "Selected"
   },
   {
@@ -73,8 +73,8 @@
   },
   {
     "id": 13,
-    "teamName": "MS VISIONARY",
-    "teamLead": "Mari Sakthi M",
+    "teamName": "Commit & Pray",
+    "teamLead": "Valarmathi Chezhiyan M P I",
     "status": "Selected"
   },
   {
@@ -93,12 +93,6 @@
     "id": 16,
     "teamName": "E2 TITANS",
     "teamLead": "Sabari",
-    "status": "Selected"
-  },
-  {
-    "id": 17,
-    "teamName": "NEXIRA",
-    "teamLead": "Aisshwarya A",
     "status": "Selected"
   },
   {
