@@ -1,42 +1,57 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { 
-  Shield, 
-  User, 
-  CheckCircle2, 
-  Clock 
-} from "lucide-react"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Shield, User, CheckCircle2, Clock } from "lucide-react";
 
-import selectedTeamsData from "@/data/selected_teams.json"
-import waitingListTeamsData from "@/data/waiting_list_teams.json"
+import selectedTeamsData from "@/data/selected_teams.json";
+import waitingListTeamsData from "@/data/waiting_list_teams.json";
 
 export interface TeamItem {
-  id: number
-  waitlistNumber?: number
-  teamName: string
-  teamLead: string
-  status: "Selected" | "Waiting List"
+  id: number;
+  waitlistNumber?: number;
+  teamName: string;
+  teamLead: string;
+  status: "Selected" | "Waiting List";
 }
 
 export function SelectedTeamsSection() {
-  const [activeTab, setActiveTab] = useState<"selected" | "waitingList">("selected")
+  const [activeTab, setActiveTab] = useState<"selected" | "waitingList">(
+    "selected",
+  );
 
-  const selectedTeams = selectedTeamsData as TeamItem[]
-  const waitingListTeams = waitingListTeamsData as TeamItem[]
+  const selectedTeams = selectedTeamsData as TeamItem[];
+  const waitingListTeams = waitingListTeamsData as TeamItem[];
+
+  const handleTabChange = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    tab: "selected" | "waitingList"
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (activeTab === tab) return;
+
+    // Capture the current scroll position before tab switch
+    const currentScrollY = window.scrollY;
+    setActiveTab(tab);
+
+    // Restore scroll position to prevent browser auto-scroll / scroll-anchoring shifts
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: currentScrollY, behavior: "instant" });
+    });
+  };
 
   return (
-    <section 
-      id="selected-teams" 
-      className="relative py-20 sm:py-28 px-4 sm:px-6 z-20 overflow-hidden border-t border-intel-blue/20 bg-black/60 backdrop-blur-md"
+    <section
+      id="selected-teams"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 z-20 overflow-x-clip border-t border-intel-blue/20 bg-black/60 backdrop-blur-md"
+      style={{ overflowAnchor: "none" }}
     >
       {/* Background Marvel Aura Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-intel-blue/15 via-power-red/10 to-transparent blur-[90px] pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-[400px] h-[300px] bg-cyan-500/10 blur-[80px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        
+      <div className="max-w-7xl mx-auto relative z-10" style={{ overflowAnchor: "none" }}>
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <motion.div
@@ -51,22 +66,22 @@ export function SelectedTeamsSection() {
             </div>
 
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase text-white mb-4">
-              Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue-light via-white to-power-red-light">Teams Roster</span>
+              Selected{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue-light via-white to-power-red-light">
+                Teams Roster
+              </span>
             </h2>
-
-            <p className="text-white/70 font-mono text-xs sm:text-sm tracking-wider uppercase max-w-xl mx-auto">
-              Announcing 25 Qualified Innovation Squads &amp; 5 Standby Teams for HACKINTYM &apos;26 2.0
-            </p>
           </motion.div>
         </div>
 
         {/* Centered Category Tabs: Selected (25) & Waiting List (5) */}
-        <div className="mb-10 flex justify-center">
+        <div className="mb-10 flex justify-center" style={{ overflowAnchor: "none" }}>
           <div className="inline-flex items-center bg-black/60 p-1.5 rounded-xl border border-white/10 backdrop-blur-xl shadow-lg">
             <button
               type="button"
-              onClick={() => setActiveTab("selected")}
-              className={`px-5 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={(e) => handleTabChange(e, "selected")}
+              className={`px-5 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer select-none ${
                 activeTab === "selected"
                   ? "bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.5)]"
                   : "text-white/60 hover:text-white hover:bg-white/5"
@@ -78,8 +93,9 @@ export function SelectedTeamsSection() {
 
             <button
               type="button"
-              onClick={() => setActiveTab("waitingList")}
-              className={`px-5 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer ${
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={(e) => handleTabChange(e, "waitingList")}
+              className={`px-5 py-2.5 rounded-lg text-xs font-mono font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer select-none ${
                 activeTab === "waitingList"
                   ? "bg-power-red text-white shadow-[0_0_15px_rgba(225,6,0,0.5)]"
                   : "text-white/60 hover:text-white hover:bg-white/5"
@@ -91,23 +107,24 @@ export function SelectedTeamsSection() {
           </div>
         </div>
 
-        {/* 1. SELECTED SQUADS GRID (25 TEAMS) */}
-        {activeTab === "selected" && (
-          <div className="mb-14">
-            <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="p-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400">
-                  <CheckCircle2 className="w-4 h-4" />
+        <div className="min-h-[450px]" style={{ overflowAnchor: "none" }}>
+          {/* 1. SELECTED SQUADS GRID (25 TEAMS) */}
+          {activeTab === "selected" && (
+            <div className="mb-14">
+              <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
+                <div className="flex items-center gap-3">
+                  <div className="p-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400">
+                    <CheckCircle2 className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-white">
+                      Qualified Teams ({selectedTeams.length})
+                    </h3>
+                    <p className="text-[11px] font-mono text-white/50 tracking-wider uppercase">
+                      Official 25 Selected Innovation Squads
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-white">
-                    Qualified Teams ({selectedTeams.length})
-                  </h3>
-                  <p className="text-[11px] font-mono text-white/50 tracking-wider uppercase">
-                    Official 25 Selected Innovation Squads
-                  </p>
-                </div>
-              </div>
               <span className="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30">
                 ACTIVE SLOTS
               </span>
@@ -165,7 +182,7 @@ export function SelectedTeamsSection() {
                       </div>
                     </div>
                   </motion.div>
-                )
+                );
               })}
             </div>
           </div>
@@ -173,7 +190,7 @@ export function SelectedTeamsSection() {
 
         {/* 2. WAITING LIST SQUADS GRID (5 TEAMS) */}
         {activeTab === "waitingList" && (
-          <div>
+          <div className="mb-14">
             <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
               <div className="flex items-center gap-3">
                 <div className="p-1.5 rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-400">
@@ -245,13 +262,13 @@ export function SelectedTeamsSection() {
                       </div>
                     </div>
                   </motion.div>
-                )
+                );
               })}
             </div>
           </div>
         )}
-
+        </div>
       </div>
     </section>
-  )
+  );
 }

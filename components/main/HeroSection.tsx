@@ -3,7 +3,7 @@
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Compass } from "lucide-react"
+import { ArrowRight, FileText } from "lucide-react"
 import { CLUB_LOGOS } from "@/lib/data"
 import Image from "next/image"
 
@@ -123,12 +123,16 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
               size="lg" 
               className="w-full sm:w-auto bg-black/40 border border-power-red/50 hover:bg-power-red/10 text-white hover:text-power-red-light font-bold tracking-widest glass-panel h-14 px-8 uppercase transition-colors cursor-pointer"
               onClick={onExploreClick || (() => {
-                const devteamElem = document.getElementById("devteam")
-                devteamElem?.scrollIntoView({ behavior: "smooth" })
+                const tracksElem = document.getElementById("tracks")
+                if (tracksElem) {
+                  const yOffset = -70
+                  const y = tracksElem.getBoundingClientRect().top + window.pageYOffset + yOffset
+                  window.scrollTo({ top: y, behavior: "smooth" })
+                }
               })}
             >
-              Organizing Team
-              <Compass className="ml-2 h-5 w-5" />
+              View Problem Statements
+              <FileText className="ml-2 h-5 w-5" />
             </Button>
           </motion.div>
         </div>
