@@ -2,7 +2,7 @@
   "domains": [
     {
       "id": "HEALTHCARE",
-      "name": "Healthcare",
+      "name": "Healthcare & Wellness",
       "subtitle": "Medical & Biotech Innovation",
       "icon": "Heart",
       "color": "text-intel-blue",
@@ -12,13 +12,14 @@
       "glow": "rgba(0,102,255,0.4)",
       "desc": "Revolutionize medical access, diagnostic tools, patient care, and biotech solutions through intelligent software and hardware integration.",
       "problemStatements": [
-        "PS-HC01: AI-Driven Rural Triage & Diagnostic Assistant - Develop an offline-capable edge AI diagnostic assistant for primary health workers to detect anomalies in medical imaging and vital signs.",
-        "PS-HC02: Privacy-Preserving Federated Healthcare Intelligence - Build a zero-knowledge federated learning framework enabling hospitals to train collaborative oncology prediction models without sharing patient PII."
+        "PS-HC01: AI-Powered Symptom Checker & Triage Assistant - Develop an AI-driven healthcare assistant that helps users understand possible health conditions based on basic symptoms and recommends appropriate next steps according to urgency levels.",
+        "PS-HC02: Smart Medication Reminder & Adherence System - Build a medication management application that reminds users about prescribed medicines, dosage schedules, and missed doses to improve medication adherence.",
+        "PS-HC03: AI-Based Personal Wellness Monitoring Platform - Create a wellness tracking application that monitors sleep patterns, water intake, physical activity, and stress levels to provide personalized lifestyle recommendations."
       ]
     },
     {
-      "id": "CYBERSEC",
-      "name": "Cybersec",
+      "id": "CYBERSECURITY",
+      "name": "Cybersecurity",
       "subtitle": "Digital Defense & Security",
       "icon": "Shield",
       "color": "text-power-red",
@@ -28,13 +29,14 @@
       "glow": "rgba(225,6,0,0.4)",
       "desc": "Defend the digital realm. Create zero-trust architectures, threat detection systems, encryption protocols, and privacy-preserving tools.",
       "problemStatements": [
-        "PS-CS01: Autonomous Zero-Day Threat Mitigation - Implement an AI-powered deception & honeynet system that autonomously isolates lateral movement and reverses memory injections in real-time.",
-        "PS-CS02: Quantum-Resistant Identity & Access Management - Architect a post-quantum cryptographic authentication protocol protecting high-value cloud APIs against harvest-now-decrypt-later attacks."
+        "PS-CS01: AI-Powered Phishing Email & Link Detection System - Develop an intelligent cybersecurity solution that identifies suspicious emails, links, and messages, analyzes potential threats, and explains the associated security risks to users.",
+        "PS-CS02: Password Strength & Security Assessment Tool - Build a password security checker that evaluates password strength, detects common vulnerabilities, and provides actionable recommendations to improve password security.",
+        "PS-CS03: Intelligent Suspicious Login Detection System - Create a behavior-based security monitoring system that identifies unusual login attempts by analyzing location changes, device information, and login patterns to detect potential unauthorized access."
       ]
     },
     {
-      "id": "AGENTIC_AI",
-      "name": "Agentic AI",
+      "id": "AI_ML",
+      "name": "AI & Machine Learning",
       "subtitle": "Autonomous & Generative Intelligence",
       "icon": "Brain",
       "color": "text-intel-blue-light",
@@ -44,13 +46,14 @@
       "glow": "rgba(0,200,255,0.4)",
       "desc": "Build the future with multi-agent systems, autonomous decision networks, neural reasoning models, and generative workflows.",
       "problemStatements": [
-        "PS-AI01: Collaborative Multi-Agent Code Synthesis & Audit - Create an autonomous swarm of AI agents (Architect, Coder, Pen-tester, Benchmarker) that cooperatively build and verify microservices.",
-        "PS-AI02: Self-Governing Enterprise Workflow Agents - Build deterministic agentic workflows capable of multi-step decision execution with cryptographic verification and human safety circuit-breakers."
+        "PS-AI01: AI-Powered Resume Screening & Candidate Ranking System - Develop an AI-driven recruitment tool that analyzes candidate resumes, matches skills and qualifications against job descriptions, and ranks suitable profiles based on job requirements.",
+        "PS-AI02: Intelligent Document Summarization & Action Item Extraction - Build an AI-powered document processing system that converts lengthy documents into concise summaries, extracts key insights, and identifies actionable tasks for improved productivity.",
+        "PS-AI03: Retrieval-Augmented Generation (RAG) Based Document Chatbot - Create an AI chatbot that answers user questions using information retrieved from uploaded documents or a predefined knowledge base, providing context-aware responses with relevant source references."
       ]
     },
     {
-      "id": "SUSTAINABLE_DEV",
-      "name": "Sustainable Development",
+      "id": "SUSTAINABILITY",
+      "name": "Sustainability",
       "subtitle": "Global Impact & Eco Solutions",
       "icon": "Leaf",
       "color": "text-green-400",
@@ -60,14 +63,15 @@
       "glow": "rgba(74,222,128,0.4)",
       "desc": "Develop impactful software addressing UN Sustainable Development Goals, education access, resource distribution, and community challenges.",
       "problemStatements": [
-        "PS-SD01: Hyperlocal Food Supply & Rescue Logistics - Engineer a predictive routing & matching platform connecting commercial kitchens with local shelters to eliminate perishable food wastage.",
-        "PS-SD02: Multilingual Offline Learning Copilot - Build a low-resource multilingual conversational tutor for rural classrooms that runs on low-cost devices without active internet connectivity."
+        "PS-SU01: Smart Energy Monitoring & Consumption Optimization Dashboard - Develop an intelligent energy monitoring dashboard that analyzes electricity usage patterns, identifies high-consumption areas, and recommends practical strategies to reduce energy consumption and costs.",
+        "PS-SU02: AI-Powered Waste Classification & Disposal Assistant - Build an image-based waste classification application that identifies different waste categories, such as biodegradable, recyclable, hazardous, and non-recyclable waste, and recommends appropriate disposal or recycling methods.",
+        "PS-SU03: Personal Carbon Footprint Calculator & Reduction Advisor - Create a carbon footprint assessment tool that estimates greenhouse gas emissions based on transportation, electricity consumption, and daily activities, providing personalized recommendations to reduce environmental impact."
       ]
     },
     {
-      "id": "CLIMATE_ENERGY",
-      "name": "Climate & Clean Energy",
-      "subtitle": "Green Tech & Renewable Energy",
+      "id": "EdTech & Social Impact",
+      "name": "EdTech & Social Impact",
+      "subtitle": "Education & Community Solutions",
       "icon": "Zap",
       "color": "text-yellow-400",
       "bg": "bg-yellow-400",
@@ -76,14 +80,15 @@
       "glow": "rgba(250,204,21,0.4)",
       "desc": "Engineered solutions for carbon tracking, solar/wind optimization, smart energy grids, zero-emission logistics, and eco-tech efficiency.",
       "problemStatements": [
-        "PS-CE01: Decentralized Renewable Microgrid Balancing - Formulate a real-time peer-to-peer renewable energy distribution and automated dynamic tariff optimizer using edge IoT nodes.",
-        "PS-CE02: Geospatial Carbon Footprint & Reforestation Audit - Deploy computer vision pipeline analyzing multispectral satellite feeds to quantify urban carbon absorption and trigger automated green credits."
+        "PS-ES01: AI-Powered Personalized Learning Assistant - Develop an AI-driven learning platform that explains complex academic topics in simple language, adapts explanations to student needs, and generates interactive quizzes to improve understanding and knowledge retention.",
+        "PS-ES02: Intelligent Student Performance Analysis & Early Intervention System - Build a student analytics platform that analyzes academic performance, attendance, assessment scores, and learning progress to identify students who may require additional academic support and recommend targeted interventions.",
+        "PS-ES03: AI-Based Accessible Learning Content Transformation Platform - Create an accessibility-focused application that converts educational content into simplified text, audio, and multiple languages to support learners with diverse learning needs and improve inclusive education."
       ]
     },
     {
-      "id": "SURPRISE_DOMAIN",
-      "name": "Surprise Domain!",
-      "subtitle": "Mystery Challenge (+1 Domain)",
+      "id": "OPEN_INNOVATION",
+      "name": "Open Innovation",
+      "subtitle": "Open Challenges",
       "icon": "Gift",
       "color": "text-purple-400",
       "bg": "bg-purple-400",
@@ -93,8 +98,9 @@
       "desc": "A classified mystery domain to be revealed live during the event! Prepare your team for unexpected wild-card innovation challenges.",
       "isSurprise": true,
       "problemStatements": [
-        "PS-SP01: Autonomous Drone Fleet for Extreme Climate Disaster Relief - Build swarm coordination algorithms to drop medical kits and survey survivor zones in zero-visibility scenarios.",
-        "PS-SP02: Spatial Digital Twin for High-Risk Emergency Evacuation - Design real-time 3D spatial simulation for dense indoor arenas during infrastructure anomalies with predictive stampede prevention."
+        "PS-OI01: Smart Queue Management & Waiting Time Optimization System - Develop an intelligent queue management platform that enables users to book time slots, monitor real-time queue status, estimate waiting times, and reduce congestion in public and private facilities.",
+        "PS-OI02: Community-Based Local Issue Reporting & Resolution Platform - Build a location-aware civic issue reporting application that allows users to report problems such as road damage, improper waste disposal, and water leakage, while tracking complaint status, responsible authorities, and resolution progress.",
+        "PS-OI03: AI-Powered Meeting Summarization & Action Tracking Assistant - Create an AI-driven meeting assistant that transforms meeting notes or transcripts into concise summaries, key decisions, actionable tasks, assigned owners, and deadlines to improve team productivity and accountability."
       ]
     }
   ]

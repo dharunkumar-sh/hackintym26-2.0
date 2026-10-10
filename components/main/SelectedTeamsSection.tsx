@@ -48,8 +48,8 @@ export function SelectedTeamsSection() {
       style={{ overflowAnchor: "none" }}
     >
       {/* Background Marvel Aura Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-intel-blue/15 via-power-red/10 to-transparent blur-[90px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-[400px] h-[300px] bg-cyan-500/10 blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-175 h-87.5 bg-linear-to-r from-intel-blue/15 via-power-red/10 to-transparent blur-[90px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-100 h-75 bg-cyan-500/10 blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10" style={{ overflowAnchor: "none" }}>
         {/* Section Header */}
@@ -60,15 +60,15 @@ export function SelectedTeamsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-intel-blue/20 via-intel-blue/10 to-power-red/20 border border-intel-blue/40 text-intel-blue-light font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_20px_rgba(0,102,255,0.25)]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-linear-to-r from-intel-blue/20 via-intel-blue/10 to-power-red/20 border border-intel-blue/40 text-intel-blue-light font-mono text-xs tracking-widest uppercase mb-4 shadow-[0_0_20px_rgba(0,102,255,0.25)]">
               <Shield className="w-3.5 h-3.5 text-intel-blue-light" />
               <span>OFFICIAL SQUAD TRANSMISSION</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase text-white mb-4">
               Selected{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-intel-blue-light via-white to-power-red-light">
-                Teams Roster
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-intel-blue-light via-white to-power-red-light">
+                Teams
               </span>
             </h2>
           </motion.div>
