@@ -29,24 +29,45 @@ export function MissionTimeline() {
     return () => clearInterval(interval)
   }, [])
 
-  // Parse timestamps directly from items
-  const parsedTimeline = TIMELINE.map((item, idx) => {
-    let timestamp = 0
-    if (item.isoDate) {
-      const parsedIso = Date.parse(item.isoDate)
-      if (!isNaN(parsedIso)) timestamp = parsedIso
-    }
-    if (!timestamp) {
-      const dateStr = item.time ? `${item.date} ${item.time}` : item.date
-      const parsedDate = Date.parse(dateStr)
-      if (!isNaN(parsedDate)) timestamp = parsedDate
-    }
-    return {
+  // Parse timestamps directly from items and guarantee chronological order
+  const parsedTimeline = [...TIMELINE]
+    .map((item, idx) => {
+      let timestamp = 0
+      if (item.isoDate) {
+        const parsedIso = Date.parse(item.isoDate)
+        if (!isNaN(parsedIso)) timestamp = parsedIso
+      }
+      if (!timestamp) {
+        const dateStr = item.time ? `${item.date} ${item.time}` : item.date
+        const parsedDate = Date.parse(dateStr)
+        if (!isNaN(parsedDate)) timestamp = parsedDate
+      }
+      return {
+        ...item,
+        timestamp,
+        originalIndex: idx
+      }
+    })
+    .sort((a, b) => a.timestamp - b.timestamp)
+    .map((item, idx) => ({
       ...item,
-      timestamp,
       index: idx
+    }))
+
+  // Determine single active milestone index
+  const activeIndex = (() => {
+    if (!mounted) return -1
+    // Find the last milestone whose timestamp has passed
+    let latestPastIdx = -1
+    for (let i = 0; i < parsedTimeline.length; i++) {
+      if (now >= parsedTimeline[i].timestamp) {
+        latestPastIdx = i
+      } else {
+        break
+      }
     }
-  })
+    return latestPastIdx
+  })()
 
   // Determine stage & traversal progress
   const firstTimestamp = parsedTimeline[0]?.timestamp ?? 0
@@ -126,18 +147,13 @@ export function MissionTimeline() {
     })
   }, { scope: containerRef })
 
-  // Helper to determine status of each item
+  // Helper to determine status of each item (guarantees exactly ONE active phase)
   const getItemStatus = (itemTime: number, idx: number) => {
     if (!mounted) return { status: "upcoming", label: "UPCOMING" }
     
-    // Check if this is the active/current item
-    const nextItem = parsedTimeline[idx + 1]
-    const isPast = now >= itemTime
-    const isNextFuture = nextItem ? now < nextItem.timestamp : false
-
-    if (isPast && (isNextFuture || !nextItem)) {
+    if (idx === activeIndex) {
       return { status: "active", label: "CURRENT PHASE" }
-    } else if (isPast) {
+    } else if (idx < activeIndex) {
       return { status: "completed", label: "COMPLETED" }
     } else {
       return { status: "upcoming", label: "SCHEDULED" }

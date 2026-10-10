@@ -1,0 +1,200 @@
+{
+  "PS-HC01": {
+    "punch": "Enna Koduma Saravanan Idhu?! Symptom-ah paathu bayamuruthuna hospital bill-ah paathu bayapadanum!",
+    "constraints": [
+      "Must not hallucinate dangerous diagnoses; triage priority levels (Low, Moderate, Emergency) must be clear.",
+      "Avoid definitive diagnoses and unsafe treatment recommendations.",
+      "Request additional information when symptoms are incomplete or contradictory.",
+      "Prioritize critical warning signs and recommend immediate medical attention when necessary.",
+      "Protect sensitive patient information through encryption and access controls.",
+      "Ground recommendations in trusted medical guidelines."
+    ]
+  },
+  "PS-HC02": {
+    "punch": "Appa tablet-ah potengala? Illa da marandhutten! - Idhukku dhaan da indha app!",
+    "constraints": [
+      "Identify clinically significant drug-drug and drug-allergy conflicts.",
+      "Track medication schedules, missed doses, and duplicate entries reliably.",
+      "Generate critical medication safety alerts within 2 seconds of processing new information.",
+      "Never independently modify prescribed dosages or recommend unsafe compensatory doses.",
+      "Secure prescriptions and patient records using encryption and access controls.",
+      "Use verified medication databases and up-to-date safety information."
+    ]
+  },
+  "PS-HC03": {
+    "punch": "Body soda buddi maadhiri aayiruchu... Enna thalaiva health tracking start pannalama?",
+    "constraints": [
+      "Process incoming sensor readings with minimal delay.",
+      "Handle intermittent connectivity, incomplete readings, and sensor failures.",
+      "Minimize unnecessary health warnings caused by noisy or inaccurate measurements.",
+      "Identify meaningful deviations from individual health baselines.",
+      "Protect continuous health and activity data through secure processing and storage.",
+      "Clearly distinguish wellness recommendations from situations requiring professional medical evaluation."
+    ]
+  },
+  "PS-CS01": {
+    "punch": "Aahaa... Ivanukku theriyum nu nenaikaran! Link-ah click panniduvaenaa?!",
+    "constraints": [
+      "Analyze emails and URLs within 2 seconds.",
+      "Detect previously unseen phishing techniques and suspicious URL patterns.",
+      "Minimize the incorrect flagging of legitimate emails and websites (low false positive rate).",
+      "Identify shortened URLs, URL redirection chains, encoded links, and lookalike domains.",
+      "Analyze email content securely without unnecessarily storing or leaking sensitive data.",
+      "Highlight suspicious indicators and explain why a message is considered malicious."
+    ]
+  },
+  "PS-CS02": {
+    "punch": "Password '123456'-ah vechikitu hackers kitta mass kaatna epdi thala?!",
+    "constraints": [
+      "Evaluate password strength and entropy within 1 second.",
+      "Never store, log, or transmit raw passwords in plain text during analysis.",
+      "Identify common dictionary passwords, predictable sequences, and keyboard patterns.",
+      "Check against known compromised-password datasets securely using k-anonymity or hashing.",
+      "Estimate resistance against brute-force and dictionary-based cracking attacks.",
+      "Recommend actionable improvements without suggesting predictable substitutions."
+    ]
+  },
+  "PS-CS03": {
+    "punch": "Neenga enga irundhu login panreenga? London-la irundhaa?! Dei naan madurai-la iruken da!",
+    "constraints": [
+      "Identify suspicious logins and compute risk scores within 2 seconds.",
+      "Minimize false alarms and prevent unnecessary account lockouts for genuine users.",
+      "Detect impossible travel velocity, suspicious IP changes, and device fingerprint anomalies.",
+      "Protect sensitive user activity logs through privacy-preserving hashing and encryption.",
+      "Trigger contextual step-up authentication (MFA/OTP) based on computed login risk scores.",
+      "Provide clear, interpretable audit logs explaining why a login attempt was flagged."
+    ]
+  },
+  "PS-AI01": {
+    "punch": "Idhu enna resume-ah illa Mahabharatham kadhaya?! Short-ah podunga da!",
+    "constraints": [
+      "Extract structured skills, experience, and education from heterogeneous resume formats (PDF, DOCX).",
+      "Support semantic skill matching and identify candidate skill gaps against job criteria.",
+      "Generate explainable candidate match scores with transparent breakdown and reasoning.",
+      "Prevent demographic and protected-attribute bias in candidate scoring and ranking.",
+      "Detect duplicate profiles and overlapping applications across job postings.",
+      "Generate role-specific technical and behavioral interview questions tailored to identified skill gaps."
+    ]
+  },
+  "PS-AI02": {
+    "punch": "Document 500 page irukku... Summary 5 varila venum! Mudiyuma mudiyadha?!",
+    "constraints": [
+      "Extract accurate text from scanned documents and images using OCR while preserving layout structure.",
+      "Generate faithful summaries and key insights without fabricating facts or hallucinating numeric metrics.",
+      "Construct a knowledge graph linking entities (people, organizations, tasks, deadlines, decisions).",
+      "Discover cross-document relationships and identify dependency bottlenecks between tasks.",
+      "Flag project risks originating from overdue deadlines and conflicting dependencies.",
+      "Link every extracted action item to its exact source passage with an assigned owner and deadline."
+    ]
+  },
+  "PS-AI03": {
+    "punch": "Kelvi ketta badhil varanum! Adha vittutu katha katha pesina naan emathiruvena?!",
+    "constraints": [
+      "Run the SLM, embeddings, indexing, and inference completely locally via Ollama without cloud AI APIs.",
+      "Store document embeddings locally using vector databases like FAISS, ChromaDB, or LanceDB.",
+      "Support hybrid keyword (BM25) and semantic vector search across indexed documents.",
+      "Provide accurate source citations (page & snippet) for every generated answer.",
+      "Gracefully refuse to hallucinate and state when context is insufficient to answer.",
+      "Operate fully offline with zero data leakage beyond the local host machine."
+    ]
+  },
+  "PS-SU01": {
+    "punch": "Current bill-ah paathu shock aagadha... AC-ah 24-la vai da modhalla!",
+    "constraints": [
+      "Ingest CSV, simulated smart-meter, and time-series data using efficient data-processing workflows.",
+      "Identify high-consumption areas, usage patterns, and anomalies without confusing normal seasonal variation with faults.",
+      "Provide a what-if simulator for appliance and usage changes with projected monthly kWh and cost savings.",
+      "Calculate bills using versioned state tariff slabs and appliance reference data such as BEE star ratings.",
+      "Use forecasting and clustering outputs to produce explainable, actionable energy-reduction recommendations.",
+      "Present interactive charts and comparisons in a responsive dashboard suitable for hackathon demonstration."
+    ]
+  },
+  "PS-SU02": {
+    "punch": "Idhu dry waste-ah wet waste-ah nu theriyama dustbin kooda sanda podadheenga!",
+    "constraints": [
+      "Detect multiple waste items in one image and classify each as biodegradable, recyclable, hazardous, or non-recyclable.",
+      "Provide reliable predictions across varied lighting, backgrounds, object overlap, contamination, and crushed items.",
+      "Map every detected category to clear disposal or recycling guidance rather than relying on an unexplained label.",
+      "Show nearby scrap dealers, recycling centres, and collection drives using a map and available location data.",
+      "Estimate waste weight, scrap value, and recycling value using transparent reference rates and uncertainty ranges.",
+      "Support practical image upload or camera capture with responsive bounding-box results and efficient inference."
+    ]
+  },
+  "PS-SU03": {
+    "punch": "Bike-laye poi poi carbon footprint Everest range-ku poiruchu! Konjam nadanthu po da!",
+    "constraints": [
+      "Calculate transport, electricity, food, shopping, and lifestyle emissions using versioned IPCC, DEFRA, or India CEA factors.",
+      "Maintain a user digital twin containing profile, habits, assets, and activity assumptions with clear edit controls.",
+      "Simulate alternative habits and transport choices with projected six-to-twelve-month emissions and savings.",
+      "Represent uncertainty in user inputs and emission factors rather than presenting unsupported precision.",
+      "Rank personalized recommendations by estimated environmental impact and implementation effort.",
+      "Protect location, habit, and activity data through privacy-first processing and secure local storage."
+    ]
+  },
+  "PS-ES01": {
+    "punch": "Sir enna solreenga?! Onnum puriyala! Konjam Tamil-la sollu pa!",
+    "constraints": [
+      "Explain academic concepts at an appropriate learner level using trusted course content and retrieval.",
+      "Provide source citations and a structured rationale explaining why an explanation or example was selected.",
+      "Detect hidden prerequisite gaps through diagnostic questions, concept dependencies, and mastery tracking.",
+      "Generate adaptive MCQ and short-answer quizzes with strict answer validation and difficulty adjustment.",
+      "Identify likely misconceptions and provide targeted hints without replacing the learner's reasoning.",
+      "Deliver a responsive chat experience with streaming responses and privacy-conscious student data handling."
+    ]
+  },
+  "PS-ES02": {
+    "punch": "Arrear vantha piragu kavalai pattu enna labam? Modhallaye therincha pass aagidalamla!",
+    "constraints": [
+      "Combine attendance, assessments, assignments, and learning progress into an auditable student-risk score.",
+      "Represent Student, Course, Concept, Assessment, and Intervention relationships in a queryable knowledge graph.",
+      "Provide global and per-student explanations for risk predictions using plain-language feature contributions.",
+      "Identify concept-level weaknesses and recommend targeted interventions with measurable follow-up actions.",
+      "Minimize bias and false alarms, and never treat a risk score as a definitive judgment about a student.",
+      "Protect student records with role-based access controls and provide a teacher dashboard for drill-down and intervention tracking."
+    ]
+  },
+  "PS-ES03": {
+    "punch": "Kadhai kekka ellarukum aasa dhaan... Aana ellarukum puriyura maadhiri sollanumla!",
+    "constraints": [
+      "Extract text and structure from PDFs, scans, images, diagrams, charts, and flowcharts using OCR and multimodal processing.",
+      "Simplify content to a selected reading level while preserving definitions, equations, relationships, and essential meaning.",
+      "Convert content into accurate audio and multiple languages, preserving technical terms and mathematical context.",
+      "Provide explainable output with source bounding boxes, confidence scores, and original-versus-simplified comparisons.",
+      "Meet WCAG 2.2 AA expectations with screen-reader support, keyboard navigation, high contrast, and dyslexia-friendly presentation.",
+      "Support low-bandwidth access and graceful handling of OCR, translation, or multimodal extraction uncertainty."
+    ]
+  },
+  "PS-OI01": {
+    "punch": "Token number 45-ku innum 3 mani neram aaguma?! Token vangitu biryani saaptu vandhuralam!",
+    "constraints": [
+      "Dynamically estimate wait times adapting to live counter service throughput and delay spikes.",
+      "Deliver live queue updates to connected clients within 500ms using WebSockets or SSE.",
+      "Prevent token scalping and fraudulent bulk bookings using device fingerprinting and rate limits.",
+      "Provide SMS or push notification alerts when a user's token is approaching front of queue.",
+      "Include administrative overrides for priority, emergency, or cancelled ticket situations.",
+      "Ensure zero downtime and seamless state recovery during sudden peak rush traffic."
+    ]
+  },
+  "PS-OI02": {
+    "punch": "Road-la pallam irundha photo eduthu podu da... Facebook-la illa, indha app-la!",
+    "constraints": [
+      "Enforce verified GPS geo-tagging and reverse-geocoding for every submitted issue report.",
+      "Detect duplicate reports within a geographic radius using spatial clustering and image comparison.",
+      "Automatically route submitted issues to the responsible municipal department based on category.",
+      "Provide a public transparency dashboard with real-time status badges and resolution SLA timelines.",
+      "Include image compression and offline-first queueing for low mobile connectivity zones.",
+      "Protect citizen privacy by automatically blurring faces and vehicle license plates."
+    ]
+  },
+  "PS-OI03": {
+    "punch": "Meeting mudinjuruchu... Aana yaar enna pannanum nu yaarukume theriyala! Typical!",
+    "constraints": [
+      "Accurately differentiate and attribute speaking turns across distinct meeting participants.",
+      "Generate concise summaries highlighting major decisions, debate outcomes, and meeting conclusions.",
+      "Extract actionable tasks mandating an explicit owner, clear deliverable, and target completion date.",
+      "Filter out conversational filler, small talk, and repetitive banter from actionable takeaways.",
+      "Seamlessly export extracted action items to project management tools (Jira, Trello, Calendar).",
+      "Ensure meeting recordings and sensitive corporate discussions are encrypted at rest and in transit."
+    ]
+  }
+}

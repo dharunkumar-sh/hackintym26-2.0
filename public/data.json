@@ -46,9 +46,9 @@
       "glow": "rgba(0,200,255,0.4)",
       "desc": "Build the future with multi-agent systems, autonomous decision networks, neural reasoning models, and generative workflows.",
       "problemStatements": [
-        "PS-AI01: AI-Powered Resume Screening & Candidate Ranking System - Develop an AI-driven recruitment tool that analyzes candidate resumes, matches skills and qualifications against job descriptions, and ranks suitable profiles based on job requirements.",
-        "PS-AI02: Intelligent Document Summarization & Action Item Extraction - Build an AI-powered document processing system that converts lengthy documents into concise summaries, extracts key insights, and identifies actionable tasks for improved productivity.",
-        "PS-AI03: Retrieval-Augmented Generation (RAG) Based Document Chatbot - Create an AI chatbot that answers user questions using information retrieved from uploaded documents or a predefined knowledge base, providing context-aware responses with relevant source references."
+        "PS-AI01: AI-Powered Resume Screening & Candidate Ranking System - Develop an AI-driven recruitment platform that uses specialized AI agents to analyze candidate resumes, extract skills and qualifications, match profiles against job descriptions, and generate explainable candidate rankings. The system should support semantic skill matching, skill-gap analysis, duplicate candidate detection, and interview question generation based on candidate profiles.",
+        "PS-AI02: Intelligent Document Summarization & Action Item Extraction Using OCR and Knowledge Graphs - Build an intelligent document processing system that combines Optical Character Recognition (OCR) and Knowledge Graphs (KG) to process lengthy documents, extract key insights, generate concise summaries, and identify actionable tasks. The system should extract text from scanned documents and images, identify entities and relationships between people, tasks, deadlines, and decisions, and represent them in a knowledge graph. Additional capabilities include cross-document relationship discovery, task dependency identification, risk detection, and source-linked action item extraction.",
+        "PS-AI03: Fully Local SLM-Powered RAG Document Chatbot - Create a privacy-preserving Retrieval-Augmented Generation (RAG) chatbot using locally hosted Small Language Models (SLMs) through Ollama to answer questions from uploaded documents and predefined knowledge bases without relying on external cloud AI APIs. The system should support local embeddings and vector storage using FAISS or ChromaDB, hybrid keyword and semantic search, multi-document question answering with source citations, and fully offline document indexing and retrieval."
       ]
     },
     {
@@ -63,9 +63,9 @@
       "glow": "rgba(74,222,128,0.4)",
       "desc": "Develop impactful software addressing UN Sustainable Development Goals, education access, resource distribution, and community challenges.",
       "problemStatements": [
-        "PS-SU01: Smart Energy Monitoring & Consumption Optimization Dashboard - Develop an intelligent energy monitoring dashboard that analyzes electricity usage patterns, identifies high-consumption areas, and recommends practical strategies to reduce energy consumption and costs.",
-        "PS-SU02: AI-Powered Waste Classification & Disposal Assistant - Build an image-based waste classification application that identifies different waste categories, such as biodegradable, recyclable, hazardous, and non-recyclable waste, and recommends appropriate disposal or recycling methods.",
-        "PS-SU03: Personal Carbon Footprint Calculator & Reduction Advisor - Create a carbon footprint assessment tool that estimates greenhouse gas emissions based on transportation, electricity consumption, and daily activities, providing personalized recommendations to reduce environmental impact."
+        "PS-SU01: Smart Energy Monitoring & Consumption Optimization Dashboard - Develop an intelligent energy monitoring dashboard that analyzes electricity usage patterns, identifies high-consumption areas, and recommends practical strategies to reduce energy consumption and costs. Include a what-if simulator for scenarios such as raising AC temperature or replacing an appliance, with projected monthly savings.",
+        "PS-SU02: AI-Powered Waste Classification & Disposal Assistant - Build an image-based waste classification application that uses multi-object detection to identify several items in one photo, classifies each as biodegradable, recyclable, hazardous, or non-recyclable, and recommends disposal methods. Include a nearby recycling-centre map and an AI-powered waste and recycling value predictor.",
+        "PS-SU03: Personal Carbon Footprint Calculator & Reduction Advisor - Create a carbon footprint assessment tool that estimates greenhouse gas emissions from transportation, electricity consumption, and daily activities, provides personalized reduction recommendations, and creates a digital twin of the user's current habits for scenario simulation and projected impact."
       ]
     },
     {
@@ -80,9 +80,9 @@
       "glow": "rgba(250,204,21,0.4)",
       "desc": "Engineered solutions for carbon tracking, solar/wind optimization, smart energy grids, zero-emission logistics, and eco-tech efficiency.",
       "problemStatements": [
-        "PS-ES01: AI-Powered Personalized Learning Assistant - Develop an AI-driven learning platform that explains complex academic topics in simple language, adapts explanations to student needs, and generates interactive quizzes to improve understanding and knowledge retention.",
-        "PS-ES02: Intelligent Student Performance Analysis & Early Intervention System - Build a student analytics platform that analyzes academic performance, attendance, assessment scores, and learning progress to identify students who may require additional academic support and recommend targeted interventions.",
-        "PS-ES03: AI-Based Accessible Learning Content Transformation Platform - Create an accessibility-focused application that converts educational content into simplified text, audio, and multiple languages to support learners with diverse learning needs and improve inclusive education."
+        "PS-ES01: AI-Powered Personalized Learning Assistant - Develop an AI-driven learning platform that explains complex academic topics in simple language, adapts explanations to student needs, generates interactive quizzes, provides explainable responses with citations, and actively detects hidden gaps in prerequisite understanding.",
+        "PS-ES02: Intelligent Student Performance Analysis & Early Intervention System - Build a student analytics platform that analyzes academic performance, attendance, assessment scores, and learning progress to identify students needing support, represent relationships in a knowledge graph, and recommend explainable, targeted interventions.",
+        "PS-ES03: AI-Based Accessible Learning Content Transformation Platform - Create an accessibility-focused application that transforms documents, scanned pages, diagrams, charts, and flowcharts into simplified text, synchronized audio, and multiple languages, with explainable source highlighting and inclusive accessibility controls."
       ]
     },
     {
