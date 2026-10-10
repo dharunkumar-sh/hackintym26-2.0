@@ -95,8 +95,7 @@
       "border": "border-purple-400",
       "gradient": "from-purple-400/20 via-purple-400/5 to-transparent",
       "glow": "rgba(192,132,252,0.4)",
-      "desc": "A classified mystery domain to be revealed live during the event! Prepare your team for unexpected wild-card innovation challenges.",
-      "isSurprise": true,
+      "desc": "Build cross-disciplinary solutions addressing modern real-world problems. Prepare your team to tackle creative wild-card innovation challenges.",
       "problemStatements": [
         "PS-OI01: Smart Queue Management & Waiting Time Optimization System - Develop an intelligent queue management platform that enables users to book time slots, monitor real-time queue status, estimate waiting times, and reduce congestion in public and private facilities.",
         "PS-OI02: Community-Based Local Issue Reporting & Resolution Platform - Build a location-aware civic issue reporting application that allows users to report problems such as road damage, improper waste disposal, and water leakage, while tracking complaint status, responsible authorities, and resolution progress.",
