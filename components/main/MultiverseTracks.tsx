@@ -437,7 +437,7 @@ export function MultiverseTracks({ trackHoverRef }: MultiverseTracksProps) {
                         {/* Chief Guest Action Button */}
                         <button
                           type="button"
-                          //onClick={() => setIsModalOpen(true)}
+                          onClick={() => setIsModalOpen(true)}
                           className="mt-1 px-6 sm:px-8 py-3.5 rounded-xl bg-linear-to-r from-power-red via-rose-600 to-power-red hover:from-rose-600 hover:to-power-red text-white font-mono font-bold text-xs uppercase tracking-widest border border-power-red-light/50 shadow-[0_0_30px_rgba(225,6,0,0.5)] transition-all flex items-center gap-2.5 cursor-pointer hover:scale-105 active:scale-95"
                         >
                           <Fingerprint className="w-4 h-4 animate-pulse" />
