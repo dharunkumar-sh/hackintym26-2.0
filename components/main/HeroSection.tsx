@@ -3,7 +3,7 @@
 import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, FileText, UserRoundCog, Users2 } from "lucide-react";
+import { ArrowRight, FileText, UserRoundCog, Users2, Trophy } from "lucide-react";
 import { CLUB_LOGOS } from "@/lib/data";
 import Image from "next/image";
 
@@ -106,15 +106,17 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
           >
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-intel-blue hover:bg-intel-blue-light text-white font-bold tracking-widest border border-intel-blue-light/50 shadow-[0_0_25px_rgba(0,102,255,0.5)] h-14 px-8 uppercase transition-colors cursor-pointer"
+              className="w-full sm:w-auto bg-linear-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold tracking-widest border border-amber-400/80 shadow-[0_0_30px_rgba(255,215,0,0.5)] h-14 px-8 uppercase transition-all duration-300 cursor-pointer"
               onClick={
                 onEnterClick ||
                 (() => {
-                  const teamsElem = document.getElementById("selected-teams");
-                  if (teamsElem) {
+                  const podiumElem =
+                    document.getElementById("podium") ||
+                    document.getElementById("winners");
+                  if (podiumElem) {
                     const yOffset = -70;
                     const y =
-                      teamsElem.getBoundingClientRect().top +
+                      podiumElem.getBoundingClientRect().top +
                       window.pageYOffset +
                       yOffset;
                     window.scrollTo({ top: y, behavior: "smooth" });
@@ -122,8 +124,8 @@ export const HeroSection = forwardRef<HTMLDivElement, HeroSectionProps>(
                 })
               }
             >
-              Selected Teams
-              <Users2 className="ml-2 h-5 w-5" />
+              View Winners
+              <Trophy className="ml-2 h-5 w-5 text-black" />
             </Button>
           </motion.div>
 

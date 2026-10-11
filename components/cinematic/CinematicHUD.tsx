@@ -43,18 +43,18 @@ export const CinematicHUD = forwardRef<HTMLDivElement>((_, ref) => {
       {/* Top Right: Status / CTA (Desktop only preview) */}
       <div className="hidden md:flex flex-col items-end gap-1">
         <motion.a
-          href="#selected-teams"
+          href="#podium"
           onClick={(e) => {
             e.preventDefault();
-            const elem = document.getElementById("selected-teams");
+            const elem = document.getElementById("podium") || document.getElementById("winners");
             elem?.scrollIntoView({ behavior: "smooth" });
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="pointer-events-auto px-4 py-1.5 rounded bg-intel-blue hover:bg-intel-blue-light text-white text-[11px] font-mono font-bold tracking-widest uppercase border border-intel-blue-light/50 shadow-[0_0_15px_rgba(0,102,255,0.5)] transition-all flex items-center gap-2 cursor-pointer"
+          className="pointer-events-auto px-4 py-1.5 rounded bg-linear-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black text-[11px] font-mono font-extrabold tracking-widest uppercase border border-amber-400/80 shadow-[0_0_15px_rgba(255,215,0,0.5)] transition-all flex items-center gap-2 cursor-pointer"
         >
-          <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-          VIEW SELECTED TEAMS
+          <span className="w-2 h-2 rounded-full bg-black animate-pulse"></span>
+          VIEW WINNERS
         </motion.a>
         <div className="text-[9px] font-mono tracking-widest text-white/30 scanline relative pl-10 h-3 w-32">
           {/* Scanline handled by CSS before element */}V 2.0.26

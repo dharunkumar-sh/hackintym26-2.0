@@ -2,7 +2,7 @@
 
 import { useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Shield, Sparkles, X, ArrowRight, CheckCircle2, Clock } from "lucide-react"
+import { Shield, Sparkles, X, ArrowRight, CheckCircle2, Clock, Trophy } from "lucide-react"
 
 interface TeamsAnnouncementModalProps {
   isOpen: boolean
@@ -35,10 +35,10 @@ export function TeamsAnnouncementModal({ isOpen, onClose }: TeamsAnnouncementMod
   const handleViewTeams = () => {
     onClose()
     setTimeout(() => {
-      const teamsElem = document.getElementById("selected-teams")
-      if (teamsElem) {
+      const podiumElem = document.getElementById("podium") || document.getElementById("winners") || document.getElementById("selected-teams")
+      if (podiumElem) {
         const yOffset = -70
-        const y = teamsElem.getBoundingClientRect().top + window.pageYOffset + yOffset
+        const y = podiumElem.getBoundingClientRect().top + window.pageYOffset + yOffset
         window.scrollTo({ top: y, behavior: "smooth" })
       }
     }, 150)
@@ -148,10 +148,10 @@ export function TeamsAnnouncementModal({ isOpen, onClose }: TeamsAnnouncementMod
               <button
                 type="button"
                 onClick={handleViewTeams}
-                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-intel-blue hover:bg-intel-blue-light text-white font-bold font-mono text-xs sm:text-sm tracking-wider uppercase border border-intel-blue-light/50 shadow-[0_0_25px_rgba(0,102,255,0.5)] transition-all flex items-center justify-center gap-2.5 cursor-pointer hover:scale-105 active:scale-95"
+                className="w-full sm:w-auto px-8 py-4 rounded-xl bg-linear-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold font-mono text-xs sm:text-sm tracking-wider uppercase border border-amber-400/80 shadow-[0_0_25px_rgba(255,215,0,0.5)] transition-all flex items-center justify-center gap-2.5 cursor-pointer hover:scale-105 active:scale-95"
               >
-                <span>View Selected Teams</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>View Winners</span>
+                <Trophy className="w-4 h-4 text-black" />
               </button>
 
               <button

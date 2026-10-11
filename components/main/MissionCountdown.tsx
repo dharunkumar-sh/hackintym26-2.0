@@ -15,6 +15,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { WinnersPodium } from "./WinnersPodium";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -145,6 +146,10 @@ export function MissionCountdown() {
   const accessibleLabel = timeState.isComplete
     ? "Mission Active: The Hackathon is live now. 30-hour innovation mission in progress."
     : `Mission countdown: ${timeState.days} days, ${timeState.hours} hours, ${timeState.minutes} minutes, ${timeState.seconds} seconds remaining.`;
+
+  if (mounted && timeState.isComplete) {
+    return <WinnersPodium />;
+  }
 
   return (
     <section

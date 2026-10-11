@@ -4,8 +4,8 @@ import { useRef, useState, useEffect, useCallback } from "react"
 import { HeaderNav } from "./HeaderNav"
 import { HeroSection } from "./HeroSection"
 import { EventPosterSection } from "./EventPosterSection"
-import { SelectedTeamsSection } from "./SelectedTeamsSection"
-import { MissionCountdown } from "./MissionCountdown"
+import { WinnersPodium } from "./WinnersPodium"
+import { WinnersAnnouncementModal } from "./WinnersAnnouncementModal"
 import { TheMission } from "./TheMission"
 import { CommandCenter } from "./CommandCenter"
 import { MultiverseTracks } from "./MultiverseTracks"
@@ -29,6 +29,17 @@ if (typeof window !== "undefined") {
 export function MainPage() {
   const [introOverlayActive, setIntroOverlayActive] = useState(true)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [winnersModalOpen, setWinnersModalOpen] = useState(false)
+
+  // Automatically trigger Winners Announcement popup modal on load
+  useEffect(() => {
+    if (!introOverlayActive && isLoaded) {
+      const timer = setTimeout(() => {
+        setWinnersModalOpen(true)
+      }, 700)
+      return () => clearTimeout(timer)
+    }
+  }, [introOverlayActive, isLoaded])
 
   // Stable callback for loading completion
   const handleLoaded = useCallback(() => {
@@ -176,14 +187,11 @@ export function MainPage() {
 
         {/* SECTIONS BELOW HERO (REVEALED ONLY AFTER INTRO ANIMATION COMPLETES) */}
         <div className={`transition-opacity duration-700 ${introOverlayActive ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
-          {/* SELECTED & WAITING LIST TEAMS (30 CARDS) */}
-          <SelectedTeamsSection />
+          {/* 1. MASSIVE WINNERS PODIUM - TOP 3 MULTIVERSE CHAMPIONS */}
+          <WinnersPodium />
 
           {/* 1.5. OFFICIAL MISSION POSTER */}
           <EventPosterSection />
-
-          {/* 2. MARVEL-INSPIRED MISSION COUNTDOWN */}
-          <MissionCountdown />
 
           {/* 4. THE MISSION */}
           <TheMission />
@@ -214,6 +222,12 @@ export function MainPage() {
         </div>
 
       </div>
+
+      {/* WINNERS ANNOUNCEMENT POPUP MODAL (ON LOAD) */}
+      <WinnersAnnouncementModal
+        isOpen={winnersModalOpen}
+        onClose={() => setWinnersModalOpen(false)}
+      />
 
     </main>
   )

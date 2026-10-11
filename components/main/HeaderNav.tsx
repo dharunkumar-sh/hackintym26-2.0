@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Trophy } from "lucide-react"
 import Image from "next/image"
 
 const NAV_ITEMS = [
@@ -172,11 +172,12 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
 
           <div className="flex items-center gap-3">
             <a
-              href="#selected-teams"
-              onClick={(e) => handleNavClick(e, "selected-teams")}
-              className="hidden md:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-intel-blue hover:bg-intel-blue-light text-white text-[12px] font-mono font-bold tracking-wider uppercase border border-intel-blue-light/50 shadow-[0_0_15px_rgba(0,102,255,0.4)] transition-all cursor-pointer hover:scale-105 active:scale-95"
+              href="#podium"
+              onClick={(e) => handleNavClick(e, "podium")}
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-linear-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black text-[12px] font-mono font-extrabold tracking-wider uppercase border border-amber-400/80 shadow-[0_0_15px_rgba(255,215,0,0.5)] transition-all cursor-pointer hover:scale-105 active:scale-95"
             >
-              <span>View Selected Teams</span>
+              <Trophy className="w-3.5 h-3.5 text-black" />
+              <span>View Winners</span>
             </a>
 
             <button
@@ -221,11 +222,12 @@ export const HeaderNav = forwardRef<HTMLElement>((_, ref) => {
                 })}
 
                 <a
-                  href="#selected-teams"
-                  onClick={(e) => handleNavClick(e, "selected-teams")}
-                  className="mt-2 py-2.5 rounded-lg bg-intel-blue hover:bg-intel-blue-light text-white text-center text-[12px] font-mono font-bold tracking-wider uppercase shadow-[0_0_15px_rgba(0,102,255,0.4)] cursor-pointer block transition-colors"
+                  href="#podium"
+                  onClick={(e) => handleNavClick(e, "podium")}
+                  className="mt-2 py-2.5 rounded-lg bg-linear-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black text-center text-[12px] font-mono font-extrabold tracking-wider uppercase shadow-[0_0_15px_rgba(255,215,0,0.4)] cursor-pointer flex items-center justify-center gap-2 transition-colors"
                 >
-                  View Selected Teams
+                  <Trophy className="w-4 h-4 text-black" />
+                  View Winners
                 </a>
               </div>
             </motion.div>

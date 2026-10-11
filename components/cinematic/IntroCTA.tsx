@@ -3,7 +3,7 @@
 import { forwardRef } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Compass } from "lucide-react"
+import { ArrowRight, Compass, Trophy } from "lucide-react"
 
 export const IntroCTA = forwardRef<HTMLDivElement>((_, ref) => {
   return (
@@ -18,14 +18,14 @@ export const IntroCTA = forwardRef<HTMLDivElement>((_, ref) => {
       >
         <Button 
           size="lg" 
-          className="bg-intel-blue hover:bg-intel-blue-light text-white font-bold tracking-widest border border-intel-blue-light/50 shadow-[0_0_20px_rgba(0,102,255,0.4)] h-14 px-8 uppercase transition-colors"
+          className="bg-linear-to-r from-amber-500 via-yellow-400 to-amber-500 hover:from-amber-400 hover:to-yellow-300 text-black font-extrabold tracking-widest border border-amber-400/80 shadow-[0_0_25px_rgba(255,215,0,0.5)] h-14 px-8 uppercase transition-colors"
           onClick={() => {
-            const teamsElem = document.getElementById("selected-teams")
-            teamsElem?.scrollIntoView({ behavior: "smooth" })
+            const podiumElem = document.getElementById("podium") || document.getElementById("winners")
+            podiumElem?.scrollIntoView({ behavior: "smooth" })
           }}
         >
-          View Selected Teams
-          <ArrowRight className="ml-2 h-5 w-5" />
+          View Winners
+          <Trophy className="ml-2 h-5 w-5 text-black" />
         </Button>
       </motion.div>
 
